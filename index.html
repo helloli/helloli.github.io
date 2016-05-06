@@ -1,129 +1,43 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf8">
-    <title>task21</title>
-    <style type="text/css">
-        #wrap div div {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            margin: 10px;
-            padding: 0 5px;
-            float: left;
-            text-align: center;
-        }
-        .del {
-            background-color: red;
-        }
-        .clearfix {
-            height: 0;
-            clear: both;
-            overflow: hidden;
-        }
-    </style>
-</head>
-<body>
-<div id="wrap">
-    <label for="tag">Tag:<input id="tag" name="tag" /></label>
-    <div id="tags"></div>
-    <div class="clearfix"></div>
-    <textarea id="tr" cols="32" rows="10"></textarea><br />
-    <button id="commit">确认兴趣爱好</button>
-    <div id="newtags"></div>
-</div>
-<script type="text/javascript">
-    var $ = function (e) {
-        return document.querySelector(e);
-    };
+<meta charset="UTF-8">
 
-    function render() {
-        $('#tags').innerHTML = data.map(function (e) {
-            return '<div>' + e + '</div>';
-        }).join('');
-    }
+<style>
+img{
+	max-width:80%;
+	display:block;
+}
+</style>
 
-    String.prototype.trim = function () {
-        return this.replace(/(^\s*)|(\s*$)/g, '');
-    };
+<input type="file" multiple="true" id="uploads">
+<div id="pictures"></div>
+<img id="pics">
+<p id="info"></p>
 
-    function addTag(val) {
-        if (data.indexOf(val) != -1) {
-            $('#tag').value = '';
-            return;
-        } else {
-            if (data.length == 10) {
-                data.pop();
-            }
-            data.unshift(val.trim().replace(/\,$/, ''));
-            render();
-            $('#tag').value = '';
-        }
-    }
+<script type="text/javascript" src="jquery.min.js"></script>
+<script src="up.itorr.js"></script>
 
-    function getTag() {
-        return $('#tag').value.replace(/^(\s|\,)*/, '');
-    }
+<script>
+$('#uploads').change(function(){
+	if(!this.files||!this.files[0]) {
+		return alert('选取文件出错！');
+	}
 
-    function getInputValue() {
-        var val = $('#tr').value;
-        if (val) {
-            return val.replace(/^\s*/, '').replace(/\s*$/, '').split(/\s+/);
-        }
-    }
+	for (var i = 0, len = this.files.length; i < len; i ++) {
+		var picfile=this.files[i];
 
-    function newRender() {
-        $('#newtags').innerHTML = newdata.map(function (e) {
-            return '<div>' + e + '</div>';
-        }).join('');
-    }
-
-    function init() {
-        data = ['HTML', 'CSS', 'JavaScript'];
-        render();
-        newdata = [];
-        newRender();
-
-        $('#tag').oninput = function () {
-            var val = getTag();
-            if (/^\w+(\s|\,)/.test(val)) {
-                addTag(val);
-            }
-        };
-
-        $('#tag').onkeyup = function (e) {
-            e = document.all ? window.event : event;
-            var val = getTag();
-            if (val!= '' && (e.keyCode || event.which) == 13) {
-                addTag(getTag());
-            }
-        };
-
-        $('#tags').onmouseover = function (e){
-            var targetNode = e.target || e.srcElement;
-            targetNode.innerHTML = '删除' + targetNode.innerHTML;
-            targetNode.className = 'del';
-        };
-
-        $('#tags').onmouseleave = render;
-
-        $('#tags').onclick = function(e){
-            var targetNode = e.target || e.srcElement;
-            var index = [].indexOf.call($('#tags').children,targetNode);
-            data.splice(index, 1);
-            render();
-        };
-
-        $('#commit').onclick = function () {
-            if (newdata = getInputValue()) {
-                if (newdata.length > 10) {
-                    newdata = newdata.slice(0, 10);
-                }
-                newRender();
-            }
-        }
-    }
-    init();
-
+		if (picfile.type.indexOf('image')!=0) {
+			return alert('这不是一个图像呀！');
+		}
+		
+		UP(picfile,function(pid){
+			$('#pictures')[0].innerHTML += '<img src="' + 'http://ww2.sinaimg.cn/large/' + pid +'">';
+			$('#info')[0].innerHTML += 'http://ww2.sinaimg.cn/large/' + pid + '<br />';
+			// $('#info')[0].innerHTML=$('#pics')[0].src='http://ww2.sinaimg.cn/large/'+pid;
+		},function(){
+			alert('上传文件出错了！');
+		},function(progress){
+			// $('#info')[0].innerHTML=progress*100+'%';
+		})
+	}
+});
 </script>
-</body>
-</html>
