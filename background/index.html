@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>background</title>
+<style>
+    div {
+        border: 1px solid red;
+        border-radius: 5px;
+        /*background-color: #EEE;*/
+        margin-bottom: 5px;
+        position: relative;
+    }
+    div div {
+        position: absolute;
+        right: 0;
+        top: 10px;
+        bottom: 10px;
+        right: 10px;
+        width: 400px;
+        border: 2px solid blue;
+    }
+    li {
+        font-size: 20px;
+    }
+    p {
+        font-size: 20px;
+    }
+    .norepeat {
+        background-repeat: no-repeat;
+    }
+</style>
+</head>
+<body>
+
+<div id="header" style="text-align: center; border: none">
+    <h1>CSS background属性</h1>
+    <h3><a href="https://www.w3.org/TR/2014/CR-css3-background-20140909/#backgrounds">https://www.w3.org/TR/2014/CR-css3-background-20140909/#backgrounds</a></h3>
+</div>
+
+<div>
+    <h2>一、background-color(背景颜色)</h2>
+    <ol>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box1', 'background-color', 'transparent')">transparent(默认透明)</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box1', 'background-color', 'red')">color_name(red)</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box1', 'background-color', '#0F0')">hex_number(#0F0)</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box1', 'background-color', 'rgb(0,0,255)')">rgb_number(rgb(0,0,255))</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box1', 'background-color', 'rgba(0,0,255,.5)')">rgba_number(rgba(0,0,255,.5))</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box1', 'background-color', 'hsl(240,100%,50%)')">hsl_number(hsl(240,100%,50%))</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box1', 'background-color', 'hsla(240,100%,50%,.5)')">hsla_number(hsla(240,100%,50%,.5))</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box1', 'background-color', 'inherit')">inherit</a></li>
+    </ol>
+    <div id="box1" style="margin-top: -60px;"></div>
+</div>
+
+<div id="container2">
+    <h2 id="header2">二、background-image(<a href="javascript:void(0)" onclick="change()">指定背景图像</a>)</h2>
+    <ol>
+        <li>
+            <a href="javascript:void(0)" onclick="setStyle('#box2', 'background-image', 'url(360.png)')">url(360.png)</a>
+            <a href="javascript:void(0)" onclick="setStyle('#box2', 'background-image', 'url(360.png),url(smile.gif)')">url(360.png),url(smile.gif)</a>
+        </li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box2', 'background-image', 'none')">none(默认值)</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box2', 'background-image', 'inherit')">inherit</a></li>
+    </ol>
+    <div id="box2"></div>
+</div>
+
+<div>
+    <h2>三、background-repeat(重复方式)</h2>
+    <ol>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box3', 'background-repeat', 'repeat')">repeat(默认值)</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box3', 'background-repeat', 'repeat-x')">repeat-x</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box3', 'background-repeat', 'repeat-y')">repeat-y</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box3', 'background-repeat', 'no-repeat')">no-repeat</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box3', 'background-repeat', 'inherit')">inherit</a></li>
+    </ol>
+    <div id="box3"></div>
+</div>
+
+<div>
+    <h2>四、background-position(背景图像起始位置)</h2>
+    <ol>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box4', 'background-position', '25% 50%')">25% 50%(默认值0% 0%)</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box4', 'background-position', 'center right')">center right</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box4', 'background-position', '-50px -50px')">50px 50px</a></li>
+    </ol>
+    <div id="box4" class="norepeat"></div>
+</div>
+
+<div>
+    <h2>五、background-attachment(滚动)</h2>
+    <ol>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box5', 'background-attachment', 'scroll')">scroll(默认值,随着屏幕滚动)</a></li>
+        <li>
+            <a href="javascript:void(0)" onclick="setStyle('#box5', 'background-attachment', 'fixed')">fixed(不随屏幕滚动)</a>
+        </li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box5', 'background-attachment', 'inherit')">inherit</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box5', 'background-attachment', 'local')">local</a></li>
+    </ol>
+    <div id="box5" class="norepeat" style="overflow: scroll; background-position: right">
+        <p>N</p>
+        <p>G</p>
+        <p>S</p>
+        <p>O</p>
+        <p>C</p>
+    </div>
+</div>
+
+<div style="height: 600px;">
+    <h2>六、background-size(<a href="javascript:void(0)" onclick="setStyle('#box6', 'background-size', 'auto')">CSS3背景图片尺寸</a>)</h2>
+    <ol>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box6', 'background-size', '200px 80px')">length(200px 80px)(默认值auto)</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box6', 'background-size', '100% 100%')">percentage(80% 80%)</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box6', 'background-size', 'cover')">cover(覆盖，不留白))</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box6', 'background-size', 'contain')">contain(包含，显示全)</a></li>
+    </ol>
+    <div id="box6" class="norepeat"></div>
+</div>
+
+<div>
+    <h2>七、background-origin(CSS3背景图片定位区域)</h2>
+    <ol>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box7', 'background-origin', 'border-box')">border-box</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box7', 'background-origin', 'padding-box')">padding-box(默认值)</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box7', 'background-origin', 'content-box')">content-box</a></li>
+    </ol>
+    <div id="box7" class="norepeat" style="border: 20px solid rgba(100, 100, 100, .5); box-sizing: border-box; padding: 20px;"></div>
+</div>
+
+<div>
+    <h2>八、background-clip(CSS3背景的绘制区域)</h2>
+    <ol>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box8', 'background-clip', 'border-box')">border-box(默认值)</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box8', 'background-clip', 'padding-box')">padding-box</a></li>
+        <li><a href="javascript:void(0)" onclick="setStyle('#box8', 'background-clip', 'content-box')">content-box</a></li>
+    </ol>
+    <div id="box8" class="norepeat" style="border: 20px solid rgba(100, 100, 100, .5); box-sizing: border-box; padding: 20px;"></div>
+</div>
+
+<div>
+    <h2>九、background(混合写法)</h2>
+    <ol>
+        <li><a href="javascript:void(0)" onclick="bodychange()">url(360.png) #CCC no-repeat fixed center</a></li>
+    </ol>
+</div>
+
+</body>
+<script>
+    var $ = function (el) {
+        return document.querySelector(el);
+    }
+    var setStyle = function (selector, key, value) {
+        $(selector).style[key] = value;
+    }
+    var flag = true;
+    function change() {
+        if (flag) {
+            setStyle('#container2', 'background-image', 'url(360.png)');
+            flag = false;
+        } else {
+            setStyle('#container2', 'background-image', 'none');
+            flag = true;
+        }
+    }
+    var bodyflag = true;
+    function bodychange() {
+        if (bodyflag) {
+            setStyle('body', 'background', 'url(360.png) #EEE no-repeat local center');
+            bodyflag = false;
+        } else {
+            setStyle('body', 'background', '');
+            bodyflag = true;
+        }
+    }
+    setStyle('#box3', 'background-image', 'url(360.png)');
+    setStyle('#box4', 'background-image', 'url(360.png)');
+    setStyle('#box5', 'background-image', 'url(360.png)');
+    setStyle('#box6', 'background-image', 'url(smile.gif)');
+    setStyle('#box7', 'background-image', 'url(360.png)');
+    setStyle('#box8', 'background-color', 'red');
+</script>
+</html>
