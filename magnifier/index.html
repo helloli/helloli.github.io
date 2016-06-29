@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>magnifier</title>
+</head>
+<body>
+    <img id="pic" src="360.png" style="border:1px solid #ccc">
+    <div id="dp" style="position:relative;overflow:hidden;width:300px;height:300px;border:1px solid #ccc">
+        
+    </div>
+
+    <script>
+        var $ = function (el) {
+            return document.querySelector(el);
+        }
+        $('#pic').onload = function () {
+            w = $('#pic').width;
+            h = $('#pic').height;
+        }
+        $('#pic').onmousemove = function (e) {
+            console.log(w);
+            console.log(h);
+            var np = $('#pic').cloneNode();
+            np.style.position = 'absolute';
+            np.width *= 5;
+            np.height *= 5;
+            np.style.top = '-' + e.offsetY * 5 + 'px';
+            np.style.left = '-' + e.offsetX * 5 + 'px';
+            $('#dp').innerHTML = '';
+            $('#dp').appendChild(np);
+        }
+    </script>
+</body>
+</html>
