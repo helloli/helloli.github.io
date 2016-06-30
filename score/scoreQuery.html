@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="format-detection" content="telephone=no">
+    <title>我的兑换记录</title>
+    <link rel="stylesheet" type="text/css" href="css/querylist.css">
+</head>
+
+<body>
+<div id="query-list">
+    <table id="list-table">
+        <tbody id="list-tbody"></tbody>
+    </table>
+</div>
+
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript">
+    function getUrlParam(name)
+    {
+        var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return r[2];
+        }
+        return null;
+    }
+
+    var access_token = getUrlParam('token');
+//     access_token = 'd9fe7ce8-29f9-4007-9a4a-52c75604925a';
+
+    var funreload = function() {
+        $.get("/neas/v1/integral/get_exchange_record", {access_token:access_token}, function(data){
+            if(data.state == 1)
+            {
+                $('#list-tbody').empty();
+                if(data.exchange_record.length > 0)
+                {
+                    $.each(data.exchange_record, function(idx, obj) {
+                        var time = obj.time.split(" ")[0];
+                        var html = '<tr class="list-item">' +
+                            '<td class="img-td"><img src="images/50m流量@2x.png"/></td><td class="time-td">'+time+'</td><td class="mode-td">兑换成功</td>'+
+                            '</tr>';
+                        $('#list-tbody').append(html);
+                    })
+                }
+                else {
+                    $('#list-tbody').append('<p>目前没有积分兑换记录</p>');
+                }
+            }
+            else
+            {
+                $('#list-tbody').append('<p>数据加载失败，请稍后再试。</p>');
+            }
+        });
+    };
+
+    $.ajax({
+        url: "/neas/v1/integral/get_exchange_record",
+        data: {access_token:access_token},
+        async: false,
+        type: "GET",
+        success: function(data) {
+            if(data.state == 1)
+            {
+                $('#list-tbody').empty();
+                if(data.exchange_record.length > 0)
+                {
+                    $.each(data.exchange_record, function(idx, obj) {
+                        var time = obj.time.split(" ")[0];
+                        var html = '<tr class="list-item">' +
+                                '<td class="img-td"><img src="images/50m流量@2x.png"/></td><td class="time-td">'+time+'</td><td class="mode-td">兑换成功</td>'+
+                                '</tr>';
+                        $('#list-tbody').append(html);
+                    })
+                }
+                else {
+                    $('#list-tbody').append('<p>目前没有积分兑换记录</p>');
+                }
+            }
+            else
+            {
+                $('#list-tbody').append('<p>获取历史兑换记录失败，请稍后再试。</p>');
+            }
+        },
+        error: function() {
+            $('#list-tbody').empty();
+            /* 处理加载失败，重新加载 */
+            //funreload();
+            $('#list-tbody').append('<p>获取历史兑换记录失败，请稍后再试。</p>');
+        }
+    });
+
+</script>
+</body>
+</html>

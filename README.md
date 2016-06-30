@@ -1,5 +1,3 @@
-# meiyaGIF
-
 ## TEST
 
 ### TEST again

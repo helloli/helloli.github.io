@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" >
+	<meta name="author" content="kouqinli" />
+	<meta name="format-detection" content ="telephone=no">
+	<link rel="stylesheet" type="text/css" href="css/score.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+</head>
+
+<body>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-content">
+		<div class="modal-body">
+			<p style="text-align: center">活动说明</p>
+			<p>1. 每日使用客户端都可以积分</p>
+			<p>2. 积分满30分即可兑换50M流量</p>
+			<p>3. 每个月最多兑换三次流量</p>
+			<p>4. 积分每个月月底清零</p>
+			<p>5. 流量总数兑换完毕活动结束</p>
+		</div>
+		<div class="modal-footer">
+			<a id="btn-know" data-dismiss="modal">我知道了</a>
+		</div>
+	</div>
+</div>
+<div class="modal fade" id="queryModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-content">
+		<div class="modal-body" id="query-modal-body">
+		</div>
+		<div class="modal-footer">
+			<a id="btn-query" data-dismiss="modal">我知道了</a>
+		</div>
+	</div>
+</div>
+<div id="score-header" class="score-div">
+	<div id="intro">
+		<a id="intro-button" href="#myModal" data-toggle="modal" data-target="#myModal">
+			<img id="shuoming-icon" src="images/icon_shuoming@2x.png" alt=""/>
+		</a>
+	</div>
+	<div id="score-show-wrap"><img id="score-show" src="images/jifen@2x.png" alt="" /></div>
+	<div id="score-query">
+		<a id="duihuan-link" href="#queryModal" data-toggle="modal" data-target="#queryModal" onclick="changeMode();">
+			<img src="images/btn_duihuanliuliang@2x.png" border="0"/>
+		</a>
+		<p id="jifen-desc">兑换需要30积分，本月还可兑换0次</p>
+		<p><a href="scoreQuery.html" id="query-link">查看我的兑换积分</a></p>
+	</div>
+</div>
+
+<div class="score-div" id="score-list-div">
+	<p>使用客户端赢取积分</p>
+	<div id="score-wrap" class="wrap-scroll">
+	<table id="score-table" class="table-scroll">
+		<tbody id="score-table-body">
+			<tr><td class="item-desc">每日登录</td><td class="item-score">+1/日</td></tr>
+			<tr><td class="item-desc">使用鸡毛信功能</td><td class="item-score">+1/次</td></tr>
+			<tr><td class="item-desc">消息转事儿</td><td class="item-score">+1/次</td></tr>
+			<tr><td class="item-desc">创建组群并保存到通讯录</td><td class="item-score">+1/次</td></tr>
+			<tr><td class="item-desc">创建事儿</td><td class="item-score">+1/条</td></tr>
+			<tr><td class="item-desc">事儿加入团队成员</td><td class="item-score">+1/次</td></tr>
+			<tr><td class="item-desc">事儿评论回复</td><td class="item-score">+1/条</td></tr>
+			<tr><td class="item-desc">手机客户端绑定邮箱</td><td class="item-score">+3/次</td></tr>
+			<tr><td class="item-desc">邮件转事儿</td><td class="item-score">+1/次</td></tr>
+			<tr><td class="item-desc">修改个人头像</td><td class="item-score">+1/次</td></tr>
+			<!--<tr><td class="item-desc">通过任意渠道分享给好友</td><td class="item-score">+1/次</td></tr>-->
+			<!--<tr><td class="item-desc">每日签到</td><td class="item-score">+1/次</td></tr>-->
+			<!--<tr><td class="item-desc">发起一个审批</td><td class="item-score">+1/次</td></tr>-->
+			<!--<tr><td class="item-desc">一起+发新鲜事1条</td><td class="item-score">+1/条</td></tr>-->
+		</tbody>
+	</table>
+	</div>
+</div>
+<div class="score-div" id="liuliang-div">
+	<div style="width: 70%; margin:0 auto;">
+		<img src="images/title-huodezhe@2x.png"/>
+	</div>
+	<table id="liuliang-table-header">
+		<thead><th>姓名</th><th>奖励</th><th>兑换时间</th></thead>
+	</table>
+	<div id="liuliang-wrap">
+		<table id="liuliang-table">
+			<tbody id="liuliang-table-body">
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	function getUrlParam(name)
+	{
+		var reg = new RegExp('(^|&)' + name + '=([^&]*)(&|$)');
+		var r = window.location.search.substr(1).match(reg);
+		if (r != null) {
+			return r[2];
+		}
+		return null;
+	}
+//	var access_token = 'd9fe7ce8-29f9-4007-9a4a-52c75604925a';
+	var access_token = getUrlParam('token');
+
+	/* 获取积分，显示 */
+	var total_score = 0;
+	var left_time = 0;
+
+//	$.get("/neas/v1/integral/get_integral", {access_token:access_token},function(data){
+//		if(data.state == 1) {
+//			total_score = data.integral;
+//			var text = '<div id="score-text"><span>' + total_score + '</span>' + '分</div>';
+//			$('#score-show').after(text);
+//		}
+//		else {
+//			var text = '<div id="score-text"><span>0</span>' + '分</div>';
+//			$('#score-show').after(text);
+//		}
+//	});
+
+
+	$.ajax({
+		url:"/neas/v1/integral/get_integral",
+		type: "get",
+		data:{access_token:access_token},
+		success:function(data){
+			if(data.state == 1) {
+				total_score = data.integral;
+				var text = '<div id="score-text"><span>' + total_score + '</span>' + '分</div>';
+				$('#score-show').after(text);
+			}
+			else {
+				var text = '<div id="score-text"><span>0</span>' + '分</div>';
+				$('#score-show').after(text);
+			}
+		},
+		error: function() {
+			var text = '<div id="score-text"><span>0</span>' + '分</div>';
+			$('#score-show').after(text);
+		}
+	});
+
+
+	/*获取剩余次数 显示*/
+	$.get("/neas/v1/integral/get_rest_exchange_num", {access_token:access_token},function(data){
+		if(data.state == 1) {
+			left_time = data.rest_exchange_num;
+		//	var html = '<p id="jifen-desc">兑换需要30积分，本月还可兑换'+left_time+'次</p>';
+			$('#jifen-desc').text('兑换需要30积分，本月还可兑换'+left_time+'次');
+		//	$('#duihuan-link').after(html);
+		}
+	});
+
+	$('#query-link').attr('href', 'scoreQuery.html?token='+access_token);
+
+	$.get("/neas/v1/integral/get_exchange_timeline", {access_token:access_token}, function(data){
+		if(data.state == 1) {
+			if(data.exchange_timeline.length > 0) {
+				$('#liuliang-wrap').attr("class","wrap-scroll");
+				$('#liuliang-table').attr("class", "table scrolltable ");
+
+				$.each(data.exchange_timeline, function(idx, obj) {
+					var name = obj.name;
+					var liuliang = '50M流量';
+					var time_arr = obj.time.split(" ");
+					var time = time_arr[0];
+
+					var html = '<tr><td>'+name+'</td><td>'+liuliang+'</td><td>'+time+'</td></tr>';
+					$('#liuliang-table-body').append(html);
+				})
+			}
+			else {
+				$('#liuliang-table-body').append('<p>目前没有数据</p>');
+			}
+		}
+		else {
+			$('#liuliang-table-body').append('<p>数据加载失败,请稍后再试</p>');
+		}
+	});
+
+
+	var changeMode = function() {
+		$('#query-modal-body').empty();
+		$.ajax({
+			type: "POST",
+			url: "/neas/v1/integral/integral_exchange",
+			data: {access_token: access_token},
+			success: function(data) {
+				if(data.state == 1001) {
+					var html = '<p>满30积分就能兑换流量啦！多多使用客户端可以赢取积分哦。再接再厉吧！</p>';
+					$('#query-modal-body').append(html);
+				}
+				else if(data.state == 1002) {
+					var html = '<p>您本月积分兑换次数已经用完，下个月再来吧~</p>';
+					$('#query-modal-body').append(html);
+				}
+				else if(data.state == 1003) {
+					var html = '<p>积分兑换活动已结束。</p>';
+					$('#query-modal-body').append(html);
+				}
+				else if(data.state == 1005) {
+					var html = '<p>非河北用户不能参与此次活动。</p>';
+					$('#query-modal-body').append(html);
+				}
+				else if(data.state == 1) {
+					/* 处理兑换成功流程 */
+					var html = '<p>您已成功兑换<span id="red-text">50M</span>流量，以河北移动短信提示为准。本月还可以兑换<span id="yellow-text">'+data.rest_exchange_num+'</span>次，多多使用客户端就可以赢取积分哦！</p>';
+					$('#query-modal-body').append(html);
+
+					$('#btn-query').click(function() {
+						window.location.reload();
+					});
+				}
+				else if(data.state == 1006) {
+					var html = '<p>兑换失败，请稍后再试。</p>';
+					$('#query-modal-body').append(html);
+				}
+			},
+			error: function() {
+				var html = '<p>兑换失败，请稍后再试。</p>';
+				$('#query-modal-body').append(html);
+			}
+		});
+
+	}
+</script>
+</body>
+</html>
