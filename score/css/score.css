@@ -75,9 +75,9 @@ img{
 #score-wrap {
 	overflow-y: scroll;
 	height:83%;
-	/*-webkit-overflow-scrolling: touch;*/
+	-webkit-overflow-scrolling: touch;
 }
-#score-wrap::-webkit-scrollbar-thumb {
+#score-wrap ::-webkit-scrollbar-thumb {
     border-radius: 4px;
     background-color: rgba(0,0,0,.5);
     box-shadow: 0 0 1px rgba(255,255,255,.5);
