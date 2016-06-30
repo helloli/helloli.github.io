@@ -73,7 +73,7 @@ img{
 	border-radius: 0 0 5px 5px;
 }
 #score-wrap {
-	overflow-y: auto;
+	overflow-y: scroll;
 	height:83%;
 }
 
