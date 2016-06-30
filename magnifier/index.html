@@ -25,8 +25,8 @@
             np.style.position = 'absolute';
             np.width *= 5;
             np.height *= 5;
-            np.style.top = '-' + e.offsetY * 5 + 'px';
-            np.style.left = '-' + e.offsetX * 5 + 'px';
+            np.style.top = (150 - e.offsetY * 5) + 'px';
+            np.style.left = (150 - e.offsetX * 5) + 'px';
             $('#dp').innerHTML = '';
             $('#dp').appendChild(np);
         }
