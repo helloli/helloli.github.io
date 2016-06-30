@@ -73,11 +73,14 @@ img{
 	border-radius: 0 0 5px 5px;
 }
 #score-wrap {
-	overflow-y: auto;
+	overflow-y: scroll;
 	height:83%;
-	-webkit-overflow-scrolling: auto;
+	-webkit-overflow-scrolling: touch;
 }
-
+::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 8px;
+}
 #intro
 {
 	right:0;
