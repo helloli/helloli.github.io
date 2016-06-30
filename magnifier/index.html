@@ -6,30 +6,54 @@
 </head>
 <body>
     <img id="pic" src="360.png" style="border:1px solid #ccc">
-    <div id="dp" style="position:relative;overflow:hidden;width:300px;height:300px;border:1px solid #ccc">
+    <div id="dp" style="width:300px;height:300px;border:1px solid #ccc">
         
     </div>
 
     <script>
+        /**
+         * 放大镜函数
+         * @Author   LeeSir
+         * @Email    lzhbupt@163.com
+         * @Datetime 2016-06-30T10:35:14+0800
+         * @param    {[type]}                 el   [description]    需要放大的img元素
+         * @param    {[type]}                 dp   [description]    需要将放大效果显示的目标元素
+         * @param    {[type]}                 time [description]    放大倍数
+         * @return   {[type]}                      [description]
+         */
+        function magnifier (el, dp, time) {
+
+            dp.style.overflow = 'hidden';
+
+            el.onload = function () {
+                w = el.width;
+                h = el.height;
+            };
+
+            el.onmouseover = function (e) {
+                dp.innerHTML = '';
+                var np = el.cloneNode();
+                np.width *= time;
+                np.height *= time;
+                var dpw = parseInt(dp.style.width) / 2;
+                var dph = parseInt(dp.style.height) / 2;
+                dp.appendChild(np);
+                el.onmousemove = function (e) {
+                    np.style.marginTop = (dph - e.offsetY * time) + 'px';
+                    np.style.marginLeft = (dpw - e.offsetX * time) + 'px';
+                };
+            };
+
+            el.onmouseout = function () {
+                dp.innerHTML = '';
+            }
+
+        }
+
         var $ = function (el) {
             return document.querySelector(el);
-        }
-        $('#pic').onload = function () {
-            w = $('#pic').width;
-            h = $('#pic').height;
-        }
-        $('#pic').onmousemove = function (e) {
-            console.log(w);
-            console.log(h);
-            var np = $('#pic').cloneNode();
-            np.style.position = 'absolute';
-            np.width *= 5;
-            np.height *= 5;
-            np.style.top = (150 - e.offsetY * 5) + 'px';
-            np.style.left = (150 - e.offsetX * 5) + 'px';
-            $('#dp').innerHTML = '';
-            $('#dp').appendChild(np);
-        }
+        };
+        magnifier($('#pic'), $('#dp'), 5);
     </script>
 </body>
 </html>
