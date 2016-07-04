@@ -7,7 +7,7 @@
 <body>
     <img id="pic" src="360.png" style="border:1px solid #ccc">
     <!-- <div id="pic" style="border:1px solid #ccc">aaaaaaaaa</div> -->
-    <div id="dp" style="padding:0;margin:200px;width:300px;height:300px;border:1px solid #ccc">
+    <div id="dp" style="padding:0;width:500px;height:500px;border:1px solid #ccc">
         
     </div>
 
@@ -24,31 +24,28 @@
          */
         function magnifier (el, dp, time) {
 
-            // dp.style.overflow = 'hidden';
+            dp.style.overflow = 'hidden';
 
             el.onload = function () {
-                w = el.width;
-                h = el.height;
+                w = el.width * 2;
+                h = el.height * 2;
             };
 
             el.onmouseover = function (e) {
                 dp.innerHTML = '';
                 var np = el.cloneNode();
-                // np.width *= time;
-                // np.height *= time;
-                var dpw = parseInt(dp.style.width);
-                var dph = parseInt(dp.style.height);
+                var dpw = parseInt(dp.style.width) / 2;
+                var dph = parseInt(dp.style.height) / 2;
                 dp.appendChild(np);
                 np.style.transform = 'scale(' + time + ')';
-                console.log(np.width);
                 el.onmousemove = function (e) {
-                    np.style.marginTop = (dph - e.offsetY * time) + 'px';
-                    np.style.marginLeft = (dpw - e.offsetX * time) + 'px';
+                    np.style.marginTop = (dph + h - e.offsetY * time) + 'px';
+                    np.style.marginLeft = (dpw + w - e.offsetX * time) + 'px';
                 };
             };
 
             el.onmouseout = function () {
-                // dp.innerHTML = '';
+                dp.innerHTML = '';
             }
 
         }
