@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://cdn.bootcss.com/d3/4.1.1/d3.js"></script>
+</head>
+<body>
+    <div id="container">
+        <p>LeeSir</p>
+        <p>LeeSir</p>
+        <p>LeeSir</p>
+        <p>LeeSir</p>
+        <p>LeeSir</p>
+    </div>
+    <script>
+        var p = d3.selectAll("p");
+        var array = [1, 2, 3];
+        var update = p.data(array);
+        console.log(update, 'update');
+        console.log(update.enter(), 'enter');
+        console.log(update.exit(), 'exit');
+    </script>
+</body>
+</html>

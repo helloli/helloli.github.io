@@ -5,8 +5,8 @@
     <title>magnifier</title>
 </head>
 <body>
-    <img id="pic" src="360.png" style="border:1px solid #ccc">
-    <!-- <div id="pic" style="border:1px solid #ccc">aaaaaaaaa</div> -->
+    <!-- <img id="pic" src="360.png" style="border:1px solid #ccc"> -->
+    <div id="pic" style="border:1px solid #ccc">aaaaaaaaa</div>
     <div id="dp" style="padding:0;width:500px;height:500px;border:1px solid #ccc">
         
     </div>
@@ -24,10 +24,10 @@
          */
         function magnifier (el, dp, time) {
 
-            dp.style.overflow = 'hidden';
+            // dp.style.overflow = 'hidden';
 
-            w = el.offsetWidth;
-            h = el.offsetHeight;
+            w = parseInt(el.offsetWidth);
+            h = parseInt(el.offsetHeight);
 
             el.onload = function () {
                 w = el.width;
@@ -35,22 +35,25 @@
             };
 
             el.onmouseover = function (e) {
+                console.log(w,'wwww')
                 dp.innerHTML = '';
                 var np = el.cloneNode(true);
                 var dpw = parseInt(dp.style.width);
                 var dph = parseInt(dp.style.height);
+                np.style.width = w *time+'px';
+                np.style.height = h *time+'px';
                 dp.appendChild(np);
                 np.style.transform = 'scale(' + time + ')';
                 el.onmousemove = function (e) {
-                console.log(np.offsetWidth);
-                // console.log(np.offsetHeight);
+                console.log(np.offsetWidth,'off');
+                    console.log(np.style.width,'aaa');
                     np.style.marginTop = 2 * h + (dph) / 2 - e.offsetY * time + 'px';
                     np.style.marginLeft = 2 * w + (dpw) / 2 - e.offsetX * time + 'px';
                 };
             };
 
             el.onmouseout = function () {
-                dp.innerHTML = '';
+                // dp.innerHTML = '';
             }
 
         }

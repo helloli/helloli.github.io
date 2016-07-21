@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>evevtLoop</title>
+    <script src="http://cdn.bootcss.com/vue/2.0.0-alpha.1/vue.min.js"></script>
+    <style>
+        #container > div {
+            margin-bottom: 80px;
+        }
+        .radius {
+            border: 1px solid red;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        .radius span {
+            padding: 2px;
+        }
+        .title {
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div>
+        <h2>一、JS是单线程的</h2>
+        <h3>作为浏览器脚本语言，JavaScript的主要用途是与用户互动，以及操作DOM。这决定了它只能是单线程，否则会带来很复杂的同步问题。比如，假定JavaScript同时有两个线程，一个线程在某个DOM节点上添加内容，另一个线程删除了这个节点，这时浏览器应该以哪个线程为准？</h3>
+        <div class="radius">
+            <div class="title">代码：</div>
+            <p>(typeof window.screenLeft == "number") ? window.screenLeft : window.screenX</p>
+            <p>(typeof window.screenTop == "number") ? window.screenTop : window.screenY</p>
+        </div>
+        <div class="radius">
+            <div class="title">效果：</div>
+            <p>screenLeft的值为：<span class="radius">{{aa}}</span></p>
+            <p>screenTop的值为：<span class="radius">{{ab}}</span></p>
+        </div>
+    </div>
+
+    <div>
+        <h2>二、window.screen.width/height</h2>
+        <h3>显示器的分辨率</h3>
+        <div class="radius">
+            <div class="title">效果：</div>
+            <p>window.screen.width的值为：<span class="radius">{{ba}}</span></p>
+            <p>window.screen.height的值为：<span class="radius">{{bb}}</span></p>
+        </div>
+    </div>
+
+    <div>
+        <h2>三、window.screen.availWidth/availHeight</h2>
+        <h3>显示器可用工作区宽/高度(去掉任务栏的高度)</h3>
+        <div class="radius">
+            <div class="title">效果：</div>
+            <p>window.screen.availWidth的值为：<span class="radius">{{ca}}</span></p>
+            <p>window.screen.availHeight的值为：<span class="radius">{{cb}}</span></p>
+        </div>
+    </div>
+
+    <div>
+        <h2>四、scrollWidth：对象的实际内容的宽度，不包边线宽度，会随对象中内容超过可视区后而变大。 <br>
+        clientWidth：对象内容的可视区的宽度，不包滚动条等边线，会随对象显示大小的变化而改变。 <br>
+        offsetWidth：对象整体的实际宽度，包滚动条等边线，会随对象显示大小的变化而改变。</h2>
+        <h3></h3>
+        <div class="radius">
+            <div class="title">效果：</div>
+            <textarea name="ta" id="ta" wrap="off" cols="30" rows="5" style="margin: 10px; overflow: scroll"></textarea>
+            <p>$('#ta').scrollWidth的值为：<span class="radius">{{da}}</span></p>
+            <p>$('#ta').clientWidth的值为：<span class="radius">{{db}}</span></p>
+            <p>$('#ta').offsetWidth的值为：<span class="radius">{{dc}}</span></p>
+        </div>
+    </div>
+
+</div>
+<script>
+    var $ = function (val) {
+        return document.querySelector(val);
+    }
+    var app = new Vue({
+        el: "#container",
+        data: {
+            aa: (typeof window.screenLeft == "number") ? window.screenLeft : window.screenX,
+            ab: (typeof window.screenTop == "number") ? window.screenTop : window.screenY,
+            ba: window.screen.width,
+            bb: window.screen.height,
+            ca: window.screen.availWidth,
+            cb: window.screen.availHeight,
+            da: $('#ta').scrollWidth,
+            db: $('#ta').clientWidth,
+            dc: $('#ta').offsetWidth
+        },
+        created: function () {
+            var self = this;
+            vchange = function () {
+                self.aa = (typeof window.screenLeft == "number") ? window.screenLeft : window.screenX;
+                self.ab = (typeof window.screenTop == "number") ? window.screenTop : window.screenY;
+                self.ba = window.screen.width;
+                self.bb = window.screen.height;
+                self.ca = window.screen.availWidth;
+                self.cb = window.screen.availHeight;
+                self.da = $('#ta').scrollWidth;
+                self.db = $('#ta').clientWidth;
+                self.dc = $('#ta').offsetWidth;
+            };
+            setInterval('vchange()', 50);
+        }
+    });
+</script>
+</body>
+</html>
