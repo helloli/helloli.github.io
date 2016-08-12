@@ -1,0 +1,15 @@
+<app-header></app-header>
+<div class="container">
+    <form class="form-horizontal">
+        <div class="form-group">
+            <label for="name" class="col-xs-2 control-label">姓名</label>
+            <div class="col-xs-10 content">
+                <input  type="text"
+                        class="form-control"
+                        v-model="name"
+                        id="name"
+                        v-my-directive="name">
+            </div>
+        </div>
+    </form>
+</div>
