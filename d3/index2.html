@@ -2,9 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>d3.js第三版弦图</title>
-    <!-- <script src="http://cdn.bootcss.com/d3/4.2.1/d3.js"></script> -->
-    <script src="http://cdn.bootcss.com/d3/3.5.17/d3.js"></script>
+    <title>d3.js第四版弦图</title>
+    <script src="http://cdn.bootcss.com/d3/4.2.1/d3.js"></script>
+    <!-- <script src="http://cdn.bootcss.com/d3/3.5.17/d3.js"></script> -->
     <style>
 
     .chord path {
@@ -38,13 +38,13 @@
     ];
 
     //2.转换数据，并输出转换后的数据
-    var chord_layout = d3.layout.chord()
-                         .padding(0.03)
-                         .sortSubgroups(d3.descending)
-                         .matrix(population);
-
-    console.log(chord_layout.groups());
-    console.log(chord_layout.chords());
+    var chord = d3.chord()
+                         .padAngle(0.03)
+                         .sortSubgroups(d3.descending);
+    var chord_layout = chord(population);
+    console.log(chord_layout, 'chord_layout');
+    // console.log(chord_layout.groups());
+    // console.log(chord_layout.chords());
     
     //3.SVG，弦图，颜色函数的定义
     var width  = 600;
@@ -52,7 +52,7 @@
     var innerRadius = width/2 * 0.7;
     var outerRadius = innerRadius * 1.1;
 
-    var color20 = d3.scale.category20();
+    var color20 = d3.scaleOrdinal(d3.schemeCategory20);
 
     var svg = d3.select("body").append("svg")
         .attr("width", width)
@@ -61,7 +61,7 @@
         .attr("transform", "translate(" + width/2 + "," + height/2 + ")");
 
     //4.绘制外部弦（即分组，有多少个城市画多少个弦），及绘制城市名称
-    var outer_arc =  d3.svg.arc()
+    var outer_arc =  d3.arc()
                  .innerRadius(innerRadius)
                  .outerRadius(outerRadius);
     
@@ -95,12 +95,13 @@
             
 
     //5.绘制内部弦（即所有城市人口的来源，即有5*5=25条弧）
-    var inner_chord =  d3.svg.chord()
+    var inner_chord =  d3.ribbon()
                     .radius(innerRadius);
+    
     svg.append("g")
         .attr("class", "chord")
         .selectAll("path")
-        .data(chord_layout.chords)
+        .data(chord_layout)
         .enter()
         .append("path")
         .attr("d", inner_chord )
