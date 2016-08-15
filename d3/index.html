@@ -43,8 +43,8 @@
                          .sortSubgroups(d3.descending)
                          .matrix(population);
 
-    console.log(chord_layout.groups());
-    console.log(chord_layout.chords());
+    console.log(chord_layout.groups(),'groups');
+    console.log(chord_layout.chords(),'chords');
     
     //3.SVG，弦图，颜色函数的定义
     var width  = 600;
@@ -94,7 +94,7 @@
             });
             
 
-    //5.绘制内部弦（即所有城市人口的来源，即有5*5=25条弧）
+    //5.绘制内部弦（即所有城市人口的来源，即有5*5=25条弧，但是数据却只有1+2+3+4+5=15条）
     var inner_chord =  d3.svg.chord()
                     .radius(innerRadius);
     svg.append("g")
