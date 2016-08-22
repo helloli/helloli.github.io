@@ -1,0 +1,336 @@
+body, html {
+    width:100%;
+    /*height:100%;*/
+    margin: 0;
+    padding: 0;
+}
+@media screen and (min-width: 320px) {
+    html {font-size: 13px;}
+}
+ 
+@media screen and (min-width: 375px) {
+    html {font-size: 15px;}
+}
+ 
+@media screen and (min-width: 414px) {
+    html {font-size: 17px;}
+}
+ 
+@media screen and (min-width: 440px) {
+    html {font-size: 19px;}
+}
+ 
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+body {
+    font-family: Helvetica;
+    font-family: "Helvetica Neue", "Microsoft YaHei", "微软雅黑";
+    font-size: 0.9rem;
+    background: url("../img/bg@2x(1).png") no-repeat;
+    background-size: cover;
+}
+ 
+
+.title {
+    background-image: url("../img/title@2x.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    height: 110px;
+    margin: 0 auto;
+    margin-top: 20px;
+    max-width: 400px;
+}
+.guize {
+    position: absolute;
+    right: 0;
+    top: 90px;
+    width: 80px;
+    height: 30px;
+}
+.guize-link {
+    background: url("../img/btn_rules@2x.png") no-repeat;
+    height: 30px;
+    display: block;
+    background-size: 100%;
+}
+.container {
+    width: 320px;
+    height: 620px;
+    background-image: url("../img/bg_laohuji@2x.png");
+    background-repeat: no-repeat;
+    /* position: absolute; */
+    margin: 0 auto;
+     /*margin-top: 130px; */
+    /*height: 90vh;*/
+    /*background-size: contain;*/
+    background-size: 100% 100%; 
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+#sm{
+    height: 150px;
+}
+.cj-div {
+    /*padding-top: 9.5%;*/
+    padding-top: 20px;
+    position: relative;
+    height: 375px;
+}
+.tip-text {
+    margin: 15px auto;
+    text-align: center;
+}
+.tip1, .tip2 {
+    margin: 5px auto;
+    color: #d33e11;
+    height: 15px;
+}
+#start {
+    background: url("../img/btn_kaishichoujiang@2x.png") no-repeat;
+    background-size: 100%;
+    height: 100%;
+    width: 70%;
+    display: block;
+    line-height: 2em;
+    margin: 0 auto;
+}
+.cj-start {
+    /*background: url("../image/btn_kaishichoujiang@2x.png") no-repeat;*/
+    /*background-size: 75%;*/
+    margin: 5px auto;
+    height: 50px;
+    text-align: center;
+}
+.coin {
+    width: 50%;
+    margin-top: 0.8%;
+    float: left;
+    margin-left: 15%;
+}
+.coin span {
+    color:#af443a;
+    font-weight: 800;
+}
+.see-prize {
+    width: 30%;
+    float: left;
+    margin-top: 0.8%;
+}
+#marquee {
+    width:80%;
+    height:30px;
+    background:url('../img/bg_gundongtiao@2x.png') no-repeat;
+    background-size: cover;
+    text-align: center;
+    overflow-x: hidden;
+    margin: 0 auto;
+    margin-top: 30px;
+}
+ #marquee div {
+    width: 560px;  
+    -webkit-animation: play 4s 1;
+    -moz-animation: play 4s 1;
+    -ms-animation: play 4s 1;
+    -o-animation: play 4s 1;
+    animation: play 4s 1;
+-webkit-transform: translate3d(0, 0, 0);
+-moz-transform: translate3d(0, 0, 0);
+-ms-transform: translate3d(0, 0, 0);
+transform: translate3d(0, 0, 0);  
+ }
+ .scroll-p {
+    display: inline-block;
+    margin: 0 auto;
+    width: 280px;
+    height: 30px;
+    line-height: 30px;
+    color: #fff;
+    font-size: 0.8rem;
+
+}
+@-webkit-keyframes play {
+   from { margin-left:    0px; }
+   to { margin-left: -280px; }
+}
+
+@-moz-keyframes play {
+    from { margin-left:    0px; }
+    to { margin-left: -280px; }
+}
+@-ms-keyframes play {
+    from { margin-left: 0px; }
+    to { margin-left: -280px; }
+}
+
+@-o-keyframes play {
+    from { margin-left:    0px; }
+    to { margin-left: -280px; }
+}
+#lingpai-div {
+    margin-top: 40px;
+}
+.lingpai-inner {
+    /*width: 90%;*/
+    text-align: center;
+    margin: 5px auto;
+}
+.lingpai-desc {
+    text-align: center;
+    padding-top: 2%;
+    margin-top: 5pxpx;
+    margin-bottom: 5px;
+    color: #af443a;
+}
+.lingpai-img {
+    width: 17%;
+    margin: 0 1%;
+}
+.award-record {
+    text-align: center;
+    margin-top: 8px;
+}
+#record-link, #see-link {
+    color: #af443a;
+    text-decoration: underline;
+    font-weight: 800; 
+}
+.hufu-lingpai-img {
+    width: 20%;
+}
+.prize-tanchuang, .last-lingpai-tanchuang, .hufu-tanchuang {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 110vh;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(50, 50, 50, 0.7);
+}
+.tanchuang-back {
+    top:10%;
+    position: absolute;
+}
+.title-tanchuang {
+    position: relative;
+    text-align: center;
+    top: 29%;
+    margin: 0 auto;
+    z-index: 1;
+    width: 100%;
+}
+.title-tanchuang p {
+    margin: 3px auto;
+}
+.tanchuang-text,.lingpai-text {
+    color: #fe4261;
+    font-size: 1.1rem;
+    font-weight: 800;
+}
+.record-text {
+    color: #999999;
+    font-size: 0.9rem;
+}
+.tanchuang-prize {
+    position: relative;
+    width: 40%;
+    text-align: center;
+    margin: 0 auto;
+    top: 29%;
+}
+.close-tanchuang {
+    position: relative;
+    height: 50px;
+    top: 28.5%;
+    margin: 0 auto;
+    left: 28%;
+    width: 100%;
+}
+.close-link {
+    background: url("../img/prize_tangchuang/btn_huojiangtanchuang_queding@2x.png") no-repeat;
+    display: block;
+    width: 70%;
+    background-size: 60%;
+    margin: 0;
+    height: 55px;
+}
+.hecheng-link {
+    background: url("../img/hecheng_tanchuang/btn_hechenghufu@2x.png") no-repeat;
+    display: block;
+    width: 70%;
+    background-size: 60%;
+    margin: 0;
+    height: 55px;
+}
+.close-icon {
+    position: relative;
+    height: 20px;
+    top: 22%;
+    left: 90%;
+}
+.close-hufu-link {
+    width: 20px;
+    height: 20px;
+    display: block;
+    background: url("../img/hufu_tanchuang/btn_close@2x.png") no-repeat;
+    background-size: 100% 100%;
+}
+.last-lingpai-back {
+    top: 0.5%;
+    position: absolute;
+}
+.last-lingpai {
+    position: relative;
+    width: 40%;
+    text-align: center;
+    margin: 0 auto;
+    top: 24%;
+
+}
+.jiqi-wenan {
+    position: relative;
+    top: 23%;
+    width: 100%;
+    text-align: center;
+
+}
+.jiqi-wenan p {
+    margin: 3px auto;
+    padding: 0;
+    color: #cb770a;
+    font-weight: 800;
+}
+.line {
+    position: relative;
+    width: 10%;
+     top: 55%; 
+    left: 73%;
+    top: 22%;
+
+}
+.title-tanchuang-last {
+    position: relative;
+    text-align: center;
+    width: 100%;
+    top: 25%;
+    z-index: 1;
+
+}
+.title-tanchuang-last p{
+    margin: 3px auto;
+    padding: 0;
+}
+.hecheng-tanchuang {
+    position: relative;
+    height: 50px;
+    width: 100%;
+    top: 16%;
+    left: 30%;
+
+}
+.hufu-img {
+    position: relative;
+    top: 20%;
+    margin-top: 20px;
+}
