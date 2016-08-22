@@ -87,15 +87,21 @@
                         "188*********1234(杭州研发中心)抽中了50个移动币10"
                     ]
                 };
+
+                // 为什么要把最后一条数据加的新的数据最前面，也是为了连续
                 newDatas.data.unshift(data[0]);
                 loop(newDatas.data);
             } else {
+                // 这是需要展示在#marquee里的数据，其实一共就2个，取的是data数据最前面的两条数据
                 var marqueeData = '';
                 var displayData = data.slice(0, 2);
                 for (i in displayData) {
                     marqueeData += '<p>' + displayData[i] + '</p>';
                 }
                 $('#marquee').html('<div>' + marqueeData + '</div>');
+
+                // 监听动画结束事件，当动画结束时候，把data最前面的那一条数据扔掉，再次调用loop函数
+                // 为什么要扔掉一条而不是两条，因为只有这样，新的p标签替换掉旧的p标签时，因为内容一样，看起来是连续的
                 $('#marquee div').one("webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend", function(){
                     data.shift();
                     loop(data);
