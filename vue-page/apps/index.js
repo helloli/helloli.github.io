@@ -4,10 +4,22 @@ define(['text!./view.html', '../components/header/index', 'vue', 'bootstrap', 'c
         replace: false,
         template: _view,
         data: {
-            'appName': ''
+            'appName': '',
+            'obj': {
+                required: true,
+                range: {
+                    mix: 1,
+                    max: 10
+                }
+            }
         },
         components: {
             'app-header': header
+        },
+        methods: {
+            persist: function () {
+                alert(this.$validator());
+            }
         }
     });
     return app;
