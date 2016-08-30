@@ -1,0 +1,13 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.header-wrap {
+    background-color: #ccc;
+    height: 40px;
+}
+.header-logo {
+    height: 40px;
+    line-height: 40px;
+    color: black;
+}
