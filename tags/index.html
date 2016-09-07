@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <title>Tag Input</title>
+
+	<link rel="stylesheet" href="tags.css" type="text/css" />
+
+	<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script> -->
+  <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
+	<script src="tags.js"></script>  
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    html {
+      text-rendering: optimizeLegibility;
+      -webkit-font-smoothing: antialiased;
+      -webkit-text-size-adjust: 100%;    
+    }
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      width: 500px;
+      margin: 50px auto;
+      font-size: 14px;
+      line-height: 20px;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      margin-bottom: 20px;
+      font-weight: normal;
+    }
+    p {
+      margin-top: 20px;
+    }
+    p.tags {
+      background: #e0e0e0;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    code {
+      background: #e0e0e0;
+      border-radius: 2px;
+      padding: 2px 5px;
+      font-size: 14px;
+    }
+    
+  </style>
+
+</head>
+
+<body>
+
+  <h1>Tag input</h1>
+
+  <input type="text" id="tags" class="input" name="tags" />
+
+  <script>
+    $(function() {
+      $('#tags').tagbox({
+        url : ["api","blog","bootstrap","carousel","comments","configuration","content","css","database","date","drafts","email","experiment","fancybox","flickr","forum","google","html5","images","installation","jquery","js","json","kirbytext","language","maps","markdown","masonry","metatags","pagination","panel","plugin","releases","rss","search","security","server","tags","thumbnails","toolkit","tutorial","twitter","typography","uri","use case","videos","yaml"]
+      });
+    });
+  </script>
+
+  <p>
+    Enter new tags and confirm them with <code>tab</code>, <code>enter</code> or <code>,</code>
+    Remove tags with <code>backspace</code>
+  </p>
+  <p>
+    You can try to type in one of the following tags. 
+  </p>
+  <p class="tags">
+    api, blog, bootstrap, carousel, comments, configuration, content, css, database, date, drafts, email, experiment, fancybox, flickr, forum, google, html5, images, installation, jquery, js, json, kirbytext, language, maps, markdown, masonry, metatags, pagination, panel, plugin, releases, rss, search, security, server, tags, thumbnails, toolkit, tutorial, twitter, typography, uri, use case, videos, yaml
+  </p>  
+
+</body>
+</html>
