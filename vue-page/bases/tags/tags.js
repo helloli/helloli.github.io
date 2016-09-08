@@ -259,16 +259,19 @@ define(['jQuery'], function ($) {
   $.tagbox = function(element, options) {
 
     var defaults = {
-      url          : false,
+      // url          : false,
+      readOnly     : false,
+      url          : [],
       autocomplete : {},
       lowercase    : true,
       classname    : 'tagbox',
-      separator    : ', ',
+      // separator    : ', ',
+      separator    : ',',
       duplicates   : false,
       minLength    : 1,
       maxLength    : 140,
       keydown      : function() { },
-      onAdd        : function() { },
+      onAdd        : function() { console.log('tag');},
       onRemove     : function() { },
       onDuplicate  : function() { return plugin.input.focus() },
       onInvalid    : function() { return plugin.input.focus() },
@@ -298,6 +301,9 @@ define(['jQuery'], function ($) {
       plugin.input   = plugin.box.find('input').css('width', 20);
       plugin.bhits   = 0;
       plugin.lhits   = 0;
+
+      var _onAdd = plugin.settings.onAdd,
+          _onRemove = plugin.settings.onRemove;
             
       if(plugin.settings.url) {
 
@@ -316,11 +322,15 @@ define(['jQuery'], function ($) {
         plugin.autocomplete = plugin.input.data('autocomplete');
         
         // add autocomplete custom events to the tagbox plugin                
-        plugin.settings.onAdd = function(tag) {
+        plugin.settings.onAdd = function(tag, serialized, li) {
           plugin.autocomplete.ignore = plugin.serialize();
+
+          _onAdd(tag, serialized, li)
         }
-        plugin.settings.onRemove = function(tag) {
+        plugin.settings.onRemove = function(tag, serialized, li) {
           plugin.autocomplete.ignore = plugin.serialize();
+
+          _onRemove(tag, serialized, li)
         }
       
       }      

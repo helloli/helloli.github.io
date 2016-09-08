@@ -11,15 +11,20 @@ define(['text!./view.html', '../components/header/index', '../bases/tags/index',
                     mix: 1,
                     max: 10
                 }
-            }
+            },
+            'tags': 'design,architecture,photography'
         },
+
         components: {
             'app-header': header,
             'tags': tags
         },
+
         methods: {
             persist: function () {
-                alert(this.$validator());
+                console.log(this.tags);
+                // console.log($('.tagboxified')[0].value);
+                // alert(this.$validator());
             }
         }
     });
