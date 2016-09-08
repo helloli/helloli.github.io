@@ -1,4 +1,4 @@
-define(['text!./view.html', '../components/header/index', 'vue', 'bootstrap', 'css!./style.css', '../bases/directive/index'], function (_view, header, vue, bootstrap) {
+define(['text!./view.html', '../components/header/index', '../bases/tags/index', 'vue', 'bootstrap', 'css!./style.css', '../bases/directive/index'], function (_view, header, tags, vue, bootstrap) {
     var app = new vue({
         el: 'body',
         replace: false,
@@ -14,7 +14,8 @@ define(['text!./view.html', '../components/header/index', 'vue', 'bootstrap', 'c
             }
         },
         components: {
-            'app-header': header
+            'app-header': header,
+            'tags': tags
         },
         methods: {
             persist: function () {
