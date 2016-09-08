@@ -8,7 +8,7 @@ define(['jQuery'], function ($) {
  * @copyright Bastian Allgeier 2012
  * @license MIT
  */
-(function($) {
+// (function($) {
 
   $.autocomplete = function(element, url, options) {
 
@@ -243,7 +243,7 @@ define(['jQuery'], function ($) {
 
   }
 
-})(jQuery);
+// })(jQuery);
 
 
 /** 
@@ -254,7 +254,7 @@ define(['jQuery'], function ($) {
  * @copyright Bastian Allgeier 2012
  * @license MIT
  */
-(function($) {
+// (function($) {
 
   $.tagbox = function(element, options) {
 
@@ -629,6 +629,6 @@ define(['jQuery'], function ($) {
 
   }
 
-})(jQuery);
+// })(jQuery);
 
 })
