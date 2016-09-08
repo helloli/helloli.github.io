@@ -66,9 +66,6 @@
   margin: 0;
   padding: 0;
 }
-.tagbox.focus{  
-  outline: 0;
-}
 .tagbox ul {
   /*border: 1px solid #ccc;*/
   overflow: hidden;
@@ -92,7 +89,7 @@
   list-style: none;
   float: left;  
   cursor: pointer;
-  margin: 3px;
+  margin: 2px;
 }
 .tagbox li.new input {
   font-family: Arial, sans-serif;
