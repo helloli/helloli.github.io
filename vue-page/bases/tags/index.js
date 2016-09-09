@@ -29,8 +29,10 @@ define(['text!./view.html', 'vue', './tags.js', 'css!./style.css'], function (vi
             minLength    : {default: 1},
             // 设置tag的最大长度
             maxLength    : {default: 20},
-            // 只读时候，每个标签的click事件
+            // 只读时候，每个标签的click事件，返回点击的tag名称
             onLiClick    : {default: function () {}},
+            // 编辑时候，添加tag的事件，返回tag, tags, li, exceed
+            onAdd    : {default: function () {}},
             // 也可以通过配置options对象来配置，options会覆盖以上的配置
             options      : {default: {}}
         },
@@ -58,12 +60,12 @@ define(['text!./view.html', 'vue', './tags.js', 'css!./style.css'], function (vi
                 duplicates: this.duplicates,
                 minLength: this.minLength,
                 maxLength: this.maxLength,
-                onAdd: function (tag, tags, li, exceed) {
-                    self.tags = tags;
-                    if (exceed) {
-                        console.log('标签数目不能超过' + self.mt);
-                    }
-                },
+                onAdd: this.onAdd,
+                // function (tag, tags, li, exceed) {
+                //     if (exceed) {
+                //         console.log('标签数目不能超过' + self.mt);
+                //     }
+                // },
                 onReady: function () {
                     if (self.ro) {
                         $(self.$el).parent().find('.new > input').css('display', 'none');

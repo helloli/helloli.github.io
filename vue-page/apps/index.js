@@ -16,11 +16,16 @@ define(['text!./view.html', '../components/header/index', '../bases/tags/index',
             // 'tags': ['design','architecture','photography','aaa','bbb','ccc','sss','ddd']
             'tags': ['design','architecture','photography'],
             'options': {
-                'readOnly': true,
+                'readOnly': false,
                 'maxTags': 6,
-                'onLiClick': function (tag) {
-                    console.log(tag);
-                }
+                // 'onLiClick': function (tag) {
+                //     console.log(tag);
+                // }
+                'onAdd': function (tag, tags, li, exceed) {
+                    if (exceed) {
+                        console.log('标签数目不能超过' + self.mt);
+                    }
+                },
             }
         },
 
