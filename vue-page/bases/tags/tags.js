@@ -259,6 +259,7 @@ define(['jQuery'], function ($) {
   $.tagbox = function(element, options) {
 
     var defaults = {
+      maxTags      : 5,
       // url          : false,
       readOnly     : false,
       url          : [],
@@ -271,11 +272,12 @@ define(['jQuery'], function ($) {
       minLength    : 1,
       maxLength    : 140,
       keydown      : function() { },
-      onAdd        : function() { console.log('tag');},
+      onAdd        : function() { },
       onRemove     : function() { },
       onDuplicate  : function() { return plugin.input.focus() },
       onInvalid    : function() { return plugin.input.focus() },
-      onReady      : function() { }
+      onReady      : function() { },
+      onLiClick    : function() {}
     }
 
     var plugin = this;
@@ -297,13 +299,19 @@ define(['jQuery'], function ($) {
       plugin.val     = '';
       plugin.focused = false;
       plugin.origin  = $element.addClass('tagboxified').hide();
+
+      if(plugin.settings.readOnly) {
+        plugin.settings.classname += ' tagbox-read-only';
+      }
+
       plugin.box     = $('<div class="' + plugin.settings.classname + '"><ul><li class="new"><input autocomplete="off" tabindex="0" type="text" /></li></ul></div>');
       plugin.input   = plugin.box.find('input').css('width', 20);
       plugin.bhits   = 0;
       plugin.lhits   = 0;
 
       var _onAdd = plugin.settings.onAdd,
-          _onRemove = plugin.settings.onRemove;
+          _onRemove = plugin.settings.onRemove,
+          _onLiClick = plugin.settings.onLiClick;
             
       if(plugin.settings.url) {
 
@@ -322,15 +330,20 @@ define(['jQuery'], function ($) {
         plugin.autocomplete = plugin.input.data('autocomplete');
         
         // add autocomplete custom events to the tagbox plugin                
-        plugin.settings.onAdd = function(tag, serialized, li) {
+        plugin.settings.onAdd = function(tag, serialized, li, exceed) {
           plugin.autocomplete.ignore = plugin.serialize();
 
-          _onAdd(tag, serialized, li)
+          _onAdd(tag, serialized, li, exceed)
         }
         plugin.settings.onRemove = function(tag, serialized, li) {
           plugin.autocomplete.ignore = plugin.serialize();
 
           _onRemove(tag, serialized, li)
+        }
+        plugin.settings.onLiClick = function(tag) {
+          // plugin.autocomplete.ignore = plugin.serialize();
+
+          _onLiClick(tag);
         }
       
       }      
@@ -348,6 +361,8 @@ define(['jQuery'], function ($) {
 
       $('body').append(plugin.measure);
                   
+if (!plugin.settings.readOnly) {
+
       plugin.box.click(function(e) {
         plugin.focus();
         plugin.input.focus();
@@ -375,8 +390,6 @@ define(['jQuery'], function ($) {
         plugin.bhits = 0;   
         if(plugin.val.length == 0) plugin.blur();               
       });       
-
-      plugin.settings.onReady.call(this);
 
       $(document).keydown(function(e) {
 
@@ -443,7 +456,11 @@ define(['jQuery'], function ($) {
         if(plugin.val.length > 0) plugin.add(plugin.val);
       });
 
-      if($val.length > 0) plugin.add($val);
+}
+
+      plugin.settings.onReady.call(this);
+
+      if($val.length > 0) plugin.add($val, true);
 
     }
             
@@ -488,7 +505,11 @@ define(['jQuery'], function ($) {
       return plugin.serialize().toString();
     }
 
-    plugin.add = function(tag) {
+    plugin.add = function(tag, display) {
+      if (!display && !plugin.settings.readOnly && plugin.serialize().length > plugin.settings.maxTags - 1) {
+        plugin.settings.onAdd.call(plugin, tag, serialized, li, true);
+        return;
+      }
 
       plugin.input.val('');
 
@@ -501,7 +522,7 @@ define(['jQuery'], function ($) {
       if($.isArray(tag) || tag.match(new RegExp(plugin.settings.separator))) {      
         var tags = ($.isArray(tag)) ? tag : tag.split(plugin.settings.separator);
         $.each(tags, function(i,t) {
-          plugin.add(t);
+          plugin.add(t, display);
         }); 
         return true;
       } 
@@ -519,19 +540,31 @@ define(['jQuery'], function ($) {
       }
       
       plugin.index.push(tag);
-      
-      var li = $('<li><span class="tag"></span><span class="delete">&#215;</span></li>').data('tag', tag);
-      li.find('.tag').text(tag);
-      li.find('.delete').click(function() { plugin.remove(li) });
-                
-      li.click(function(e) {
-        plugin.blur();
-        e.stopPropagation();          
-        plugin.select(li);
-      });
-      li.focus(function(e) {
-        plugin.select(li)
-      });
+
+      if (plugin.settings.readOnly) {
+
+        var li = $('<li><span class="tag tag-read-only"></span></li>').data('tag', tag);
+        li.find('.tag').text(tag);
+        li.click(function() {
+          return plugin.settings.onLiClick.call(plugin, tag);
+        });
+
+      } else {
+
+        var li = $('<li><span class="tag"></span><span class="delete">&#215;</span></li>').data('tag', tag);
+        li.find('.tag').text(tag);
+        li.find('.delete').click(function() { plugin.remove(li) });
+                  
+        li.click(function(e) {
+          plugin.blur();
+          e.stopPropagation();          
+          plugin.select(li);
+        });
+        li.focus(function(e) {
+          plugin.select(li)
+        });
+
+      }
     
       plugin.input.parent().before(li);
       plugin.input.val('');

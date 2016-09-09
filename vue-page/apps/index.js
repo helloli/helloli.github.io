@@ -12,7 +12,16 @@ define(['text!./view.html', '../components/header/index', '../bases/tags/index',
                     max: 10
                 }
             },
-            'tags': 'design,architecture,photography'
+            // 'tags': 'design,architecture,photography,aaa,bbb,ccc,sss,ddd'
+            // 'tags': ['design','architecture','photography','aaa','bbb','ccc','sss','ddd']
+            'tags': ['design','architecture','photography'],
+            'options': {
+                'readOnly': true,
+                'maxTags': 6,
+                'onLiClick': function (tag) {
+                    console.log(tag);
+                }
+            }
         },
 
         components: {
