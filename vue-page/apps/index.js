@@ -18,10 +18,10 @@ define(['text!./view.html', '../components/header/index', '../bases/tags/index',
             'tags': ['design','architecture','photography'],
             'options': {
                 'readOnly': false,
-                'maxTags': 6,
+                // 'maxTags': 6,
                 // 'onLiClick': function (tag) {
                 //     console.log(tag);
-                // }
+                // },
                 'onExceed': function (exceed) {
                     console.log('tag数量超过限制了');
                 },
