@@ -31,8 +31,8 @@ define(['text!./view.html', 'vue', './tags.js', 'css!./style.css'], function (vi
             maxLength    : {default: 20},
             // 只读时候，每个标签的click事件，返回点击的tag名称
             onLiClick    : {default: function () {}},
-            // 编辑时候，添加tag的事件，返回tag, tags, li, exceed
-            onAdd    : {default: function () {}},
+            // 添加tag的时候，超过tag数量限制的事件，返回exceed
+            onExceed    : {default: function () {}},
             // 也可以通过配置options对象来配置，options会覆盖以上的配置
             options      : {default: {}}
         },
@@ -40,13 +40,13 @@ define(['text!./view.html', 'vue', './tags.js', 'css!./style.css'], function (vi
         ready: function () {
             var self = this;
             // this.$el.value = this.tags;
-            this.url = ["api","blog","bootstrap","carousel","comments","configuration","content",
-                        "css","database","date","drafts","email","experiment","fancybox","flickr",
-                        "forum","google","html5","images","installation","jquery","js","json",
-                        "kirbytext","language","maps","markdown","masonry","metatags","pagination",
-                        "panel","plugin","releases","rss","search","security","server","tags",
-                        "thumbnails","toolkit","tutorial","twitter","typography","uri","use case",
-                        "videos","yaml"];
+            // this.url = ["api","blog","bootstrap","carousel","comments","configuration","content",
+            //             "css","database","date","drafts","email","experiment","fancybox","flickr",
+            //             "forum","google","html5","images","installation","jquery","js","json",
+            //             "kirbytext","language","maps","markdown","masonry","metatags","pagination",
+            //             "panel","plugin","releases","rss","search","security","server","tags",
+            //             "thumbnails","toolkit","tutorial","twitter","typography","uri","use case",
+            //             "videos","yaml"];
 
             this.ro = $.extend({}, {readOnly: self.readOnly}, self.options).readOnly;
             this.mt = $.extend({}, {maxTags: self.maxTags}, self.options).maxTags;
@@ -60,12 +60,13 @@ define(['text!./view.html', 'vue', './tags.js', 'css!./style.css'], function (vi
                 duplicates: this.duplicates,
                 minLength: this.minLength,
                 maxLength: this.maxLength,
-                onAdd: this.onAdd,
-                // function (tag, tags, li, exceed) {
-                //     if (exceed) {
-                //         console.log('标签数目不能超过' + self.mt);
-                //     }
-                // },
+                onExceed: this.onExceed,
+                onAdd: function (tag, tags, li, exceed) {
+                    self.tags = tags;
+                    // if (exceed) {
+                    //     console.log('标签数目不能超过' + self.mt);
+                    // }
+                },
                 onReady: function () {
                     if (self.ro) {
                         $(self.$el).parent().find('.new > input').css('display', 'none');

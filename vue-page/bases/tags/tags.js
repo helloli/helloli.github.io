@@ -311,7 +311,8 @@ define(['jQuery'], function ($) {
 
       var _onAdd = plugin.settings.onAdd,
           _onRemove = plugin.settings.onRemove,
-          _onLiClick = plugin.settings.onLiClick;
+          _onLiClick = plugin.settings.onLiClick,
+          _onExceed = plugin.settings.onExceed;
             
       if(plugin.settings.url) {
 
@@ -330,10 +331,15 @@ define(['jQuery'], function ($) {
         plugin.autocomplete = plugin.input.data('autocomplete');
         
         // add autocomplete custom events to the tagbox plugin                
-        plugin.settings.onAdd = function(tag, serialized, li, exceed) {
+        plugin.settings.onAdd = function(tag, serialized, li) {
           plugin.autocomplete.ignore = plugin.serialize();
 
-          _onAdd(tag, serialized, li, exceed)
+          _onAdd(tag, serialized, li)
+        }             
+        plugin.settings.onExceed = function(exceed) {
+          // plugin.autocomplete.ignore = plugin.serialize();
+
+          _onExceed(exceed)
         }
         plugin.settings.onRemove = function(tag, serialized, li) {
           plugin.autocomplete.ignore = plugin.serialize();
@@ -507,7 +513,8 @@ if (!plugin.settings.readOnly) {
 
     plugin.add = function(tag, display) {
       if (!display && !plugin.settings.readOnly && plugin.serialize().length > plugin.settings.maxTags - 1) {
-        plugin.settings.onAdd.call(plugin, tag, serialized, li, true);
+        // plugin.settings.onAdd.call(plugin, tag, serialized, li, true);
+        plugin.settings.onExceed.call(plugin, true);
         return;
       }
 

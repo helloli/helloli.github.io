@@ -12,8 +12,9 @@ define(['text!./view.html', '../components/header/index', '../bases/tags/index',
                     max: 10
                 }
             },
-            // 'tags': 'design,architecture,photography,aaa,bbb,ccc,sss,ddd'
-            // 'tags': ['design','architecture','photography','aaa','bbb','ccc','sss','ddd']
+            // 'tags': 'design,architecture,photography',
+            // 'tags': 'design,architecture,photography,aaa,bbb,ccc,sss,ddd',
+            // 'tags': ['design','architecture','photography','aaa','bbb','ccc','sss','ddd'],
             'tags': ['design','architecture','photography'],
             'options': {
                 'readOnly': false,
@@ -21,10 +22,8 @@ define(['text!./view.html', '../components/header/index', '../bases/tags/index',
                 // 'onLiClick': function (tag) {
                 //     console.log(tag);
                 // }
-                'onAdd': function (tag, tags, li, exceed) {
-                    if (exceed) {
-                        console.log('标签数目不能超过' + self.mt);
-                    }
+                'onExceed': function (exceed) {
+                    console.log('tag数量超过限制了');
                 },
             }
         },
