@@ -31,15 +31,9 @@ define(['text!./view.html', 'vue', './tags.js', 'css!./style.css'], function (vi
             options      : {default: {}}
         },
 
-        computed: {
-            // tags: function () {
-            //     return this.$el.value;
-            // }
-        },
-
         ready: function () {
-            console.log(this.tags);
-            var self = this
+            // console.log(this.tags);
+            var self = this;
             // this.$el.value = this.tags;
             this.url = ["api","blog","bootstrap","carousel","comments","configuration","content",
                         "css","database","date","drafts","email","experiment","fancybox","flickr",
