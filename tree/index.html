@@ -49,8 +49,8 @@
     .tree-left > ul > li:before {
         display: inline-block;
         margin-right: 10px;
-        height: 16px;
-        line-height: 16px;
+        /*height: 16px;
+        line-height: 16px;*/
         width: 0px;
         height: 0px;
         content: '';
@@ -58,7 +58,29 @@
         border-bottom: 6px solid transparent;
         border-left: 10px solid #ccc;
     }
-
+    .tree-left > ul > li.tree-open:before {
+    /*.tree-open:before {*/
+        /*border-left: 6px solid transparent!important;
+        border-right: 6px solid transparent!important;
+        border-top: 10px solid #ccc!important;
+        border-bottom: none;*/
+        transform: rotate(90deg);
+    }
+    .tree-left > ul > li.tree-loading:before {
+        width: 12px;
+        height: 12px; 
+        border: none;
+        background-image: url(./loading.gif);
+        background-size: contain;
+        margin-right: 8px;
+    }
+    .tree-left ul li ul {
+        list-style-type: none;
+        padding-left: 20px;
+    }
+    .tree-left ul li ul li {
+        margin-top: 5px;
+    }
     .tree-left {
     }
     .tree-left span, input {
@@ -131,13 +153,13 @@
                 <span>全部企业(700)</span>
                 <input type="text" placeholder="搜索企业">
                 <ul>
-                    <li>东城区
+                    <li class="tree-open">东城区
                         <ul>
                             <li>化肥厂</li>
                             <li>玻璃厂</li>
                         </ul>
                     </li>
-                    <li>西城区</li>
+                    <li class="tree-loading">西城区</li>
                     <li>海淀区</li>
                     <li>朝阳区</li>
                 </ul>
