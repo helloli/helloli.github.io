@@ -10,11 +10,9 @@
     .tree-wrap {
         width: 400px;
         height: 400px;
-        /*border: 1px solid red;*/
         position: relative;
     }
     .tree-content {
-        /*border: 1px solid red;*/
         position: absolute;
         top: 0;
         left: 0;
@@ -43,8 +41,6 @@
     }
     .tree-l-r > ul > li {
         margin-bottom: 10px;
-        /*height: 16px;
-        line-height: 16px;*/
     }
     .tree-left > ul > li > span {
         cursor: pointer;
@@ -102,6 +98,9 @@
         border: 1px solid #ccc;
         box-sizing: border-box;
     }
+    .tree-footer button {
+
+    }
 
 </style>
 
@@ -145,6 +144,8 @@
         $('.tree-left > ul > li > span').click(function () {
             var self = $(this);
             var classes = self.attr('class');
+
+            // classes为空，表示第一次被点击，则进行数据加载
             if (!classes) {
                 self.addClass('tree-loading');
                 // console.log(self.text());
@@ -161,10 +162,12 @@
                     self.append('(' + len + ')')
                 })
             } else if (classes.split(' ').indexOf('tree-open') > -1) {
+                // 有tree-open的class，表示已有数据并被打开，则进行关闭即可
                 self.addClass('tree-close');
                 self.removeClass('tree-open');
                 self.siblings('ul').css('display', 'none');
             } else if (classes.split(' ').indexOf('tree-close') > -1) {
+                // 有tree-close的class，表示已有数据并被关闭，则进行打开即可
                 self.removeClass('tree-close');
                 self.addClass('tree-open');
                 self.siblings('ul').css('display', 'block');
@@ -201,9 +204,18 @@
             <div class="tree-middle">></div>
             <div class="tree-right tree-l-r">
                 <span>已选企业(4)</span>
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                    <li>4</li>
+                </ul>
             </div>
         </div>
-        <div class="tree-footer"></div>
+        <div class="tree-footer">
+            <button>确定</button>
+            <button>取消</button>
+        </div>
     </div>
 </body>
 </html>
