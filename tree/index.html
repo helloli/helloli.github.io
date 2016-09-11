@@ -46,11 +46,12 @@
         /*height: 16px;
         line-height: 16px;*/
     }
-    .tree-left > ul > li:before {
+    .tree-left > ul > li > span {
+        cursor: pointer;
+    }
+    .tree-left > ul > li > span:before {
         display: inline-block;
         margin-right: 10px;
-        /*height: 16px;
-        line-height: 16px;*/
         width: 0px;
         height: 0px;
         content: '';
@@ -58,15 +59,10 @@
         border-bottom: 6px solid transparent;
         border-left: 10px solid #ccc;
     }
-    .tree-left > ul > li.tree-open:before {
-    /*.tree-open:before {*/
-        /*border-left: 6px solid transparent!important;
-        border-right: 6px solid transparent!important;
-        border-top: 10px solid #ccc!important;
-        border-bottom: none;*/
+    .tree-left > ul > li > span.tree-open:before {
         transform: rotate(90deg);
     }
-    .tree-left > ul > li.tree-loading:before {
+    .tree-left > ul > li > span.tree-loading:before {
         width: 12px;
         height: 12px; 
         border: none;
@@ -80,13 +76,20 @@
     }
     .tree-left ul li ul li {
         margin-top: 5px;
+        cursor: pointer;
     }
     .tree-left {
     }
-    .tree-left span, input {
+    .tree-left input {
         display: block;
         width: 100%;
         /*margin-right: 30px;*/
+        margin-bottom: 10px;
+    }
+    .tree-left > span {
+        display: block;
+        width: 100%;
+        margin-right: 30px;
         margin-bottom: 10px;
     }
     .tree-right {
@@ -105,9 +108,10 @@
 <script>
 
     // 监听window的onload事件，即在DOM渲染完后执行代码
-    window.onload = function () {
+    // window.onload = function () {
+    $(function () {
 
-        // 定义假数据
+        // 通过接口获取一级菜单的数据，假数据如下
         var comps = [
             {
                 name: '东城区'
@@ -115,8 +119,18 @@
                 name: '西城区'
             }, {
                 name: '海淀区'
+            }, {
+                name: '朝阳区'
             }
         ];
+
+        // 将一级菜单渲染到左边的div中
+        var fisrt_menu = '';
+        for (var i = 0, len = comps.length; i < len; i ++) {
+            fisrt_menu += '<li><span>' + comps[i].name + '<span></li>';
+        }
+        fisrt_menu = '<ul>' + fisrt_menu + '</ul>';
+        $('.tree-left').append(fisrt_menu);
 
         // 东城区的查询结果
         var search_result = [
@@ -127,21 +141,41 @@
             }
         ];
 
-        // 增加的结果集合
-        var _add = [];
+        // 给一级菜单的span标签绑定点击事件
+        $('.tree-left > ul > li > span').click(function () {
+            var self = $(this);
+            var classes = self.attr('class');
+            if (!classes) {
+                self.addClass('tree-loading');
+                // console.log(self.text());
+                // 去后台接口请求self.text()下面的数据，如查询的数据是search_result
+                $.getJSON('http://127.0.0.1:8124/', function (result) {
+                    self.removeClass('tree-loading');
+                    self.addClass('tree-open');
+                    var second_menu = '';
+                    for (var i = 0, len = result.length; i < len; i ++) {
+                        second_menu += '<li>' + result[i].name + '</li>';
+                    }
+                    second_menu = '<ul>' + second_menu + '</ul>';
+                    self.after(second_menu);
+                    self.append('(' + len + ')')
+                })
+            } else if (classes.split(' ').indexOf('tree-open') > -1) {
+                self.addClass('tree-close');
+                self.removeClass('tree-open');
+                self.siblings('ul').css('display', 'none');
+            } else if (classes.split(' ').indexOf('tree-close') > -1) {
+                self.removeClass('tree-close');
+                self.addClass('tree-open');
+                self.siblings('ul').css('display', 'block');
+            } else {
+                // loading状态被点击，do nothing
+            }
 
-        // 删除的结果集合
-        var _del = [];
+        })
 
-        // 定义$为选择DOM元素的方法，如果已经引入了jquery，则这段代码可以去掉
-        // var $ = function (el) {
-        //     return document.querySelector(el);
-        // }
-
-        // 左边城市的html模板
-        var html = '';
-
-    }
+    // }
+    })
 
 </script>
 
@@ -153,15 +187,15 @@
                 <span>全部企业(700)</span>
                 <input type="text" placeholder="搜索企业">
                 <ul>
-                    <li class="tree-open">东城区
+                    <li><span class="tree-open">东城区</span>
                         <ul>
                             <li>化肥厂</li>
                             <li>玻璃厂</li>
                         </ul>
                     </li>
-                    <li class="tree-loading">西城区</li>
-                    <li>海淀区</li>
-                    <li>朝阳区</li>
+                    <li><span class="tree-loading">西城区</span></li>
+                    <li><span>海淀区</span></li>
+                    <li><span>以上是测试</span></li>
                 </ul>
             </div>
             <div class="tree-middle">></div>
