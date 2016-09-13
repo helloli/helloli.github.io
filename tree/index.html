@@ -109,7 +109,7 @@
         margin-right: 10px;
         float: right;
     }
-    .tree-add {
+    .tree-add, .tree-delete{
         float: right;
         display: none;
         height: 16px;
@@ -117,8 +117,12 @@
         width: 16px;
         border: 1px solid #ccc;
         text-align: center;
+        cursor: pointer;
     }
     .tree-open:hover .tree-add {
+        display: inline;
+    }
+    .tree-right ul li:hover .tree-delete {
         display: inline;
     }
 
@@ -184,9 +188,13 @@
                     self.append('(' + len + ')')
                 // })
                 // 鼠标移动到地级市时候显示加号+
-                console.log(self);
                 var addHTML = '<span class="tree-add">+</span>';
                 self.append(addHTML);
+                self.children('.tree-add').click(function (e) {
+                    // 将所有子元素都加入到右边
+                    e.stopPropagation();
+                    addNode(getTreeSelected($(this).parent().siblings('ul').find('li')));
+                })
                 
             } else if (classes.split(' ').indexOf('tree-open') > -1) {
                 // 有tree-open的class，表示已有数据并被打开，则进行关闭即可
@@ -202,7 +210,41 @@
                 // loading状态被点击，do nothing
             }
 
+        })
 
+        // 获取已选企业的数据数据，注意要传入jquery对象
+        getTreeSelected = function (el) {
+            el = el || $('.tree-right ul li');
+            var result = [];
+            el.each(function () {
+                result.push(this.innerHTML.replace(/<span class="tree-delete">.*<\/span>/, ''));
+            })
+            return result;
+        };
+
+        // 添加节点函数
+        addNode = function (node) {
+            if (node instanceof Array) {
+                // 说明是数组，则循环添加
+                for (i in node) {
+                    addNode(node[i].toString());
+                }
+            } else if (getTreeSelected($('.tree-right ul li')).indexOf(node) == -1) {
+                // 说明不在已选列表中，则要添加到已选列表中
+                $('.tree-right ul').append('<li>' + node + '<span class="tree-delete">-</span></li>');
+                $('.tree-right > span > span').text(parseInt($('.tree-right > span > span').text()) + 1);
+            } else {
+                // 说明已经在已选列表中了，do nothing
+            }
+        };
+
+        // 左边点击企业的时候，添加到右边已选企业中
+        $('.tree-left > ul > li').delegate('ul li', 'click', function () {
+            addNode($(this).text());
+        })
+
+        $('.tree-right > ul').delegate('li span', 'click', function () {
+            $(this).parent().remove();
         })
 
     // }
@@ -217,7 +259,7 @@
             <div class="tree-left tree-l-r">
                 <span>全部企业(700)</span>
                 <input type="text" placeholder="搜索企业">
-                <ul>
+                <!-- <ul>
                     <li><span class="tree-open">东城区</span>
                         <ul>
                             <li>化肥厂</li>
@@ -227,22 +269,18 @@
                     <li><span class="tree-loading">西城区</span></li>
                     <li><span>海淀区</span></li>
                     <li><span>以上是测试</span></li>
-                </ul>
+                </ul> -->
             </div>
             <div class="tree-middle">></div>
             <div class="tree-right tree-l-r">
-                <span>已选企业(4)</span>
+                <span>已选企业(<span>0</span>)</span>
                 <ul>
-                    <li>1</li>
-                    <li>2</li>
-                    <li>3</li>
-                    <li>4</li>
                 </ul>
             </div>
         </div>
         <div class="tree-footer">
             <div class="tree-btns">
-                <button>确定</button>
+                <button onclick="console.log(getTreeSelected())">确定</button>
                 <button>取消</button>
             </div>
         </div>
