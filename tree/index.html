@@ -55,6 +55,9 @@
         border-bottom: 6px solid transparent;
         border-left: 10px solid #ccc;
     }
+    .tree-open {
+        display: block;
+    }
     .tree-left > ul > li > span.tree-open:before {
         transform: rotate(90deg);
     }
@@ -94,6 +97,7 @@
         position: absolute;
         bottom: 0;
         width: 100%;
+        line-height: 40px;
         height: 40px;
         border: 1px solid #ccc;
         box-sizing: border-box;
@@ -101,6 +105,23 @@
     .tree-footer button {
 
     }
+    .tree-btns {
+        margin-right: 10px;
+        float: right;
+    }
+    .tree-add {
+        float: right;
+        display: none;
+        height: 16px;
+        line-height: 16px;
+        width: 16px;
+        border: 1px solid #ccc;
+        text-align: center;
+    }
+    .tree-open:hover .tree-add {
+        display: inline;
+    }
+
 
 </style>
 
@@ -150,7 +171,8 @@
                 self.addClass('tree-loading');
                 // console.log(self.text());
                 // 去后台接口请求self.text()下面的数据，如查询的数据是search_result
-                $.getJSON('http://127.0.0.1:8124/', function (result) {
+                // $.getJSON('http://127.0.0.1:8124/', function (result) {
+                var result = search_result;
                     self.removeClass('tree-loading');
                     self.addClass('tree-open');
                     var second_menu = '';
@@ -160,7 +182,12 @@
                     second_menu = '<ul>' + second_menu + '</ul>';
                     self.after(second_menu);
                     self.append('(' + len + ')')
-                })
+                // })
+                // 鼠标移动到地级市时候显示加号+
+                console.log(self);
+                var addHTML = '<span class="tree-add">+</span>';
+                self.append(addHTML);
+                
             } else if (classes.split(' ').indexOf('tree-open') > -1) {
                 // 有tree-open的class，表示已有数据并被打开，则进行关闭即可
                 self.addClass('tree-close');
@@ -174,6 +201,7 @@
             } else {
                 // loading状态被点击，do nothing
             }
+
 
         })
 
@@ -213,8 +241,10 @@
             </div>
         </div>
         <div class="tree-footer">
-            <button>确定</button>
-            <button>取消</button>
+            <div class="tree-btns">
+                <button>确定</button>
+                <button>取消</button>
+            </div>
         </div>
     </div>
 </body>

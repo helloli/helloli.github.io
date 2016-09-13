@@ -32,7 +32,7 @@ define(['text!./view.html', 'vue', './tags.js', 'css!./style.css'], function (vi
             // 只读时候，每个标签的click事件，返回点击的tag名称
             onLiClick    : {default: function () {}},
             // 添加tag的时候，超过tag数量限制的事件，返回exceed
-            onExceed    : {default: function () {}},
+            onExceed     : {default: function () {}},
             // 也可以通过配置options对象来配置，options会覆盖以上的配置
             options      : {default: {}}
         },

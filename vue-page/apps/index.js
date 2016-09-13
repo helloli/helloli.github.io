@@ -17,14 +17,16 @@ define(['text!./view.html', '../components/header/index', '../bases/tags/index',
             // 'tags': ['design','architecture','photography','aaa','bbb','ccc','sss','ddd'],
             'tags': ['design','architecture','photography'],
             'options': {
-                'readOnly': false,
-                // 'maxTags': 6,
-                // 'onLiClick': function (tag) {
-                //     console.log(tag);
-                // },
+                'readOnly': true,
+                'maxTags': 20,
+                'onLiClick': function (tag) {
+                    console.log(tag);
+                },
                 'onExceed': function (exceed) {
                     console.log('tag数量超过限制了');
                 },
+                // 'maxLength': 10,
+                // 'minLength': 5,
             }
         },
 

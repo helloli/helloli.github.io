@@ -270,7 +270,7 @@ define(['jQuery'], function ($) {
       separator    : ',',
       duplicates   : false,
       minLength    : 1,
-      maxLength    : 140,
+      maxLength    : 20,
       keydown      : function() { },
       onAdd        : function() { },
       onRemove     : function() { },
