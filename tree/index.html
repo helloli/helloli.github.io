@@ -245,6 +245,7 @@
 
         $('.tree-right > ul').delegate('li span', 'click', function () {
             $(this).parent().remove();
+            $('.tree-right > span > span').text(parseInt($('.tree-right > span > span').text()) - 1);
         })
 
     // }
@@ -274,8 +275,7 @@
             <div class="tree-middle">></div>
             <div class="tree-right tree-l-r">
                 <span>已选企业(<span>0</span>)</span>
-                <ul>
-                </ul>
+                <ul></ul>
             </div>
         </div>
         <div class="tree-footer">
