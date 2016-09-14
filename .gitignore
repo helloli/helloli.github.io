@@ -6,3 +6,4 @@
 # web build files #  
 ###################### 
 node_modules/
+bower_components/
