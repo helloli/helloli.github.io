@@ -56,7 +56,7 @@
             height: 50px;
             background-color: #FFF;
             display: block;
-            margin: 20px auto; 
+            margin: 20px 24px; 
         }
 
         .wflow-start-end {
@@ -115,20 +115,33 @@
                     判断节点
                 </div>
             </div>
-            <div class="wflow-wspace"></div>
+            <div id="wflow-wspace" class="wflow-wspace"></div>
         </div>
     </div>
 </body>
 <script>
-$(function () {
-    $('.wflow-node').draggable({appendTo:'body',containment:'.wflow-content',helper: "clone"});
-        // console.log(this);
-    // var datas = [1, 2, 3, 4, 5];
-    // var p = d3.select('body').selectAll('p');
-    // var update = p.data(datas);
-    // console.log(update);
-    // console.log(update.enter());
-    // console.log(update.exit());
+
+    $('.wflow-node').draggable({
+        appendTo: 'body',
+        containment: '.wflow-content',
+        helper: 'clone',
+       
+        // stop: function (e) {
+        //     console.log(e);
+        // }
+    });
+    $('.wflow-wspace').droppable({
+        accept: ".wflow-node",
+        // activeClass: "ui-state-hover",
+        // hoverClass: "ui-state-active",
+        drop: function( e, ui ) {
+            // alert('a');
+            console.log(e.offsetX);
+            // $( this ).addClass( "ui-state-highlight" )
+            //             .find( "p" )
+            //             .html( "Dropped!" );
+        }
+    });
     var width = '100%',
         height = '100%';
     var svg = d3.select(".wflow-wspace").append("svg")
@@ -177,6 +190,5 @@ $(function () {
             .attr("fill",color)
             .call(dragRect)
 
-})
 </script>
 </html>
