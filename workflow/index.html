@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <title>工单</title>
+    <script src="http://cdn.bootcss.com/jquery/3.1.0/jquery.min.js"></script>
     <script src="http://cdn.bootcss.com/d3/4.2.1/d3.js"></script>
+    <script src="http://cdn.bootcss.com/jqueryui/1.12.0/jquery-ui.min.js"></script>
     <style>
         * {
             padding: 0;
@@ -22,23 +24,58 @@
             background-color: #272822;
         }
 
+        .wflow-menu {
+            height: 100px;
+            width: 100%;
+            box-sizing: border-box;
+            border-bottom: 2px solid #000;
+        }
+
+        .wflow-content {
+            position: absolute;
+            top: 100px;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+
         .wflow-toolbar {
             position: absolute;
             top: 0;
             bottom: 0;
             left: 0;
-            width: 300px;
-            overflow: auto; 
-            overflow: auto;
+            width: 250px;
+            overflow-y: auto;
+            overflow-x: visible;
             box-sizing: border-box;
-            border-right: 1px solid #000;
+            border-right: 2px solid #000;
+        }
+
+        .wflow-node {
+            width: 200px;
+            height: 50px;
+            background-color: #FFF;
+            display: block;
+            margin: 20px auto; 
+        }
+
+        .wflow-start-end {
+            /*矩形带圆角，表示开始和结束节点*/
+        }
+
+        .wflow-handle {
+            /*矩形，表示处理节点*/
+        }
+
+        .wflow-if {
+            /*菱形，表示判断节点*/
         }
 
         .wflow-wspace {
             position: absolute;
             top: 0;
             bottom: 0;
-            left: 300px;
+            left: 250px;
             right: 0px;
         }
 
@@ -64,14 +101,28 @@
 </head>
 <body>
     <div class="wflow-container">
-        <div class="wflow-toolbar scroll">
-            
+        <div class="wflow-menu">
         </div>
-        <div class="wflow-wspace"></div>
+        <div class="wflow-content">
+            <div class="wflow-toolbar scroll">
+                <div class="wflow-start-end wflow-node">
+                    开始/结束节点
+                </div>
+                <div class="wflow-handle wflow-node">
+                    处理节点
+                </div>
+                <div class="wflow-if wflow-node">
+                    判断节点
+                </div>
+            </div>
+            <div class="wflow-wspace"></div>
+        </div>
     </div>
 </body>
 <script>
-
+$(function () {
+    $('.wflow-node').draggable({appendTo:'body',containment:'.wflow-content',helper: "clone"});
+        // console.log(this);
     // var datas = [1, 2, 3, 4, 5];
     // var p = d3.select('body').selectAll('p');
     // var update = p.data(datas);
@@ -84,7 +135,6 @@
             .attr("width",width)
             .attr("height",height)
             .attr("display",'block')
-            // .attr("style", "background-color: #272822")
     var color = d3.scaleOrdinal(d3.schemeCategory20)
     //定义拖拽函数
     var drag = d3.drag()
@@ -126,5 +176,7 @@
             .attr("height",function(d){return d.height})
             .attr("fill",color)
             .call(dragRect)
+
+})
 </script>
 </html>
