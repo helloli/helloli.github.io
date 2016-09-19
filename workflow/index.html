@@ -4,22 +4,87 @@
     <meta charset="UTF-8">
     <title>工单</title>
     <script src="http://cdn.bootcss.com/d3/4.2.1/d3.js"></script>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,body {
+            width: 100%;
+            height: 100%;
+        }
+
+        .wflow-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: #272822;
+        }
+
+        .wflow-toolbar {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            width: 300px;
+            overflow: auto; 
+            overflow: auto;
+            box-sizing: border-box;
+            border-right: 1px solid #000;
+        }
+
+        .wflow-wspace {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 300px;
+            right: 0px;
+        }
+
+        .scroll::-webkit-scrollbar {
+            width: 7px;
+        }
+
+        .scroll::-webkit-scrollbar-track {
+            background-color:rgba(0,0,0,1);
+            -webkit-border-radius: 2em;
+            -moz-border-radius: 2em;
+            border-radius: 2em;
+        }
+
+        .scroll::-webkit-scrollbar-thumb {
+            border-radius: 16px;
+            background-color:#314661;
+            -webkit-border-radius: 2em;
+            -moz-border-radius: 2em;
+            border-radius: 2em;
+        }
+    </style>
 </head>
 <body>
+    <div class="wflow-container">
+        <div class="wflow-toolbar scroll">
+            
+        </div>
+        <div class="wflow-wspace"></div>
+    </div>
 </body>
 <script>
+
     // var datas = [1, 2, 3, 4, 5];
     // var p = d3.select('body').selectAll('p');
     // var update = p.data(datas);
     // console.log(update);
     // console.log(update.enter());
     // console.log(update.exit());
-    var width = 800,
-        height = 500;
-    var svg = d3.select("body").append("svg")
+    var width = '100%',
+        height = '100%';
+    var svg = d3.select(".wflow-toolbar").append("svg")
             .attr("width",width)
             .attr("height",height)
-            .attr("style", "background-color: #ddd")
+            .attr("display",'block')
+            // .attr("style", "background-color: #272822")
     var color = d3.scaleOrdinal(d3.schemeCategory20)
     //定义拖拽函数
     var drag = d3.drag()
