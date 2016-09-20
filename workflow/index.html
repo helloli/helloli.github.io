@@ -178,11 +178,9 @@
      * @return {this}
      */
     var wflowDrawCircle = function (el, data) {
-        var _data = (data instanceof Array) ? data : [data];
-        el.selectAll("circle")
-            .data(_data)
-            .enter()
-            .append("circle")
+        data = (data instanceof Array) ? data : [data];
+        el.append("circle")
+            .data(data)
             .attr("cx",function(d){return d.cx})
             .attr("cy",function(d){return d.cy})
             .attr("r",function(d){return d.r})
@@ -198,11 +196,9 @@
      * @return {this}
      */
     var wflowDrawRect = function (el, data) {
-        var _data = (data instanceof Array) ? data : [data];
-        el.selectAll("circle")
-            .data(_data)
-            .enter()
-            .append("rect")
+        data = (data instanceof Array) ? data : [data];
+        el.append("rect")
+            .data(data)
             .attr("x",function(d){return d.x})
             .attr("y",function(d){return d.y})
             .attr("width",function(d){return d.width})
