@@ -123,6 +123,10 @@
 </body>
 <script>
 
+    // 配置节点的宽高
+    var wflowNodeWidth = 100,
+        wflowNodeHeight = 100;
+
     $('.wflow-node').draggable({
         appendTo: '.wflow-wspace',
         containment: '.wflow-content',
@@ -136,9 +140,21 @@
         accept: ".wflow-node",
         // activeClass: "ui-state-hover",
         // hoverClass: "ui-state-active",
-        drop: function( e, ui ) {
-            // console.log(ui.position);
-            wflowDrawRect(wflowSvg, {x:ui.position.left, y:ui.position.top, width:200, height:50})
+        drop: function (e, ui) {
+            // 在画布中画一个g标签用来装rect和四个小圆点
+            var _g = wflowSvg.append("g");
+
+            // 画矩形
+            wflowDrawRect(_g, {x:ui.position.left, y:ui.position.top, width:wflowNodeWidth, height:wflowNodeHeight})
+
+            // 加上四个小圆点
+            wflowDrawCircle(_g, [
+                {cx:wflowNodeWidth/2, cy:0, r:5},
+                {cx:wflowNodeWidth, cy:wflowNodeHeight/2, r:5},
+                {cx:wflowNodeWidth/2, cy:wflowNodeHeight, r:5},
+                {cx:0, cy:wflowNodeHeight/2, r:5}
+            ])
+
             // wflowDrawCircle(wflowSvg, {cx:150, cy:200, r:30})
             // $( this ).addClass( "ui-state-highlight" )
             //             .find( "p" )
@@ -151,24 +167,44 @@
             .attr("width",width)
             .attr("height",height)
             .attr("display",'block')
-            // console.log(svg)
-            // console.log(d3.select(".wflow-wspace svg"))
     var color = d3.scaleOrdinal(d3.schemeCategory20)
     //定义拖拽函数
     var dragCircle = d3.drag()
-            .on("drag",dragCircleMove)
-    function dragCircleMove(d){
-        d3.select(this)
-                .attr("cx", d.cx = d3.event.x)
-                .attr("cy", d.cy = d3.event.y)
+                       .on("start",dragCircleStart)
+                       .on("drag",dragCircleMove)
+                       .on("end",dragCircleEnd)
+    function dragCircleStart(d) {
+        var a = wflowDrawConn(d3.select(this.parentNode), {
+            x1: d.cx,
+            y1: d.cy,
+            x2: d.cx,
+            y2: d.cy
+        })
+    }
+    function dragCircleMove(d) {
+        d3.select(this.parentNode.firstChild)
+          .attr("x2", d3.event.x)
+          .attr("y2", d3.event.y)
+    }
+    function dragCircleEnd(d) {
+        // console.log(d3.event)
     }
 
     var dragRect = d3.drag()
-            .on('drag', dragRectMove)
+                     .on('drag', dragRectMove)
     function dragRectMove(d){
+        // console.log(d3.event)
         d3.select(this)
-                .attr("x", d.x = d3.event.x)
-                .attr("y", d.y = d3.event.y)
+          .attr("x", d.x = d3.event.x)
+          .attr("y", d.y = d3.event.y)
+    }
+
+    var dragG = d3.drag()
+                  .on('drag', dragGMove)
+    function dragGMove(d) {
+        d.x += d3.event.dx;
+        d.y += d3.event.dy;
+        d3.select(this).attr('transform', 'translate(' + d.x + ', ' + d.y + ')')
     }
 
     //绘制圆形
@@ -179,15 +215,26 @@
      */
     var wflowDrawCircle = function (el, data) {
         data = (data instanceof Array) ? data : [data];
-        el.append("circle")
+        var _circle = el.selectAll("circle")
             .data(data)
-            .attr("cx",function(d){return d.cx})
+            .enter()
+            .append("circle")
+        _circle.attr("cx",function(d){return d.cx})
             .attr("cy",function(d){return d.cy})
             .attr("r",function(d){return d.r})
             .attr("fill",color)
+            // .attr("fill",color)
             .call(dragCircle)
+            .attr("stroke", "white")
+            // console.log(_circle)
+        return _circle
     }
-    // wflowDrawCircle(wflowSvg, {cx:150, cy:200, r:30})
+    // wflowDrawCircle(wflowSvg, [
+    //         {cx:wflowNodeWidth/2, cy:0, r:20},
+    //         {cx:wflowNodeWidth, cy:wflowNodeHeight/2, r:20},
+    //         {cx:wflowNodeWidth/2, cy:wflowNodeHeight, r:20},
+    //         {cx:0, cy:wflowNodeHeight/2, r:20}
+    //     ])
 
     //绘制矩形
     /**
@@ -197,15 +244,38 @@
      */
     var wflowDrawRect = function (el, data) {
         data = (data instanceof Array) ? data : [data];
-        el.append("rect")
-            .data(data)
-            .attr("x",function(d){return d.x})
-            .attr("y",function(d){return d.y})
-            .attr("width",function(d){return d.width})
-            .attr("height",function(d){return d.height})
-            .attr("fill",color)
-            .call(dragRect)
+        // var g = el.append("g");
+        // g.data(data)
+        el.data(data)
+            .attr("transform", function (d) {return "translate(" + d.x + "," + d.y + ")"})
+            .call(dragG)
+            .append("rect")
+            // .attr("x", function (d) {return d.x})
+            // .attr("y", function (d) {return d.y})
+            .attr("width", function (d) {return d.width})
+            .attr("height", function (d) {return d.height})
+            .attr("fill", color)
+            .attr("stroke", "white")
+            // .call(dragRect)
+            // .select(this.parentNode)
+            // .append()
     }
+
+    // 绘制连线
+    var wflowDrawConn = function (el, data) {
+        data = (data instanceof Array) ? data : [data];
+        var _line = el.insert("line", ":first-child")
+            .data(data)
+        _line.attr("stroke", "white")
+            .attr("stroke-width", 2)
+            .data(data)
+            .attr("x1",function(d){return d.x1})
+            .attr("y1",function(d){return d.y1})
+            .attr("x2",function(d){return d.x2})
+            .attr("y2",function(d){return d.y2})
+        return _line
+    }
+    // wflowDrawConn(wflowSvg, {x1:100, y1:100, x2:400, y2:400})
     // wflowDrawRect(wflowSvg, {x:10, y:10, width:100, height:100})
     // var circles =[{cx:150,cy:200,r:30},
     //     {cx:250,cy:200,r:30}]
