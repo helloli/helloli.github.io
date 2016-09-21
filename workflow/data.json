@@ -1,0 +1,58 @@
+{
+    "id": "1",
+    "name": "请假工单",
+    "description": "描述信息",
+    "type": "流程分类",
+    "data": [
+        {
+            "id": "s1",
+            "name": "开始",
+            "type": "start",
+            "description": "描述信息",
+            "postion": {},
+            "connect": {},
+            "data": {
+                "type": "illness",
+                "level": 3
+            }
+        }, {
+            "id": "h1",
+            "name": "处理节点1",
+            "PIC": "处理人1",
+            "type": "handle",
+            "description": "描述信息",
+            "postion": {},
+            "connect": {}
+        }, {
+            "id": "h2",
+            "name": "处理节点2",
+            "PIC": "处理人2",
+            "type": "handle",
+            "description": "描述信息",
+            "postion": {},
+            "connect": {}
+        }, {
+            "id": "h3",
+            "name": "处理节点3",
+            "PIC": "处理人3",
+            "type": "handle",
+            "description": "描述信息",
+            "postion": {},
+            "connect": {}
+        }, {
+            "id": "i1",
+            "name": "判断1",
+            "type": "if",
+            "description": "描述信息",
+            "postion": {},
+            "connect": {}
+        }, {
+            "id": "e1",
+            "name": "结束",
+            "type": "end",
+            "description": "描述信息",
+            "postion": {},
+            "connect": {}
+        }
+    ]
+}
