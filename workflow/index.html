@@ -187,7 +187,7 @@
             x2: d.cx,
             y2: d.cy
         })
-        // d3.event.sourceEvent.stopPropagation();
+        d3.event.sourceEvent.stopPropagation();
     }
     function dragCircleMove(d) {
         d3.select(this.parentNode.firstChild)
@@ -196,6 +196,7 @@
     }
     function dragCircleEnd(d) {
         // console.log(d3.event)
+        // d3.event.sourceEvent.stopPropagation();
     }
 
     var dragRect = d3.drag()
@@ -234,8 +235,11 @@
             // .attr("fill",color)
             .call(dragCircle)
             .attr("stroke", "white")
-            .on("click", function (d, i) {
-                console.log('click');
+            // .on("click", function (d, i) {
+            //     console.log('click');
+            // })
+            .on("mouseup", function (d, i) {
+                console.log('mouseup');
             })
         return _circle
     }
