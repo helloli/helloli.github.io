@@ -125,7 +125,8 @@
 
     // 配置节点的宽高
     var wflowNodeWidth = 100,
-        wflowNodeHeight = 100;
+        wflowNodeHeight = 100,
+        wflowTargetNode = d3.select(); // 目标节点
 
     $('.wflow-node').draggable({
         appendTo: '.wflow-wspace',
@@ -152,7 +153,14 @@
                         .attr("name", function () {return wflowId + wflowIdNum ++})
 
             // 画矩形
-            wflowDrawRect(_g, {x:ui.position.left, y:ui.position.top, width:wflowNodeWidth, height:wflowNodeHeight})
+            wflowDrawRect(_g, {x:ui.position.left,
+                y:ui.position.top,
+                width:wflowNodeWidth,
+                height:wflowNodeHeight,
+                source:[],
+                destination:[]
+            })
+            // wflowDrawRect(_g, {x:ui.position.left, y:ui.position.top, width:wflowNodeWidth, height:wflowNodeHeight})
 
             // 加上四个小圆点
             wflowDrawCircle(_g, [
@@ -187,16 +195,32 @@
             x2: d.cx,
             y2: d.cy
         })
-        d3.event.sourceEvent.stopPropagation();
+        // d3.select(this.parentNode.firstChild)
+        // .style('pointer-events', 'all')
+        // d3.event.sourceEvent.stopPropagation();
     }
     function dragCircleMove(d) {
         d3.select(this.parentNode.firstChild)
           .attr("x2", d3.event.x)
           .attr("y2", d3.event.y)
+          // .style('pointer-events', 'none')
     }
     function dragCircleEnd(d) {
+        if (!d3.select(wflowTargetNode).empty()) {
+            var pNode = d3.select(this.parentNode);
+            pNode.data(pNode.data()[0].source.push(d3.select(wflowTargetNode)))
+            console.log(pNode.data())
+        }
+        // console.log(d3.select(this.parentNode).data().push(d3.select(wflowTargetNode)))
+        // d3.select(this.parentNode.firstChild).style('pointer-events', 'circle')
         // console.log(d3.event)
         // d3.event.sourceEvent.stopPropagation();
+        // var rpos = wflowSvg.node().createSVGRect();
+        // rpos.x = d3.event.x;
+        // rpos.y = d3.event.y;
+        // rpos.width = rpos.height = 100;
+        // var list = wflowSvg.node().getIntersectionList(rpos, null);
+        // console.info(list);
     }
 
     var dragRect = d3.drag()
@@ -235,11 +259,15 @@
             // .attr("fill",color)
             .call(dragCircle)
             .attr("stroke", "white")
-            // .on("click", function (d, i) {
-            //     console.log('click');
-            // })
-            .on("mouseup", function (d, i) {
-                console.log('mouseup');
+            .on("mouseover", function (d, i) {
+                wflowTargetNode = this;
+                console.log('mouseover');
+                console.log(d3.select(wflowTargetNode));
+            })
+            .on("mouseout", function (d, i) {
+                wflowTargetNode = d3.select();
+                console.log('mouseout');
+                console.log(d3.select(wflowTargetNode));
             })
         return _circle
     }
