@@ -224,6 +224,8 @@
             // var pNode = d3.select(this.parentNode);
             // pNode.data(pNode.data()[0].source.push(d3.select(wflowTargetNode[0])))
             // console.log(pNode.data(),'aaa')
+        } else {
+            d3.select(this.parentNode.firstChild).remove()
         }
         // console.log(d3.select(this.parentNode).data().push(d3.select(wflowTargetNode)))
         // d3.select(this.parentNode.firstChild).style('pointer-events', 'circle')
