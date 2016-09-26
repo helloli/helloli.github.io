@@ -216,11 +216,10 @@
             var _line = d3.select(this.parentNode.firstChild),
                 _targetNode = d3.select(wflowTargetNode[0]);
             _line.datum()['d'] = _targetNode.node()
-            console.log(_line, 'haha')
             d3.select(this.parentNode).datum()['source'].push(_line.node())
             d3.select(_targetNode.node().parentNode).datum()['destination'].push(_line.node())
-            console.log(d3.select(this.parentNode))
-            console.log(d3.select(_targetNode.node().parentNode))
+            // console.log(d3.select(this.parentNode))
+            // console.log(d3.select(_targetNode.node().parentNode))
             // var pNode = d3.select(this.parentNode);
             // pNode.data(pNode.data()[0].source.push(d3.select(wflowTargetNode[0])))
             // console.log(pNode.data(),'aaa')
@@ -293,13 +292,13 @@
             .attr("stroke", "white")
             .on("mouseover", function (d, i) {
                 wflowTargetNode = [this];
-                console.log('mouseover');
-                console.log(wflowTargetNode);
+                // console.log('mouseover');
+                // console.log(wflowTargetNode);
             })
             .on("mouseout", function (d, i) {
                 wflowTargetNode = [];
-                console.log('mouseout');
-                console.log(wflowTargetNode);
+                // console.log('mouseout');
+                // console.log(wflowTargetNode);
             })
         return _circle
     }
