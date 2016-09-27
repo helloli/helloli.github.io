@@ -17,7 +17,7 @@ define(['text!./view.html', '../components/header/index', '../bases/tags/index',
             // 'tags': ['design','architecture','photography','aaa','bbb','ccc','sss','ddd'],
             'tags': ['design','architecture','photography'],
             'options': {
-                'readOnly': true,
+                'readOnly': false,
                 'maxTags': 20,
                 'onLiClick': function (tag) {
                     console.log(tag);
