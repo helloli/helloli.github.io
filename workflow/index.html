@@ -150,7 +150,6 @@
             // 在画布中画一个g标签用来装rect和四个小圆点
             var _g = wflowSvg.append("g")
                         .attr("id", function () {return wflowId + '-' + wflowIdNum})
-                        .attr("opacity", .8)
                         // .attr("name", function () {return wflowId + '-' + wflowIdNum})
 
             // 画矩形
@@ -184,6 +183,23 @@
             .attr("height",height)
             .attr("display",'block')
     var color = d3.scaleOrdinal(d3.schemeCategory20)
+
+    // 定义箭头
+    var defs = wflowSvg.append("defs");  
+    var arrowMarker = defs.append("marker")  
+                            .attr("id","arrow")  
+                            .attr("markerUnits","strokeWidth")  
+                            .attr("markerWidth","12")  
+                            .attr("markerHeight","12")  
+                            .attr("viewBox","0 0 12 12")   
+                            .attr("refX","6")  
+                            .attr("refY","6")  
+                            .attr("orient","auto");  
+    var arrow_path = "M2,2 L10,6 L2,10 L6,6 L2,2";  
+    arrowMarker.append("path")  
+                .attr("d",arrow_path)  
+                .attr("fill","#fff");  
+
     //定义拖拽函数
     var dragCircle = d3.drag()
                        .on("start",dragCircleStart)
@@ -213,7 +229,6 @@
             var _line = d3.select(wflowSvg.node().firstChild),
                 _targetNode = d3.select(wflowTargetNode[0]);
             _line.datum()['d'] = _targetNode.node()
-            console.log(d3.select(this.parentNode),'aa')
             d3.select(this.parentNode).datum()['source'].push(_line.node())
             d3.select(_targetNode.node().parentNode).datum()['destination'].push(_line.node())
             // console.log(d3.select(this.parentNode))
@@ -322,6 +337,7 @@
             .attr("transform", function (d) {return "translate(" + d.x + "," + d.y + ")"})
             .call(dragG)
             .append("rect")
+            .attr("opacity", .8)
             // .attr("x", function (d) {return d.x})
             // .attr("y", function (d) {return d.y})
             // .attr("id", function (d) {return d.id})
@@ -340,9 +356,9 @@
     var wflowDrawConn = function (el, data) {
         data = (data instanceof Array) ? data : [data];
         var _line = el.insert("line", ":first-child")
-            .data(data)
-        _line.attr("stroke", "white")
+            .attr("stroke", "white")
             .attr("stroke-width", 2)
+            // .attr("marker-end", "url(#arrow)")
             .data(data)
             .attr("x1",function(d){return d.x1})
             .attr("y1",function(d){return d.y1})
@@ -350,7 +366,7 @@
             .attr("y2",function(d){return d.y2})
             .style('pointer-events', 'none')
             // .attr("s",function(d){return d.s})
-            // console.log(_line,'line')
+            console.log(_line,'line')
         return _line
     }
     // wflowDrawConn(wflowSvg, {x1:100, y1:100, x2:400, y2:400})
