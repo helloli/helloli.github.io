@@ -150,6 +150,7 @@
             // 在画布中画一个g标签用来装rect和四个小圆点
             var _g = wflowSvg.append("g")
                         .attr("id", function () {return wflowId + '-' + wflowIdNum})
+                        .attr("opacity", .8)
                         // .attr("name", function () {return wflowId + '-' + wflowIdNum})
 
             // 画矩形
