@@ -189,33 +189,30 @@
                        .on("drag",dragCircleMove)
                        .on("end",dragCircleEnd)
     function dragCircleStart(d) {
-        // console.log(d3.select(this),'this')
-        var a = wflowDrawConn(d3.select(this.parentNode), {
-            x1: d.cx,
-            y1: d.cy,
-            x2: d.cx,
-            y2: d.cy,
+        var a = wflowDrawConn(wflowSvg, {
+            x1: d.cx + d3.select(this.parentNode).datum().x,
+            y1: d.cy + d3.select(this.parentNode).datum().y,
+            x2: d.cx + d3.select(this.parentNode).datum().x,
+            y2: d.cy + d3.select(this.parentNode).datum().y,
             s: this
         })
-        // d3.select(this.parentNode.firstChild)
-        // .style('pointer-events', 'all')
-        // d3.event.sourceEvent.stopPropagation();
     }
     function dragCircleMove(d) {
-        var _line = d3.select(this.parentNode.firstChild);
-        _line.datum()["x2"] = d3.event.x;
-        _line.datum()["y2"] = d3.event.y;
+        var _line = d3.select(wflowSvg.node().firstChild);
+        _line.datum()["x2"] += d3.event.dx;
+        _line.datum()["y2"] += d3.event.dy;
 
-        _line.attr("x2", d3.event.x)
-          .attr("y2", d3.event.y)
+        _line.attr("x2", function(d){return d.x2})
+          .attr("y2", function(d){return d.y2})
           // .style('pointer-events', 'none')
     }
     function dragCircleEnd(d) {
         // console.log(d3.select(wflowTargetNode),'ddddddddddd')
         if (wflowTargetNode.length) {
-            var _line = d3.select(this.parentNode.firstChild),
+            var _line = d3.select(wflowSvg.node().firstChild),
                 _targetNode = d3.select(wflowTargetNode[0]);
             _line.datum()['d'] = _targetNode.node()
+            console.log(d3.select(this.parentNode),'aa')
             d3.select(this.parentNode).datum()['source'].push(_line.node())
             d3.select(_targetNode.node().parentNode).datum()['destination'].push(_line.node())
             // console.log(d3.select(this.parentNode))
@@ -224,7 +221,8 @@
             // pNode.data(pNode.data()[0].source.push(d3.select(wflowTargetNode[0])))
             // console.log(pNode.data(),'aaa')
         } else {
-            d3.select(this.parentNode.firstChild).remove()
+            d3.select(wflowSvg.node().firstChild).remove()
+            // d3.select(this.parentNode.firstChild).remove()
         }
         // console.log(d3.select(this.parentNode).data().push(d3.select(wflowTargetNode)))
         // d3.select(this.parentNode.firstChild).style('pointer-events', 'circle')
@@ -263,10 +261,10 @@
             d3.select(_destination[i]).attr('y2',function(d){return d.y2});
         }
         for (var i = 0; i < _source.length; i ++) {
-            d3.select(_source[i]).datum().x2 -= d3.event.dx;
-            d3.select(_source[i]).attr('x2',function(d){return d.x2});
-            d3.select(_source[i]).datum().y2 -= d3.event.dy;
-            d3.select(_source[i]).attr('y2',function(d){return d.y2});
+            d3.select(_source[i]).datum().x1 += d3.event.dx;
+            d3.select(_source[i]).attr('x1',function(d){return d.x1});
+            d3.select(_source[i]).datum().y1 += d3.event.dy;
+            d3.select(_source[i]).attr('y1',function(d){return d.y1});
         }
     }
 
