@@ -1,0 +1,61 @@
+<app-header></app-header>
+<div class="container" style="margin-top: 20px;">
+    <form class="form-horizontal">
+        <div class="form-group" :class="{'has-error':!validate.name.result}">
+            <label for="name" class="col-xs-2 control-label">email</label>
+            <div class="col-xs-10 content">
+                <input  type="text"
+                        class="form-control"
+                        v-model="name"
+                        id="name"
+                        v-my-directive:name='{"required":"true","email":"true"}'
+                        :voption="{on:'blur'}"
+                        >
+                <label for="name" class="form-error" v-if="!validate.name.required">必填</label>
+                <label for="name" class="form-error" v-if="!validate.name.email">格式错误</label>
+            </div>
+        </div>
+        <div class="form-group" :class="{'has-error':!validate.age.result}">
+            <label for="age" class="col-xs-2 control-label">年龄</label>
+            <div class="col-xs-10 content">
+                <input  type="text"
+                        class="form-control"
+                        v-model="age"
+                        id="age"
+                        v-my-directive:age=obj
+                        :voption="{on:'blur'}"
+                        >
+                <label for="age" class="form-error" v-if="!validate.age.required">必填</label>
+                <label for="age" class="form-error" v-if="!validate.age.range">范围错误</label>
+            </div>
+        </div>
+        <!--
+            可编辑的Tag标签组件
+
+            目标：
+            1. 实现数据的标签化(数据的分类)
+            2. 数据标签的维护
+
+            功能：
+            - 1. 通过输入+回车即可实现新标签的创建；
+            - 2. 每个标签都可以进行删除，删除方式包括键盘删除与点击图标删除；
+            - 3. 可以设置只读属性，禁止删除与添加；
+            - 4. 可以设置添加标签的最大个数，默认为5；
+            - 5. 可以设计每个标签的最大字数，并能根据字数的多少创建合适宽度的标签；
+            - 6. 在标签的数量超过输入的宽度时，能自动进行换行；
+            - 7. 每个标签都可以添加链接地址，点击即可跳转到所有相关的内容页面(多为后台执行查询)；
+        -->
+        <div class="form-group">
+            <label for="tags" class="col-xs-2 control-label">标签</label>
+            <div class="col-xs-10">
+                <tags :tags.sync="tags" :read-only='true' :options="options"></tags>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-xs-offset-3 col-xs-9">
+                <button type="button" class="btn btn-default" @click="persist">验证</button>
+            </div>
+        </div>
+    </form>
+</div>
