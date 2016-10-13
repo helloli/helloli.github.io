@@ -44,4 +44,5 @@
 迥异于普通指令，元素指令是终结性的，这意味着，一旦 Vue 遇到一个元素指令，它将跳过该元素及其子元素——只有该元素指令本身可以操作该元素及其子元素。
 
 [http://v1.vuejs.org/guide/custom-directive.html#Element-Directives](http://v1.vuejs.org/guide/custom-directive.html#Element-Directives)
+
 [http://vuejs.org.cn/guide/custom-directive.html#元素指令](http://vuejs.org.cn/guide/custom-directive.html#元素指令)
