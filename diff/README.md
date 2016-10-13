@@ -14,6 +14,7 @@
 - update： 在 bind 之后立即以初始值为参数第一次调用，之后每当绑定值变化时调用，参数为新值与旧值。
 - unbind：只调用一次，在指令从元素上解绑时调用。
 
+`
 	<div id="demo" v-demo:hello.a.b="msg"></div>
 	Vue.directive('demo', {
 	bind: function () {
@@ -34,5 +35,6 @@
 			msg: 'hello!'
   		}
 	})
+`
 
 **元素指令（element-directive）**可以通过自定义元素的形式使用指令，而不是以特性的形式。元素指令可以看做是一个轻量组件。
