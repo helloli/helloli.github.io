@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Vue组件与指令</title>
-    <script src="http://cdn.bootcss.com/vue/1.0.21/vue.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/vue/1.0.21/vue.min.js"></script>
+    <style>
+
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        .draggable {
+            display: inline-block;
+            padding: 10px;
+            border: 1px solid #000;
+            background-color: #ccc;
+        }
+        
+    </style>
 </head>
 <body>
 
+<span class="draggable" v-my-draggable>拖我</span>
 <input type="text" v-model="name" v-my-directive="name">
-<my-e-directive></my-e-directive>
+<my-e-directive a="name"></my-e-directive>
 
 <script>
 
@@ -28,10 +45,55 @@
 
     })
 
+    Vue.directive('my-draggable', {
+
+        bind: function () {
+
+            var startX = 0,
+                startY = 0,
+                x = 0,
+                y = 0,
+                elem = $(this.el),
+                doc = $(document);
+
+            elem.css({
+                position: 'relative',
+                cursor: 'pointer'
+            });
+
+            elem.on('mousedown', function(event) {
+                event.preventDefault();
+                startX = event.pageX - x;
+                startY = event.pageY - y;
+                doc.on('mousemove', mousemove);
+                doc.on('mouseup', mouseup);
+            });
+
+            function mousemove(event) {
+                y = event.pageY - startY;
+                x = event.pageX - startX;
+                elem.css({
+                    top: y + 'px',
+                    left:  x + 'px'
+                });
+            }
+
+            function mouseup() {
+                doc.off('mousemove', mousemove);
+                doc.off('mouseup', mouseup);
+            }
+
+        }
+
+    })
+
     Vue.elementDirective('my-e-directive', {
+
+        params: ['a'],
 
         bind: function () {
             console.log('e-bind');
+            console.log('a:' + this.params.a);
         },
 
         update: function (newValue, oldValue) {
