@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue组件与指令</title>
+    <script src="http://cdn.bootcss.com/vue/1.0.21/vue.js"></script>
+</head>
+<body>
+
+<input type="text" v-model="name" v-my-directive="name">
+<my-e-directive></my-e-directive>
+
+<script>
+
+    Vue.directive('my-directive', {
+
+        bind: function () {
+            console.log('bind');
+        },
+
+        update: function (newValue, oldValue) {
+            console.log('value:' + newValue);
+        },
+
+        unbind: function () {
+            console.log('unbind');
+        }
+
+    })
+
+    Vue.elementDirective('my-e-directive', {
+
+        bind: function () {
+            console.log('e-bind');
+        },
+
+        update: function (newValue, oldValue) {
+            console.log('e-value:' + newValue);
+        },
+
+        unbind: function () {
+            console.log('e-unbind');
+        }
+
+    })
+
+    var app = new Vue({
+
+        el: 'body',
+
+        data: {
+            name: 'test'
+        },
+
+        ready: function () {
+
+        }
+
+    })
+
+</script>
+
+</body>
+</html>
