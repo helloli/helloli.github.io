@@ -1,5 +1,9 @@
-<app-header></app-header>
-<div>
-    test
+<div class="header-wrap">
+    <div class="header-logo">{{title}}</div>
 </div>
-<app-footer></app-footer>
+
+<component :is="currentView"></component>
+
+<div class="footer-wrap">
+    
+</div>

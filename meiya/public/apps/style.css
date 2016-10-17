@@ -7,3 +7,19 @@
     font-family: 'hanyiwaiwai';
     src: url('./hanyiwaiwai.ttf');
 }
+
+.header-wrap {
+    background-color: #ccc;
+    height: 40px;
+    padding-left: 10px;
+}
+.header-logo {
+    display: inline-block;
+    height: 40px;
+    line-height: 40px;
+    color: black;
+    text-shadow: #fff 2px 0 0, #fff 0 2px 0, #fff -2px 0 0, #fff 0 -2px 0;
+    -webkit-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    -moz-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    *filter: Glow(color = #fff, strength = 1);
+}
