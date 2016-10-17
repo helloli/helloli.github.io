@@ -18,14 +18,16 @@
             border: 1px solid #000;
             background-color: #ccc;
         }
-        
+
     </style>
 </head>
 <body>
 
 <span class="draggable" v-my-draggable>拖我</span>
 <input type="text" v-model="name" v-my-directive="name">
-<my-e-directive a="name"></my-e-directive>
+<my-e-directive a="aaa">
+    <div v-text="test"></div>
+</my-e-directive>
 
 <script>
 
@@ -111,7 +113,8 @@
         el: 'body',
 
         data: {
-            name: 'test'
+            name: 'test',
+            test: 'tab'
         },
 
         ready: function () {
