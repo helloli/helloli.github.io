@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="http://cdn.bootcss.com/highcharts/5.0.0/highcharts.js"></script>
+    <script src="http://cdn.bootcss.com/vue/1.0.21/vue.js"></script>
+</head>
+<body>
+
+    <chart>
+        <series :data="s1"></series>
+        <series :data="s2"></series>
+    </chart>
+
+<script>
+
+    var chart = Vue.extend({
+
+        template: '<div class="container"><slot></slot></div>',
+
+        data: function () {
+            return {}
+        }
+
+    });
+
+    var series = Vue.extend({
+
+        template: '<div></div>',
+
+        props: ['data'],
+
+        data: function () {
+            return {
+
+            }
+        }
+
+    });
+
+    var app = new Vue({
+
+        el: 'body',
+
+        data: function () {
+            return {
+                s1: {
+                    name: 'Tokyo',
+                    data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+                },
+                s2: {
+                    name: 'New York',
+                    data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+                }
+            }
+        },
+
+        components: {
+            'chart': chart,
+            'series': series
+        },
+
+        ready: function () {
+            console.log(this);
+        }
+
+    });
+
+</script>
+</body>
+</html>
