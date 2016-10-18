@@ -11,6 +11,7 @@ define(['text!./view.html', '../components/diy/index', '../components/wild/index
         data: function () {
             return {
                 title: '@你丫才美工：最智(dou)慧(bi)设计帐号',
+                subscribe: '订阅',
                 currentView: 'app-diy'
             }
         },

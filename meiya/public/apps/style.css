@@ -8,18 +8,33 @@
     src: url('./hanyiwaiwai.ttf');
 }
 
+body {
+    font-family: hanyiwaiwai;
+}
+
 .header-wrap {
     background-color: #ccc;
     height: 40px;
     padding-left: 10px;
 }
+
 .header-logo {
     display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
     height: 40px;
     line-height: 40px;
     color: black;
-    text-shadow: #fff 2px 0 0, #fff 0 2px 0, #fff -2px 0 0, #fff 0 -2px 0;
+    text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
     -webkit-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
     -moz-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
     *filter: Glow(color = #fff, strength = 1);
+}
+
+.subscribe {
+    float: right;
+    height: 40px;
+    line-height: 40px;
+    display: inline-block;
+    border: 1px solid #000;
 }
