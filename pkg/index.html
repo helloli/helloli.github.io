@@ -10,6 +10,7 @@
 <body>
 
     <chart>
+        <chart-text data="温度"></chart-text>
         <chart-series :data="s1"></chart-series>
         <chart-series :data="s2"></chart-series>
         <chart-series :data="s3"></chart-series>
@@ -25,7 +26,8 @@
 
         data: function () {
             return {
-                series: []
+                series: [],
+                text: ''
             }
         },
 
@@ -33,15 +35,17 @@
 
             for (var i = 0, len = this.$children.length; i < len; i ++) {
                 if (this.$children[i] instanceof chartSeries) {
-                    this.series.push(this.$children[i].data)
+                    this.series.push(this.$children[i].data);
+                } else if (this.$children[i] instanceof chartText) {
+                    this.text = this.$children[i].data;
                 } else {
-                    console.error('第' + i + '条数据不是期望的series数据');
+                    console.error('第' + i + '条数据不是期望的数据');
                 }
             }
 
             $(this.$el).highcharts({
                 title: {
-                    text: 'Monthly Average Temperature',
+                    text: this.text || 'Monthly Average Temperature',
                     x: -20 //center
                 },
                 subtitle: {
@@ -83,9 +87,14 @@
         props: ['data'],
 
     });
-    var ch = Vue.extend({
+    
+    var chartText = Vue.extend({
 
-        template: '<div></div>',
+        props: ['data']
+
+    });
+    
+    var ch = Vue.extend({
 
         props: ['data']
 
@@ -119,6 +128,7 @@
         components: {
             'chart': chart,
             'chart-series': chartSeries,
+            'chart-text': chartText,
             'ch': ch
         },
 
