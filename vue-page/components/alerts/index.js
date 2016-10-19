@@ -8,24 +8,7 @@ define(['text!./view.html', 'vue', 'css!./style.css'], function (view, vue) {
         data: function () {
             return {
                 maxAlert: this.maxAlert || 5,
-                alertList: [
-                // {
-                //     'message': '恭喜您，注册成功！',
-                //     'type': 'success'
-                // }, {
-                //     'message': '恭喜您，注册成功！',
-                //     'type': 'error'
-                // }, {
-                //     'message': '恭喜您，注册成功！恭喜您，注册成功！恭喜您，注册成功！',
-                //     'type': 'warnning'
-                // }, {
-                //     'message': '恭喜您，注册成功！恭喜您，注册成功！恭喜您，注册成功！',
-                //     'type': 'message'
-                // }, {
-                //     'message': '恭喜您，注册成功！恭喜您，注册成功！恭喜您，注册成功！',
-                //     'type': 'success'
-                // }
-                ]
+                alertList: []
             }
         },
 

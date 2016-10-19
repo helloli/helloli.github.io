@@ -40,6 +40,7 @@ define(['text!./view.html', '../components/header/index', '../components/alerts/
             persist: function () {
                 // console.log(this.tags);
                 this.$broadcast('alert', Math.random(), 'success');
+                // this.$broadcast('alert', Math.random(), 'error');
                 // alert(this.$validator());
             }
         }
