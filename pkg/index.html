@@ -12,9 +12,9 @@
     <chart>
         <chart-text data="温度"></chart-text>
         <chart-series :data="s1"></chart-series>
-        <chart-series :data="s2"></chart-series>
+        <!-- <chart-series :data="s2"></chart-series>
         <chart-series :data="s3"></chart-series>
-        <chart-series :data="s4"></chart-series>
+        <chart-series :data="s4"></chart-series> -->
         <ch></ch>
     </chart>
 
@@ -31,8 +31,16 @@
             }
         },
 
-        ready: function () {
+        created: function () {
+            console.log('chart.created');
+        },
 
+        compiled: function () {
+            console.log('chart.compiled');
+        },
+
+        ready: function () {
+            console.log('chart.ready');
             for (var i = 0, len = this.$children.length; i < len; i ++) {
                 if (this.$children[i] instanceof chartSeries) {
                     this.series.push(this.$children[i].data);
@@ -86,6 +94,18 @@
 
         props: ['data'],
 
+        created: function () {
+            console.log('chartSeries.created');
+        },
+
+        compiled: function () {
+            console.log('chartSeries.compiled');
+        },
+
+        ready: function () {
+            console.log('chartSeries.ready');
+        }
+
     });
     
     var chartText = Vue.extend({
@@ -132,8 +152,16 @@
             'ch': ch
         },
 
+        created: function () {
+            console.log('app.created');
+        },
+
+        compiled: function () {
+            console.log('app.compiled');
+        },
+
         ready: function () {
-            // console.log(this);
+            console.log('app.ready');
         }
 
     });

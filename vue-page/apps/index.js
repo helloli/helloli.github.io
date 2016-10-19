@@ -1,4 +1,4 @@
-define(['text!./view.html', '../components/header/index', '../bases/tags/index', 'vue', 'bootstrap', 'css!./style.css', '../bases/directive/index'], function (_view, header, tags, vue, bootstrap) {
+define(['text!./view.html', '../components/header/index', '../components/alerts/index', '../bases/tags/index', 'vue', 'bootstrap', 'css!./style.css', '../bases/directive/index'], function (_view, header, alerts, tags, vue, bootstrap) {
     var app = new vue({
         el: 'body',
         replace: false,
@@ -32,13 +32,14 @@ define(['text!./view.html', '../components/header/index', '../bases/tags/index',
 
         components: {
             'app-header': header,
+            'app-alerts': alerts,
             'tags': tags
         },
 
         methods: {
             persist: function () {
-                console.log(this.tags);
-                // console.log($('.tagboxified')[0].value);
+                // console.log(this.tags);
+                this.$broadcast('alert', Math.random(), 'success');
                 // alert(this.$validator());
             }
         }
