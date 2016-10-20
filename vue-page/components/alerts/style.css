@@ -27,6 +27,7 @@
 }
 
 .alert-wrap {
+    word-wrap: break-word;
     display: inline-block;
     border: 1px solid #ccc;
     border-radius: 4px;
