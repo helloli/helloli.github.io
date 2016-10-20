@@ -1,6 +1,7 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 @font-face {
@@ -12,18 +13,51 @@ body {
     font-family: hanyiwaiwai;
 }
 
+.meiya-btn {
+    padding: 3px;
+    background-color: #7BCF54;
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid #000;
+    border-radius: 4px;
+    position: relative;
+    text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    -webkit-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    -moz-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    *filter: Glow(color = #fff, strength = 1);
+}
+
+.meiya-btn:after {
+    height: 15%;
+    position: absolute;
+    background-color: #ABABAB;
+    content: '';
+    border-top: 2px solid #000;
+    display: inline-block;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+}
+
 .header-wrap {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
     background-color: #ccc;
     height: 40px;
     padding-left: 10px;
+    border-bottom: 2px solid #000;
 }
 
 .header-logo {
     display: inline-block;
-    font-size: 18px;
-    font-weight: bold;
-    height: 40px;
-    line-height: 40px;
+    letter-spacing: -4px;
+    word-spacing: -4px;
+    font-size: 20px;
+    font-weight: 900;
+    height: 38px;
+    line-height: 38px;
     color: black;
     text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
     -webkit-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
@@ -31,9 +65,58 @@ body {
     *filter: Glow(color = #fff, strength = 1);
 }
 
-.meiya-btn {
-    cursor: pointer;
-    float: right;
-    display: inline-block;
-    border: 1px solid #000;
+.subscribe {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 16px;
+}
+
+.footer-wrap {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 100px;
+    /*border-top: 2px solid #000;*/
+    background-color: #ccc;
+}
+
+.footer-wrap:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0px;
+    right: 0px;
+    border-left: 2px solid #000;
+    border-right: 2px solid #000;
+    border-bottom: 2px solid #000;
+    border-bottom-left-radius: 22px;
+    border-bottom-right-radius: 20px;
+    height: 20px;
+    background-color: ;
+}
+
+.footer-wrap div {
+    width: 50%;
+    float: left;
+    margin-top: 35px;
+}
+
+.footer-wrap div span {
+    height: 50px;
+    font-weight: bold;
+    font-size: 25px;
+    width: 75%;
+    text-align: center;
+}
+
+.diy-btn {
+    margin-left: 20%;
+}
+
+.wild-btn {
+    margin-left: 5%;
 }
