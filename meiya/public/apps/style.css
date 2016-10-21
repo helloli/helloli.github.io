@@ -48,6 +48,7 @@ body {
     height: 40px;
     padding-left: 10px;
     border-bottom: 2px solid #000;
+    z-index: 99999;
 }
 
 .header-logo {
@@ -74,35 +75,31 @@ body {
     line-height: 16px;
 }
 
+.content-wrap {
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    right: 0px;
+    bottom: 80px;
+    /*border: 1px solid red;*/
+    overflow-y: auto;
+}
+
 .footer-wrap {
+    z-index: 99999;
     position: fixed;
     bottom: 0px;
     left: 0px;
     right: 0px;
-    height: 100px;
-    /*border-top: 2px solid #000;*/
+    height: 80px;
+    border-top: 2px solid #000;
     background-color: #ccc;
-}
-
-.footer-wrap:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0px;
-    right: 0px;
-    border-left: 2px solid #000;
-    border-right: 2px solid #000;
-    border-bottom: 2px solid #000;
-    border-bottom-left-radius: 22px;
-    border-bottom-right-radius: 20px;
-    height: 20px;
-    background-color: ;
 }
 
 .footer-wrap div {
     width: 50%;
     float: left;
-    margin-top: 35px;
+    margin-top: 15px;
 }
 
 .footer-wrap div span {
