@@ -85,6 +85,10 @@ body {
     overflow-y: auto;
 }
 
+.content {
+    padding: 10px;
+}
+
 .footer-wrap {
     z-index: 99999;
     position: fixed;

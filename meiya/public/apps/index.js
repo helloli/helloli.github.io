@@ -10,8 +10,7 @@ define(['text!./view.html', '../components/diy/index', '../components/wild/index
         
         data: function () {
             return {
-                currentView: 'app-diy',
-                // wid: 400
+                currentView: 'app-diy'
             }
         },
 
@@ -24,6 +23,9 @@ define(['text!./view.html', '../components/diy/index', '../components/wild/index
             changeView: function (view) {
                 this.currentView = 'app-' + view;
             }
+        },
+
+        ready: function () {
         }
 
     });
