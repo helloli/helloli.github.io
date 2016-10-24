@@ -11,7 +11,7 @@ define(['text!./view.html', '../components/diy/index', '../components/wild/index
         data: function () {
             return {
                 currentView: 'app-diy',
-                wid: 400
+                // wid: 400
             }
         },
 
@@ -21,7 +21,9 @@ define(['text!./view.html', '../components/diy/index', '../components/wild/index
         },
 
         methods: {
-
+            changeView: function (view) {
+                this.currentView = 'app-' + view;
+            }
         }
 
     });

@@ -3,18 +3,13 @@
     <span class="meiya-btn subscribe">订阅美丫</span>
 </div>
 
-<!-- <component :is="currentView"></component> -->
-
-<div class="content-wrap">
-    <div style="height: 1000px;background-color: orange"></div>
-</div>
-
+<component :is="currentView" keep-alive></component>
 
 <div class="footer-wrap">
     <div>
-        <span class="meiya-btn diy-btn">9图表情</span>
+        <span class="meiya-btn diy-btn" @click="changeView('diy')">9图表情</span>
     </div>
     <div>
-        <span class="meiya-btn wild-btn">野表情</span>
+        <span class="meiya-btn wild-btn" @click="changeView('wild')">野表情</span>
     </div>
 </div>
