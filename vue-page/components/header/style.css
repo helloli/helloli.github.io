@@ -7,3 +7,12 @@
     line-height: 40px;
     color: black;
 }
+.message-center {
+    float: right;
+    height: 20px;
+    width: 20px;
+    margin-right: 10px;
+    margin-top: 10px;
+    background-color: #000;
+    border-radius: 4px;
+}

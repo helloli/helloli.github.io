@@ -1,0 +1,18 @@
+<div class="mcenter-wrap">
+    <div class="mcenter-header">
+        {{name}}
+    </div>
+    <div class="mcenter-content-wrap">
+        <div class="mcenter-content">
+        <!-- {{messages}} -->
+            <div v-for="m in messages" class="mcenter-message" :class="'mcenter-message-' + m.type">
+                <div class="mcenter-message-header">
+                    {{getLocalTime(m.time)}}
+                </div>
+                <div class="mcentrt-message-centent">
+                    {{m.text}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

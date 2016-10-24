@@ -1,4 +1,4 @@
-define(['text!./view.html', '../components/header/index', '../components/alerts/index', '../bases/tags/index', 'vue', 'bootstrap', 'css!./style.css', '../bases/directive/index'], function (_view, header, alerts, tags, vue, bootstrap) {
+define(['text!./view.html', '../components/header/index', '../components/alerts/index', '../components/messageCenter/index', '../bases/tags/index', 'vue', 'bootstrap', 'css!./style.css', '../bases/directive/index'], function (_view, header, alerts, mcenter, tags, vue, bootstrap) {
     var app = new vue({
         el: 'body',
         replace: false,
@@ -33,6 +33,7 @@ define(['text!./view.html', '../components/header/index', '../components/alerts/
         components: {
             'app-header': header,
             'app-alerts': alerts,
+            'app-mcenter': mcenter,
             'tags': tags
         },
 
