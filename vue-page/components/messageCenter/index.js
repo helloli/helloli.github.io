@@ -54,6 +54,7 @@ define(['text!./view.html', 'vue', 'css!./style.css'], function (view, vue) {
 
             addMessage: function (text, type) {
                 this.messages.unshift({'text': text, 'type': type, 'time': Date.parse(new Date())});
+                this.$emit('messageShow', true);
             },
 
             removeMessage: function (index) {
