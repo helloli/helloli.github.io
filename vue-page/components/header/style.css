@@ -11,9 +11,11 @@
     float: right;
     height: 20px;
     width: 20px;
+    line-height: 20px;
+    text-align: center;
     margin-right: 10px;
     margin-top: 10px;
-    background-color: #000;
-    border-radius: 4px;
+    background-color: #FFF;
+    border-radius: 20px;
     cursor: pointer;
 }
