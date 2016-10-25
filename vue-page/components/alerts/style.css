@@ -12,7 +12,7 @@
         opacity: 1;
     }
     100% {
-        transform: translateX(320px);
+        transform: translateX(300px);
         opacity: 0;
     }
 }
@@ -37,8 +37,11 @@
     animation-fill-mode: forwards;
 }
 
+.alert-success {
+    background-color: #FCF8E4;
+}
 .alert-error {
-    background-color: #F2DEDE;
+    background-color: #F1D1D1;
 }
 
 .alert-msg {

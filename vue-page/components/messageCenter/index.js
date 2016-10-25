@@ -8,11 +8,11 @@ define(['text!./view.html', 'vue', 'css!./style.css'], function (view, vue) {
                 name: '消息中心',
                 messages: [
                     {
-                        text: '你刚刚登出了系统',
+                        text: '你刚刚登出了系统你刚刚登出了系统你刚刚登出了系统你刚刚登出了系统',
                         type: 'success',
                         time: 1477306539
                     }, {
-                        text: '你刚刚登陆了系统',
+                        text: 'this is a testtest test testtest. this is a testtest test testtest. this is a testtest test testtest',
                         type: 'success',
                         time: 1477306753
                     }, {

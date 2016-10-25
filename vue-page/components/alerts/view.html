@@ -1,5 +1,5 @@
 <div class="alerts-wrap" v-if="alertList.length>0">
-    <div v-for="a in alertList" class="alert-wrap" :class="'alert-' + a.type" @animationend="delAlert()">
+    <div v-for="a in alertList" class="alert-wrap" :class="'alert-' + a.type" @animationend="delAlert(a.alertId)" :id="'alert-' + a.alertId">
         <span class="alert-msg">{{a.message}}</span>
         <span class="alert-close">&times;</span>
     </div>
