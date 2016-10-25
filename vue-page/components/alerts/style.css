@@ -1,4 +1,4 @@
-@keyframes righteaseinAnimate{
+@keyframes righteaseinAnimate1 {
     0% {
         transform: translateX(320px);
         opacity: 0;
@@ -33,7 +33,7 @@
     border-radius: 4px;
     padding: 6px;
     background-color: #FCF8B3;
-    animation: righteaseinAnimate 3s ease 1;
+    animation: righteaseinAnimate1 3s ease 1;
     animation-fill-mode: forwards;
 }
 

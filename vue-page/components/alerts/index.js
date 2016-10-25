@@ -7,7 +7,6 @@ define(['text!./view.html', 'vue', 'css!./style.css'], function (view, vue) {
 
         data: function () {
             return {
-                alertId: 0,
                 maxAlert: this.maxAlert || 5,
                 alertList: []
             }
@@ -18,27 +17,22 @@ define(['text!./view.html', 'vue', 'css!./style.css'], function (view, vue) {
         },
 
         events: {
-            'alert': function (message, type, alertId) {
-                this.addAlert(message, type, alertId);
+            'alert': function (message, type) {
+                this.addAlert(message, type);
             }
         },
 
         methods: {
 
-            addAlert: function (message, type, alertId) {
+            addAlert: function (message, type) {
                 if (this.alertList.length == this.maxAlert) {
                     this.alertList.shift();
                 }
-                this.alertList.push({'message': message, 'type': type, alertId: this.alertId ++});
+                this.alertList.push({'message': message, 'type': type});
             },
 
-            delAlert: function (alertId) {
-                for (var i = 0, len = this.alertList.length; i < len; i ++) {
-                    if (this.alertList[i].alertId == alertId) {
-                        this.alertList.splice(i, 1);
-                        return;
-                    }
-                }
+            delAlert: function (index) {
+                this.alertList.splice(index, 1);
             }
 
         }

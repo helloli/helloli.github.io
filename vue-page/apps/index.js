@@ -38,10 +38,14 @@ define(['text!./view.html', '../components/header/index', '../components/alerts/
         },
 
         methods: {
+            showMessageCenter: function (value) {
+                this.$broadcast('messageShow', value);
+            },
             persist: function () {
                 // console.log(this.tags);
-                this.$broadcast('alert', Math.random(), 'success');
-                this.$broadcast('alert', Math.random(), 'error');
+                // this.$broadcast('alert', Math.random(), 'success');
+                // this.$broadcast('alert', Math.random(), 'error');
+                this.$broadcast('message', Math.random());
                 // alert(this.$validator());
             }
         }
