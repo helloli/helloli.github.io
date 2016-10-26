@@ -57,6 +57,9 @@
         <div class="form-group">
             <div class="col-xs-offset-3 col-xs-9">
                 <button type="button" class="btn btn-default" @click="persist">验证</button>
+                <button type="button" class="btn btn-default" @click="alert('alert', 'error')">alert</button>
+                <button type="button" class="btn btn-default" @click="addMessage('message')">message</button>
+                <button type="button" class="btn btn-default" @click="showMessageCenter(0)">close message</button>
             </div>
         </div>
     </form>
