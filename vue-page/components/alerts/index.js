@@ -28,7 +28,7 @@ define(['text!./view.html', 'vue', 'css!./style.css'], function (view, vue) {
                 if (this.alertList.length == this.maxAlert) {
                     this.alertList.shift();
                 }
-                this.alertList.push({'message': message, 'type': type});
+                this.alertList.push({'message': message, 'type': type ||'success'});
             },
 
             delAlert: function (index) {

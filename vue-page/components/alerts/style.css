@@ -40,8 +40,17 @@
 .alert-success {
     background-color: #FCF8E4;
 }
+
 .alert-error {
     background-color: #F1D1D1;
+}
+
+.alert-info {
+    background-color: #D9EDF7;
+}
+
+.alert-warning {
+    background-color: #FCF8E3;
 }
 
 .alert-msg {
