@@ -3,11 +3,14 @@ define(['text!./view.html', 'vue', 'css!./style.css'], function (view, vue) {
 
         template: view,
 
-        props: ['maxAlert'],
+        props: {
+            maxAlert: {
+                default: 5
+            }
+        },
 
         data: function () {
             return {
-                maxAlert: this.maxAlert || 5,
                 alertList: []
             }
         },
@@ -25,8 +28,8 @@ define(['text!./view.html', 'vue', 'css!./style.css'], function (view, vue) {
         methods: {
 
             addAlert: function (message, type) {
-                if (this.alertList.length == this.maxAlert) {
-                    this.alertList.shift();
+                if (this.alertList.length >= this.maxAlert) {
+                    this.alertList.splice(0, this.alertList.length - this.maxAlert + 1);
                 }
                 this.alertList.push({'message': message, 'type': type ||'success'});
             },
