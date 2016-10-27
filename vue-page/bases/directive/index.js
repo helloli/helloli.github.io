@@ -41,7 +41,7 @@ define(['vue', './validator', 'css!./style.css'], function (Vue, validator) {
         return result;
     }
 
-    Vue.directive('my-directive', {
+    Vue.directive('sti-validate', {
         params: ['voption'],
         bind: function () {
             // 准备工作

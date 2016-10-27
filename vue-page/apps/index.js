@@ -1,4 +1,4 @@
-define(['text!./view.html', '../components/header/index', '../components/alerts/index', '../components/messageCenter/index', '../bases/tags/index', 'vue', 'bootstrap', 'css!./style.css', '../bases/directive/index'], function (_view, header, alerts, mcenter, tags, vue, bootstrap) {
+define(['text!./view.html', '../components/header/index', '../components/STI-form/index', '../components/alerts/index', '../components/messageCenter/index', '../bases/tags/index', 'vue', 'bootstrap', 'css!./style.css', '../bases/directive/index'], function (_view, header,STIForm, alerts, mcenter, tags, vue, bootstrap) {
     var app = new vue({
         el: 'body',
         replace: false,
@@ -34,7 +34,8 @@ define(['text!./view.html', '../components/header/index', '../components/alerts/
             'app-header': header,
             'app-alerts': alerts,
             'app-mcenter': mcenter,
-            'tags': tags
+            'tags': tags,
+            'sti-form': STIForm
         },
 
         methods: {
@@ -44,9 +45,9 @@ define(['text!./view.html', '../components/header/index', '../components/alerts/
             persist: function () {
                 // console.log(this.tags);
                 // this.$broadcast('alert', Math.random(), 'success');
-                this.$broadcast('alert', Math.random(), 'error');
+                // this.$broadcast('alert', Math.random(), 'error');
                 // this.$broadcast('message', Math.random());
-                // alert(this.$validator());
+                alert(this.$validator());
             },
             addMessage: function (message) {
                 this.$broadcast('message', message);
