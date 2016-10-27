@@ -31,6 +31,42 @@
                 <label for="age" class="form-error" v-if="!validate.age.range">范围错误</label>
             </div>
         </div>
+        <div class="form-group">
+            <label for="textarea" class="col-xs-2 control-label">文本框</label>
+            <div class="col-sm-8">
+                <textarea id="textarea" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+        <div class="form-group" :class="{'has-error':!validate.sex.result}">
+            <label class="col-xs-2 control-label">单选框</label>
+            <div class="col-sm-8">
+                <label class="radio-inline">
+                    <input type="radio"
+                           name="optionsRadios"
+                           id="optionsRadios1"
+                           value="male"
+                           v-model="sex"
+                           v-sti-validate:sex='{"required":"true"}'
+                           >
+                    男
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" name="optionsRadios" id="optionsRadios2" value="female" v-model="sex">
+                    女
+                </label>
+            </div>
+            <div class="col-xs-offset-2 col-sm-8">
+                <label class="form-error" v-if="!validate.sex.required">必填</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-xs-2 control-label">条款</label>
+            <div class="col-sm-8">
+                <label class="checkbox-inline">
+                    <input type="checkbox"> 同意STI条款
+                </label>
+            </div>
+        </div>
         <!--
             可编辑的Tag标签组件
 
@@ -55,8 +91,8 @@
         </div> -->
 
         <div class="form-group">
-            <div class="col-xs-offset-3 col-xs-9">
-                <button type="button" class="btn btn-default" @click="persist">验证</button>
+            <div class="col-xs-offset-2 col-xs-8">
+                <button type="button" class="btn btn-default" @click="persist">验证并提交</button>
                 <button type="button" class="btn btn-default" @click="alert('alert', 'error')">alert</button>
                 <button type="button" class="btn btn-default" @click="addMessage('message')">message</button>
                 <button type="button" class="btn btn-default" @click="showMessageCenter(0)">close message</button>

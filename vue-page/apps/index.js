@@ -27,7 +27,8 @@ define(['text!./view.html', '../components/header/index', '../components/STI-for
                 },
                 // 'maxLength': 10,
                 // 'minLength': 5,
-            }
+            },
+            sex: ''
         },
 
         components: {
@@ -48,6 +49,7 @@ define(['text!./view.html', '../components/header/index', '../components/STI-for
                 // this.$broadcast('alert', Math.random(), 'error');
                 // this.$broadcast('message', Math.random());
                 alert(this.$validator());
+                console.log(this.sex);
             },
             addMessage: function (message) {
                 this.$broadcast('message', message);
