@@ -1,7 +1,18 @@
 <div class="content-wrap">
     <div class="content">
-        <div class="ad" v-if="ad">
-            <img :src="ad" alt="萌萌的广告君">
+        <div class="diy-ad" v-if="diyad">
+            <img :src="diyad" alt="萌萌的广告君">
+        </div>
+        <div v-for="a in articles" class="diy-article-wrap clearfix bd">
+            <div class="diy-article-author bd">
+                <img class="black-border" :src="picUrlParser(a.avatar)" alt="头像">
+            </div>
+            <div class="diy-article-content bd">
+                <p class="diy-article-name bd"></p>
+                <p class="diy-article-text bd"></p>
+                <div class="diy-article-pic-wrap bd"></div>
+                <p class="diy-article-favs bd"></p>
+            </div>
         </div>
     </div>
 </div>

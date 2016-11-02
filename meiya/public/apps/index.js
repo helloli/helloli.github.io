@@ -1,4 +1,4 @@
-define(['text!./view.html', '../components/diy/index', '../components/wild/index', 'vue', 'bootstrap', 'css!./style.css'], function (_view, diy, wild, vue, bootstrap) {
+define(['text!./view.html', '../components/diy/index', '../components/wild/index', '../components/pet/index', 'vue', 'bootstrap', 'css!./style.css'], function (_view, diy, wild, pet, vue, bootstrap) {
     
     var app = new vue({
 
@@ -16,7 +16,8 @@ define(['text!./view.html', '../components/diy/index', '../components/wild/index
 
         components: {
             'app-diy': diy,
-            'app-wild': wild
+            'app-wild': wild,
+            'app-pet': pet
         },
 
         methods: {

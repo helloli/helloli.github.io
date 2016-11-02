@@ -80,7 +80,7 @@ body {
     top: 40px;
     left: 0px;
     right: 0px;
-    bottom: 80px;
+    bottom: 70px;
     /*border: 1px solid red;*/
     overflow-y: auto;
 }
@@ -89,28 +89,60 @@ body {
     padding: 10px;
 }
 
+.diy-ad {
+    /*width: 100%;*/
+    margin-bottom: 10px;
+}
+
+.diy-ad img {
+    width: 100%;
+}
+
+.diy-article-wrap {
+    margin-bottom: 200px;
+}
+
+.diy-article-author {
+    height: 100px;
+    width: 25%;
+    float: left;
+}
+
+.diy-article-author  img {
+    width: 100%;
+}
+
+.diy-article-content {
+    height: 100px;
+    width: 75%;
+    float: left;
+}
+
 .footer-wrap {
     z-index: 99999;
     position: fixed;
     bottom: 0px;
     left: 0px;
     right: 0px;
-    height: 80px;
+    height: 70px;
     border-top: 2px solid #000;
     background-color: #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 .footer-wrap div {
-    width: 50%;
-    float: left;
+    flex: 1;
+    text-align: center;
     margin-top: 15px;
 }
 
 .footer-wrap div span {
-    height: 50px;
+    height: 40px;
     font-weight: bold;
-    font-size: 25px;
-    width: 75%;
+    font-size: 22px;
+    width: 90%;
     text-align: center;
 }
 
@@ -121,3 +153,17 @@ body {
 .wild-btn {
     margin-left: 5%;
 }
+
+.black-border {
+    border: 2px solid #fff;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+}
+
+.bd {
+    border: 1px solid #ccc;
+}
+
