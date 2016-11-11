@@ -11,7 +11,6 @@
                         v-model="name"
                         id="name"
                         v-sti-validate:name='{"required":"true","email":"true"}'
-                        :voption="{on:'blur'}"
                         >
                 <label for="name" class="form-error" v-if="!validate.name.required">必填</label>
                 <label for="name" class="form-error" v-if="!validate.name.email">格式错误</label>
@@ -25,16 +24,21 @@
                         v-model="age"
                         id="age"
                         v-sti-validate:age=obj
-                        :voption="{on:'blur'}"
                         >
                 <label for="age" class="form-error" v-if="!validate.age.required">必填</label>
                 <label for="age" class="form-error" v-if="!validate.age.range">范围错误</label>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group" :class="{'has-error':!validate.textarea.result}">
             <label for="textarea" class="col-xs-2 control-label">文本框</label>
             <div class="col-sm-8">
-                <textarea id="textarea" class="form-control" rows="3"></textarea>
+                <textarea id="textarea"
+                          class="form-control"
+                          rows="3"
+                          v-model="textarea"
+                          v-sti-validate:textarea='{"required":"true"}'>
+                </textarea>
+                <label for="textarea" class="form-error" v-if="!validate.textarea.required">必填</label>
             </div>
         </div>
         <div class="form-group" :class="{'has-error':!validate.sex.result}">
@@ -46,7 +50,6 @@
                            id="optionsRadios1"
                            value="male"
                            v-model="sex"
-                           v-sti-validate:sex='{"required":"true"}'
                            >
                     男
                 </label>
@@ -54,9 +57,6 @@
                     <input type="radio" name="optionsRadios" id="optionsRadios2" value="female" v-model="sex">
                     女
                 </label>
-            </div>
-            <div class="col-xs-offset-2 col-sm-8">
-                <label class="form-error" v-if="!validate.sex.required">必填</label>
             </div>
         </div>
         <div class="form-group">
