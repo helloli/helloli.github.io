@@ -5,14 +5,19 @@
         </div>
         <div v-for="a in articles" class="diy-article-wrap clearfix bd">
             <div class="diy-article-author bd">
-                <img class="black-border" :src="picUrlParser(a.avatar)" alt="头像">
+                <img class="black-border" :src="a.avatar" alt="头像">
             </div>
-            <div class="diy-article-content bd">
-                <div class="diy-article-msg bd">
-                    <div class="diy-article-name bd">name</div>
-                    <div class="diy-article-time bd">time</div>
+            <div class="diy-article-content">
+                <div class="diy-article-msg">
+                    <div class="diy-article-msg-right">
+                        <div class="diy-article-original">{{a.original}}</div>
+                    </div>
+                    <div class="diy-article-msg-left">
+                        <div class="diy-article-name">{{a.author}}</div>
+                        <div class="diy-article-time">{{a.addTime}}</div>
+                    </div>
                 </div>
-                <div class="diy-article-text bd">text</div>
+                <div class="diy-article-text bd">{{a.description}}</div>
                 <div class="diy-article-pic-wrap bd">pciwrap</div>
                 <div class="diy-article-favs bd">fav</div>
             </div>
