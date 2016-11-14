@@ -5,33 +5,40 @@
  value "popup.html".
  -->
 <html>
-  <head>
-    <title>Getting Started Extension's Popup</title>
-    <style>
-      body {
-        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
-        font-size: 100%;
-      }
-      #status {
-        /* avoid an excessively wide status text */
-        white-space: pre;
-        text-overflow: ellipsis;
-        overflow: hidden;
-        max-width: 400px;
-      }
-    </style>
+    <head>
+        <title>Getting Started Extension's Popup</title>
+        <style>
+            html {
+                height:100%
+            }
+            body {
+                font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+                font-size: 100%;
+                height:100%;
+                margin:0px;
+                padding:0px
+            }
+            #container {
+                height: 500px;
+                width: 500px;
+            }
 
-    <!--
-      - JavaScript and HTML must be in separate files: see our Content Security
-      - Policy documentation[1] for details and explanation.
-      -
-      - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
-     -->
-    <script src="popup.js"></script>
-  </head>
-  <body>
-    <div id="status"></div>
-    <img id="image-result" hidden>
-  </body>
+        </style>
+
+        <!--
+          - JavaScript and HTML must be in separate files: see our Content Security
+          - Policy documentation[1] for details and explanation.
+          -
+          - [1]: https://developer.chrome.com/extensions/contentSecurityPolicy
+         -->
+        <script type="text/javascript" src="https://api.map.baidu.com/api?v=2.0&ak=WuA30p8iacM5DtaRMTGeoI3dyYUkodel&s=1">
+        //v2.0版本的引用方式：src="http://api.map.baidu.com/api?v=2.0&ak=您的密钥"
+        //v1.4版本及以前版本的引用方式：src="http://api.map.baidu.com/api?v=1.4&key=您的密钥&callback=initialize"
+        </script>
+    </head>
+    <body>
+        <div id="container"></div>
+        <script src="popup.js"></script>
+    </body>
 </html>
 
