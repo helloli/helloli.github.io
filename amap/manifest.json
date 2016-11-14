@@ -1,13 +1,13 @@
 {
     "manifest_version": 2,
-    "name": "大灰灰回家啦",
+    "name": "回家看路况",
     "description": "This extension shows a Google Image search result for the current page",
     "version": "1.0",
     "content_security_policy": "script-src 'self' https://vdata.amap.com/ https://restapi.amap.com/ https://webapi.amap.com/ 'unsafe-eval'; object-src 'self'",
     "browser_action": {
         "default_icon": "icon.png",
         "default_popup": "popup.html",
-        "default_title": "大灰灰回家啦"
+        "default_title": "回家看路况"
     },
     "permissions": [
         "storage",
