@@ -24,7 +24,7 @@ define(['text!./view.html', 'vue'], function (view, vue) {
                         author: '你丫才黄瓜',
                         authorLink: 'www.baidu.com',
                         description: '测试',
-                        favs: 666,
+                        favs: 777,
                         original: 1
                     }, {
                         id: 3,
@@ -34,7 +34,7 @@ define(['text!./view.html', 'vue'], function (view, vue) {
                         author: '你丫才美工',
                         authorLink: 'www.baidu.com',
                         description: '测试',
-                        favs: 666,
+                        favs: 888,
                         original: 0
                     }, 
                 ])

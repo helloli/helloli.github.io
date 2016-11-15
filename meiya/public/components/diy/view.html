@@ -3,8 +3,8 @@
         <div class="diy-ad" v-if="diyad">
             <img :src="diyad" alt="萌萌的广告君">
         </div>
-        <div v-for="a in articles" class="diy-article-wrap clearfix bd">
-            <div class="diy-article-author bd">
+        <div v-for="a in articles" class="diy-article-wrap clearfix">
+            <div class="diy-article-author">
                 <img class="black-border" :src="a.avatar" alt="头像">
             </div>
             <div class="diy-article-content">
@@ -17,9 +17,13 @@
                         <div class="diy-article-time">{{a.addTime}}</div>
                     </div>
                 </div>
-                <div class="diy-article-text bd">{{a.description}}</div>
-                <div class="diy-article-pic-wrap bd">pciwrap</div>
-                <div class="diy-article-favs bd">fav</div>
+                <div class="diy-article-text">{{a.description}}</div>
+                <div class="diy-article-pic-wrap">
+                    <div class="diy-article-pic" v-for="p in a.pids">
+                        <img class="black-border" :src="p" alt="图片">
+                    </div>
+                </div>
+                <div class="diy-article-favs">💗{{a.favs}}个莫名其妙的赞</div>
             </div>
         </div>
     </div>
