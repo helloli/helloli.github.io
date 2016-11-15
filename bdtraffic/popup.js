@@ -10,5 +10,5 @@ setTimeout(function() {                         // 删除版权信息
     $('.anchorBL').fadeOut(2000);
 }, 1000)
 
-// var ctrl = new BMapLib.TrafficControl();        // 添加路况信息控件
-// map.addControl(ctrl);
+var ctrl = new BMapLib.TrafficControl();        // 添加路况信息控件
+map.addControl(ctrl);
