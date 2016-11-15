@@ -8,7 +8,7 @@ define(['text!./view.html', 'vue'], function (view, vue) {
         },
 
         ready: function () {
-            console.log('wild');
+            console.log('pet');
         }
     };
 });
