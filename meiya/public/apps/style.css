@@ -107,7 +107,7 @@ body {
 
 .diy-article-wrap:last-child {
     margin-bottom: 0px;
-    padding-bottom: 10px;
+    padding-bottom: 0px;
     border-bottom: none;
 }
 
