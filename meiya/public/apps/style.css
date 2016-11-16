@@ -166,6 +166,28 @@ body {
     width: 100%;
 }
 
+/*wild样式开始*/
+
+.wild-ad {
+    margin-bottom: 10px;
+}
+
+.wild-ad img {
+    width: 100%;
+}
+
+.wild-article-wrap {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.wild-article-wrap:last-child {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+/*wild样式结束*/
+
 .footer-wrap {
     z-index: 99999;
     position: fixed;

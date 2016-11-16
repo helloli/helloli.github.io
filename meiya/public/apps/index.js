@@ -10,7 +10,7 @@ define(['text!./view.html', '../components/diy/index', '../components/wild/index
         
         data: function () {
             return {
-                currentView: 'app-diy'
+                currentView: 'app-wild'
             }
         },
 

@@ -1,5 +1,10 @@
 <div class="content-wrap">
-    <div style="height: 1000px;background-color: orange">
-        野表情
+    <div class="content">
+        <div class="wild-ad" v-if="wildad">
+            <img :src="wildad" alt="萌萌的广告君">
+        </div>
+        <div v-for="a in articles" class="wild-article-wrap clearfix bd">
+            
+        </div>
     </div>
 </div>
