@@ -102,11 +102,11 @@ define(['text!./view.html', 'vue'], function (view, vue) {
                     if (resultObj.hasOwnProperty(addDate)) {
                         resultObj[addDate].unshift(arr[i]);
                     } else {
-                        resultObj[addDate] = [addDate];
+                        resultObj[addDate] = [arr[i]];
                     }
                 }
                 // for (var j in resultObj) {
-                    
+
                 // }
                 return resultObj;
             },
