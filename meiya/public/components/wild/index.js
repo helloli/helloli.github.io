@@ -97,7 +97,7 @@ define(['text!./view.html', 'vue'], function (view, vue) {
                 var resultObj = {},
                     resultArr = [];
                 for (var i in arr) {
-                    // arr[i].pid = this.picUrlParser(arr[i].pid);
+                    arr[i].pid = this.picUrlParser(arr[i].pid);
                     var addDate = new Date(arr[i].addTime).toLocaleDateString().replace(/\//g, '.');
                     if (resultObj.hasOwnProperty(addDate)) {
                         resultObj[addDate].unshift(arr[i]);
