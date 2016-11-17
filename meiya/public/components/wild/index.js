@@ -9,83 +9,83 @@ define(['text!./view.html', 'vue'], function (view, vue) {
                     {
                         id: 1,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-16 16:35:51'
+                        addTime: 1477985876000
                     }, {
                         id: 2,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-16 16:35:50'
+                        addTime: 1477985876000
                     }, {
                         id: 3,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-16 16:35:49'
+                        addTime: 1477985876000
                     },  {
                         id: 4,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-16 16:35:48'
+                        addTime: 1477985876000
                     },  {
                         id: 5,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-16 16:35:47'
+                        addTime: 1477985876000
                     },  {
                         id: 6,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-16 16:35:46'
+                        addTime: 1472985876000
                     },  {
                         id: 7,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-16 16:35:45'
+                        addTime: 1472985876000
                     },  {
                         id: 8,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-16 16:35:44'
+                        addTime: 1472985876000
                     },  {
                         id: 9,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-16 16:35:43'
+                        addTime: 1477985876000
                     },  {
                         id: 10,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-16 16:35:42'
+                        addTime: 1477985876000
                     }, {
                         id: 11,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-15 16:35:51'
+                        addTime: 1472985876000
                     }, {
                         id: 12,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-15 16:35:50'
+                        addTime: 1472985876000
                     }, {
                         id: 13,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-15 16:35:49'
+                        addTime: 1472985876000
                     },  {
                         id: 14,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-15 16:35:48'
+                        addTime: 1472985876000
                     },  {
                         id: 15,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-15 16:35:47'
+                        addTime: 1472985876000
                     },  {
                         id: 16,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-13 16:35:46'
+                        addTime: 1472985876000
                     },  {
                         id: 17,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-13 16:35:45'
+                        addTime: 1477985876000
                     },  {
                         id: 18,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-13 16:35:44'
+                        addTime: 1472985876000
                     },  {
                         id: 19,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-13 16:35:43'
+                        addTime: 1477985876000
                     },  {
                         id: 20,
                         pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: '2016-11-12 16:35:42'
+                        addTime: 1477985876000
                     }, 
                 ])
             }
@@ -96,6 +96,7 @@ define(['text!./view.html', 'vue'], function (view, vue) {
             formatter: function (arr) {
                 var resultObj = {},
                     resultArr = [];
+                // 把数据按照日期进行归类，放到resultObj对象中
                 for (var i in arr) {
                     arr[i].pid = this.picUrlParser(arr[i].pid);
                     var addDate = new Date(arr[i].addTime).toLocaleDateString().replace(/\//g, '.');
@@ -105,10 +106,19 @@ define(['text!./view.html', 'vue'], function (view, vue) {
                         resultObj[addDate] = [arr[i]];
                     }
                 }
-                // for (var j in resultObj) {
-
-                // }
-                return resultObj;
+                // 将resultObj按照时间最新的在最前面规则，放到数组中
+                for (var j in resultObj) {
+                    var temp = {};
+                    temp['date'] = j;
+                    temp['pics'] = resultObj[j].sort(function(x, y) {
+                        return new Date(x.addTime) < new Date(y.addTime);
+                    });
+                    resultArr.push(temp);
+                }
+                // 返回按照日期新旧排序好的数组
+                return resultArr.sort(function(a, b) {
+                    return new Date(a.date) < new Date(b.date);
+                });
             },
 
             // url格式化。支持数组。
@@ -126,7 +136,7 @@ define(['text!./view.html', 'vue'], function (view, vue) {
         },
 
         ready: function () {
-
+            // alert(this.articles);
         }
     };
 });

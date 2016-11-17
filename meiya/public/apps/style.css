@@ -26,6 +26,11 @@ body {
     -webkit-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
     -moz-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
     *filter: Glow(color = #fff, strength = 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 .meiya-btn:after {
@@ -154,7 +159,7 @@ body {
 .diy-article-pic-wrap {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
 }
 
 .diy-article-pic {
@@ -178,12 +183,43 @@ body {
 
 .wild-article-wrap {
     margin-bottom: 20px;
-    padding-bottom: 20px;
+    /*padding: 10px;*/
+    /*padding-bottom: 20px;*/
 }
 
 .wild-article-wrap:last-child {
     margin-bottom: 0px;
-    padding-bottom: 0px;
+    /*padding-bottom: 0px;*/
+}
+
+.wild-article-header {
+    margin-bottom: 10px;
+}
+
+.wild-article-text {
+    float: left;
+    margin-right: 5px;
+}
+
+.wild-article-hr {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    border-color: #ccc;
+}
+
+.wild-article-pic-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.wild-article-pic {
+    width: 25%;
+}
+
+.wild-article-pic img {
+    border-radius: 6px;
+    width: 100%;
 }
 
 /*wild样式结束*/
