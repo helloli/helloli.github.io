@@ -9,10 +9,9 @@
         "default_popup": "popup.html",
         "default_title": "下班看路况"
     },
+    "options_page": "options.html",
     "permissions": [
         "storage",
-        "activeTab",
-        "https://api.map.baidu.com/api",
-        "https://ss0.bdstatic.com/"
+        "activeTab"
     ]
 }
