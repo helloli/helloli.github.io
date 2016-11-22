@@ -27,8 +27,11 @@ chrome.storage.sync.get({
             autoRefresh: true,
             interval: 180
         });
-        trafficLayer.setMap(map); 
+        trafficLayer.setMap(map);
     }
 });
-var bg = chrome.extension.getBackgroundPage();
-bg.test();
+chrome.extension.sendMessage({greeting:"hello"},function(response){
+    alert(response.farewell);
+});
+// var bg = chrome.extension.getBackgroundPage();
+// bg.test();

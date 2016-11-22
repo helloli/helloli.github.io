@@ -1,3 +1,10 @@
+## 笔记
+
+- popup.js和background.js交互
+
+- content scripts和background.js交互
+
+
 ## 下班回家看路况(百度版)——Chrome插件
 
 ### 使用说明
