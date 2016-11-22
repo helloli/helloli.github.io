@@ -30,3 +30,5 @@ chrome.storage.sync.get({
         trafficLayer.setMap(map); 
     }
 });
+var bg = chrome.extension.getBackgroundPage();
+bg.test();

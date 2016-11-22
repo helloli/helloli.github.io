@@ -21,5 +21,9 @@
         "js": ["byr.js"],
         "runat": "document_start",
         "all_frames": true
-    }]
+    }],
+    "background":{
+        //"page":"background.html",
+        "scripts":["background.js"]
+    }
 }
