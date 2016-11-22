@@ -23,6 +23,10 @@ require.config({
         name: 'css',
         location: 'node_modules/require-css',
         main: 'css.min'
+    }, {
+        name: 'vue-touch',
+        location: 'node_modules/vue-touch',
+        main: 'vue-touch'
     }]
 });
 

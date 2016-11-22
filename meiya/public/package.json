@@ -9,6 +9,7 @@
     "require-css": "^0.1.8",
     "requirejs": "^2.3.2",
     "text": "requirejs/text",
-    "vue": "^1.0.21"
+    "vue": "^1.0.21",
+    "vue-touch": "^1.1.0"
   }
 }

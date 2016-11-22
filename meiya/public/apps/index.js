@@ -1,4 +1,4 @@
-define(['text!./view.html', '../components/diy/index', '../components/wild/index', '../components/pet/index', 'vue', 'bootstrap', 'css!./style.css'], function (_view, diy, wild, pet, vue, bootstrap) {
+define(['text!./view.html', '../components/diy/index', '../components/wild/index', '../components/pet/index', 'vue', 'bootstrap', 'vue-touch', 'css!./style.css'], function (_view, diy, wild, pet, vue, bootstrap, vueTouch) {
     
     var app = new vue({
 
@@ -31,6 +31,8 @@ define(['text!./view.html', '../components/diy/index', '../components/wild/index
 
     });
     
+    app.use(vueTouch);
+
     return app;
 
 })
