@@ -3,15 +3,27 @@
     "name": "下班看路况",
     "description": "This extension shows a Google Image search result for the current page",
     "version": "1.0",
-    "content_security_policy": "script-src 'self' https://sp3.baidu.com/ https://ss0.bdstatic.com/ https://api.map.baidu.com 'unsafe-eval'; object-src 'self'",
+    "content_security_policy": "script-src 'self' https://vdata.amap.com/ https://restapi.amap.com/ https://webapi.amap.com/ https://sp3.baidu.com/ https://ss0.bdstatic.com/ https://api.map.baidu.com 'unsafe-eval'; object-src 'self'",
     "browser_action": {
         "default_icon": "icon.png",
         "default_popup": "popup.html",
         "default_title": "下班看路况"
     },
-    "options_page": "options.html",
+    "options_ui": {
+        "page": "options.html",
+        "chrome_style": true
+    },
     "permissions": [
-        "storage",
-        "activeTab"
-    ]
+        "storage"
+    ],
+    "content_scripts": [{
+        "matches": ["https://bbs.byr.cn/*"],
+        "js": ["byr.js"],
+        "runat": "document_start",
+        "all_frames": true
+    }],
+    "background":{
+        //"page":"background.html",
+        "scripts":["background.js"]
+    }
 }
