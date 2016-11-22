@@ -11,7 +11,7 @@ $(function(){
         }, function () {
             $('#save').html('保存成功!');
             setInterval(function(){
-                $('#save').html('保存');
+                window.close();
             }, 1000)
         })
     })

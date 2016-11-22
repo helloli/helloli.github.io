@@ -15,5 +15,11 @@
     },
     "permissions": [
         "storage"
-    ]
+    ],
+    "content_scripts": [{
+        "matches": ["https://bbs.byr.cn/*"],
+        "js": ["byr.js"],
+        "runat": "document_start",
+        "all_frames": true
+    }]
 }
