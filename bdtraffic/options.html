@@ -1,24 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head><title>My Test Extension Options</title></head>
+<head>
+    <title>配置</title>
+    <meta charset="utf8">
+</head>
 <body>
 
-Favorite color:
-<select id="color">
- <option value="red">red</option>
- <option value="green">green</option>
- <option value="blue">blue</option>
- <option value="yellow">yellow</option>
-</select>
+    <h3>你想使用哪个地图：</h3>
+    <p>
+        <input type="radio" name="maptype" value="bd" id="bd"><label for="bd" style="margin-left: 10px">百度地图</label>
+    </p>
+    <p>
+        <input type="radio" name="maptype" value="gd" id="gd"><label for="gd" style="margin-left: 10px">高德地图</label>
+    </p>
+    <button id="save">保存</button>
+    <button id="cancel">取消</button>
 
-<label>
-  <input type="checkbox" id="like">
-  I like colors.
-</label>
-
-<div id="status"></div>
-<button id="save">Save</button>
-
+<script src="jquery.js"></script>
 <script src="options.js"></script>
 </body>
 </html>
