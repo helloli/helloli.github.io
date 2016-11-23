@@ -5,8 +5,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// session中间件
+var session = require('express-session');
+
 var routes = require('./routes/index');
 var admin = require('./routes/admin');
+var login = require('./routes/login');
 var users = require('./routes/users');
 
 var app = express();
@@ -24,9 +28,24 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// session配置
+app.use(session({
+  secret: 'leesirbupt',
+  resave: false,
+  saveUninitialized: true
+}))
+
 app.use('/', routes);
-app.use('/admin', admin)
+// app.use('/admin', admin);
 app.use('/users', users);
+app.get('/admin', function (req, res, next) {
+  if (req.session.uid) {
+    res.render('login');
+  } else {
+    res.redirect('login');
+  }
+})
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -5,11 +5,11 @@ require.config({
         'vue-touch': 'node_modules/vue-touch/vue-touch'
     },
     shim: {
-        'bootstrap': {
-            deps: ['jQuery'],
-        },
         'jQuery': {
             exports: 'jQuery'
+        },
+        'bootstrap': {
+            deps: ['jQuery'],
         },
         'vue-touch': {
             deps: ['hammerjs']
