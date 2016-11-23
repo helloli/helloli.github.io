@@ -3,6 +3,6 @@
 // bg.test();
 
 // 这是发送消息
-chrome.extension.sendMessage({greeting:"hello"},function(response){
-    alert(response.farewell);
-});
+// chrome.extension.sendMessage({greeting:"hello"},function(response){
+//     alert(response.farewell);
+// });

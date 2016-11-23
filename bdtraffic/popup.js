@@ -30,8 +30,8 @@ chrome.storage.sync.get({
         trafficLayer.setMap(map);
     }
 });
-chrome.extension.sendMessage({greeting:"hello"},function(response){
-    alert(response.farewell);
-});
+// chrome.extension.sendMessage({greeting:"hello"},function(response){
+//     alert(response.farewell);
+// });
 // var bg = chrome.extension.getBackgroundPage();
 // bg.test();
