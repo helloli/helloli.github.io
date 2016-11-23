@@ -29,7 +29,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // session配置
-app.use(session({
+app.use(['/admin', '/login'], session({
   secret: 'leesirbupt',
   resave: false,
   saveUninitialized: true
