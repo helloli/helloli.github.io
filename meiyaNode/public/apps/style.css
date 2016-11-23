@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+@font-face {
+    font-family: 'hanyiwaiwai';
+    src: url('./hanyiwaiwai.ttf');
+}
+
+body {
+    font-family: hanyiwaiwai;
+}
+
+.meiya-btn {
+    padding: 3px;
+    background-color: #7BCF54;
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid #000;
+    border-radius: 4px;
+    position: relative;
+    text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    -webkit-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    -moz-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    *filter: Glow(color = #fff, strength = 1);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.meiya-btn:after {
+    height: 15%;
+    position: absolute;
+    background-color: #ABABAB;
+    content: '';
+    border-top: 2px solid #000;
+    display: inline-block;
+    bottom: 0px;
+    right: 0px;
+    left: 0px;
+}
+
+.header-wrap {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    background-color: #ccc;
+    height: 40px;
+    padding-left: 10px;
+    border-bottom: 2px solid #000;
+    z-index: 99999;
+}
+
+.header-logo {
+    display: inline-block;
+    letter-spacing: -4px;
+    word-spacing: -4px;
+    font-size: 20px;
+    font-weight: 900;
+    height: 38px;
+    line-height: 38px;
+    color: black;
+    text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    -webkit-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    -moz-text-shadow: #fff 1px 0 0, #fff 0 1px 0, #fff -1px 0 0, #fff 0 -1px 0;
+    *filter: Glow(color = #fff, strength = 1);
+}
+
+.subscribe {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    font-weight: bold;
+    height: 30px;
+    line-height: 16px;
+}
+
+.content-wrap {
+    margin-top: 40px;
+    margin-bottom: 70px;
+    /*position: absolute;
+    top: 40px;
+    left: 0px;
+    right: 0px;
+    bottom: 70px;
+    overflow-y: auto;*/
+}
+
+.content {
+    padding: 10px;
+}
+
+.diy-ad {
+    margin-bottom: 10px;
+}
+
+.diy-ad img {
+    width: 100%;
+}
+
+.diy-article-wrap {
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+}
+
+.diy-article-wrap:last-child {
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+    border-bottom: none;
+}
+
+.diy-article-author {
+    height: 100px;
+    width: 25%;
+    float: left;
+}
+
+.diy-article-author img {
+    border-radius: 6px;
+    width: 90%;
+}
+
+.diy-article-content {
+    width: 75%;
+    float: left;
+}
+
+.diy-article-msg {
+    height: 40px;
+}
+
+.diy-article-msg-left {
+    height: 40px;
+    margin-right: 50px;
+}
+
+.diy-article-msg-right {
+    height: 40px;
+    width: 50px;
+    float: right;
+    text-align: center;
+}
+
+.diy-article-original {
+    height: 24px;
+    line-height: 24px;
+    margin-top: 8px;
+    background-color: #ccc;
+    border-radius: 4px;
+}
+
+.diy-article-pic-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.diy-article-pic {
+    width: 33.33%;
+}
+
+.diy-article-pic img {
+    border-radius: 6px;
+    width: 100%;
+}
+
+/*wild样式开始*/
+
+.wild-ad {
+    margin-bottom: 10px;
+}
+
+.wild-ad img {
+    width: 100%;
+}
+
+.wild-article-wrap {
+    margin-bottom: 20px;
+    /*padding: 10px;*/
+    /*padding-bottom: 20px;*/
+}
+
+.wild-article-wrap:last-child {
+    margin-bottom: 0px;
+    /*padding-bottom: 0px;*/
+}
+
+.wild-article-header {
+    margin-bottom: 10px;
+}
+
+.wild-article-text {
+    float: left;
+    margin-right: 5px;
+}
+
+.wild-article-hr {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    border-color: #ccc;
+}
+
+.wild-article-pic-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.wild-article-pic {
+    width: 25%;
+}
+
+.wild-article-pic img {
+    border-radius: 6px;
+    width: 100%;
+}
+
+/*wild样式结束*/
+
+.footer-wrap {
+    z-index: 99999;
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    height: 70px;
+    border-top: 2px solid #000;
+    background-color: #ccc;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.footer-wrap div {
+    flex: 1;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.footer-wrap div span {
+    height: 40px;
+    font-weight: bold;
+    font-size: 22px;
+    width: 90%;
+    text-align: center;
+}
+
+.diy-btn {
+    margin-left: 20%;
+}
+
+.wild-btn {
+    margin-left: 5%;
+}
+
+.black-border {
+    border: 2px solid #fff;
+}
+
+.clearfix:after {
+    content: "";
+    clear: both;
+}
+
+.bd {
+    border: 1px solid #ccc;
+}
+

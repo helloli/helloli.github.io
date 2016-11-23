@@ -1,0 +1,18 @@
+<div class="header-wrap">
+    <div class="header-logo">@你丫才美工：最智(dou)慧(bi)设计帐号</div>
+    <span class="meiya-btn subscribe">订阅美丫</span>
+</div>
+
+<component :is="currentView" keep-alive></component>
+
+<div class="footer-wrap">
+    <div>
+        <span class="meiya-btn" @click="changeView('diy')">9图表情</span>
+    </div>
+    <div>
+        <span class="meiya-btn" @click="changeView('wild')">野表情</span>
+    </div>
+    <div>
+        <span class="meiya-btn" @click="changeView('pet')">萌宠搞事</span>
+    </div>
+</div>

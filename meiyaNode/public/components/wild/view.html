@@ -1,0 +1,20 @@
+<div class="content-wrap">
+    <div class="content">
+        <div class="wild-ad" v-if="wildad">
+            <img :src="wildad" alt="萌萌的广告君">
+        </div>
+        <div v-for="a in articles" class="wild-article-wrap clearfix">
+            <div class="wild-article-header clearfix">
+                <div class="wild-article-text">
+                    {{a.date}}新增了{{a.pics.length}}个表情
+                </div>
+                <hr class="wild-article-hr">
+            </div>
+            <div class="wild-article-pic-wrap">
+                <div class="wild-article-pic" v-for="p in a.pics">
+                    <img class="black-border" :src="p.pid" alt="图片">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

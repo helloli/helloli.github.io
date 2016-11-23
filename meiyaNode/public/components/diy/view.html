@@ -1,0 +1,30 @@
+<div class="content-wrap">
+    <div class="content">
+        <div class="diy-ad" v-if="diyad">
+            <img :src="diyad" alt="萌萌的广告君">
+        </div>
+        <div v-for="a in articles" class="diy-article-wrap clearfix">
+            <div class="diy-article-author">
+                <img class="black-border" :src="a.avatar" alt="头像">
+            </div>
+            <div class="diy-article-content">
+                <div class="diy-article-msg">
+                    <div class="diy-article-msg-right">
+                        <div class="diy-article-original">{{a.original}}</div>
+                    </div>
+                    <div class="diy-article-msg-left">
+                        <div class="diy-article-name">{{a.author}}</div>
+                        <div class="diy-article-time">{{a.addTime}}</div>
+                    </div>
+                </div>
+                <div class="diy-article-text">{{a.description}}</div>
+                <div class="diy-article-pic-wrap">
+                    <div class="diy-article-pic" v-for="p in a.pids">
+                        <img class="black-border" :src="p" alt="图片">
+                    </div>
+                </div>
+                <div class="diy-article-favs">💗{{a.favs}}个莫名其妙的赞</div>
+            </div>
+        </div>
+    </div>
+</div>
