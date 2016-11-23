@@ -1,7 +1,8 @@
 require.config({
     paths: {
         'bootstrap': 'node_modules/bootstrap/dist/js/bootstrap.min',
-        'jQuery': 'node_modules/jquery/dist/jquery.min'
+        'jQuery': 'node_modules/jquery/dist/jquery.min',
+        'vue-touch': 'node_modules/vue-touch/vue-touch'
     },
     shim: {
         'bootstrap': {
@@ -9,6 +10,9 @@ require.config({
         },
         'jQuery': {
             exports: 'jQuery'
+        },
+        'vue-touch': {
+            deps: ['hammerjs']
         }
     },
     packages: [ {
@@ -24,9 +28,9 @@ require.config({
         location: 'node_modules/require-css',
         main: 'css.min'
     }, {
-        name: 'vue-touch',
-        location: 'node_modules/vue-touch',
-        main: 'vue-touch'
+        name: 'hammerjs',
+        location: 'node_modules/hammerjs',
+        main: 'hammer.min'
     }]
 });
 

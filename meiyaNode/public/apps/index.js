@@ -1,5 +1,7 @@
 define(['text!./view.html', '../components/diy/index', '../components/wild/index', '../components/pet/index', 'vue', 'bootstrap', 'vue-touch', 'css!./style.css'], function (_view, diy, wild, pet, vue, bootstrap, vueTouch) {
     
+    vue.use(vueTouch);
+
     var app = new vue({
 
         el: 'body',
@@ -30,8 +32,6 @@ define(['text!./view.html', '../components/diy/index', '../components/wild/index
         }
 
     });
-    
-    app.use(vueTouch);
 
     return app;
 
