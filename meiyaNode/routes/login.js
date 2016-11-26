@@ -4,7 +4,11 @@ var userDao = require('../dao/userDao');
 
 /* GET login listing. */
 router.get('/', function(req, res, next) {
-    res.render('login', {username: ''});
+    if (req.session.uid) {
+        res.render('admin');
+    } else {
+        res.render('login');
+    }
 });
 
 router.route('/login').post(function(req, res, next) {
