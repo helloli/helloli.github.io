@@ -5,7 +5,7 @@ var userDao = require('../dao/userDao');
 /* GET login listing. */
 router.get('/', function(req, res, next) {
     if (req.session.uid) {
-        res.render('admin');
+        res.redirect('/admin');
     } else {
         res.render('login');
     }
