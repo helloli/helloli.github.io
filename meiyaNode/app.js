@@ -40,11 +40,19 @@ app.use('/', routes);
 app.use('/users', users);
 app.get('/admin', function (req, res, next) {
   if (req.session.uid) {
-    res.render('login');
+    res.render('admin');
   } else {
     res.redirect('login');
   }
-})
+});
+// app.get('/login', function (req, res, next) {
+//   if (req.session.uid) {
+//     res.redirect('admin');
+//   } else {
+// // app.use('/login', login);
+//     res.render('login');
+//   }
+// })
 app.use('/login', login);
 
 // catch 404 and forward to error handler

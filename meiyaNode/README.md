@@ -4,3 +4,5 @@
 - 滚动式，图片随之翻转效果
 - vue图片懒加载https://github.com/JALBAA/vue-lazyload-img
 - 广告链接显示的问题，每次添加和修改仅仅是将modifyTime置为最新事件。取的时候去取最新的广告链接即可
+- https可以做
+- 上传图片到wei.bo可以做

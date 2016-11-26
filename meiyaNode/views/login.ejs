@@ -38,6 +38,11 @@
         .btn {
             width: 100%;
         }
+        .alert-danger,
+        .alert-warning {
+            margin-bottom: 0;
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -51,22 +56,38 @@
                 <div class="form-group">
                     <input id="password" type="password" class="form-control" placeholder="密码">
                 </div>
-                <button id="submit" type="button" class="btn btn-success">登录</button>
+                <div class="form-group">
+                    <button id="submit" type="button" class="btn btn-success">登录</button>
+                </div>
+                <div class="alert alert-danger">
+                    <p>用户名或密码填错啦!</p>
+                </div>
+                <div class="alert alert-warning">
+                    <p>服务端出问题啦，请联系管理员!</p>
+                </div>
              </form>
         </div>
     </div>
     <script>
         $(function () {
-            // $('#username').val();
-            // $('#password').val();
             $('#submit').click(function() {
                 var postData = {
                     username: $('#username').val(),
                     password: $('#password').val(),
                 }
                 $.post('/login/login', postData, function (res) {
-                    // alert(JSON.stringify(res));
-                    $('#h').text(res.username);
+                    if (res.code == '0') {
+                        $('.alert-danger').show();
+                        $('.alert-warning').hide();
+                    } else if (res.code == '200') {
+                        $('.alert-danger').hide();
+                        $('.alert-warning').hide();
+                        location.href = '/admin';
+                    } else {
+                        $('.alert-danger').hide();
+                        $('.alert-success').hide();
+                        $('.alert-warning').show();
+                    }
                 })
             })
         })
