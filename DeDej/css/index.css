@@ -77,7 +77,7 @@ p {
     cursor: pointer;
     padding: 10px 35px 16px 0px;
     position: absolute;
-    right: 15px;
+    right: 40px;
     top: 17px;
     bottom: 17px;
 }
@@ -189,7 +189,7 @@ p {
     position: absolute;
     top: 50%;
     color: #fff;
-    left: 15px;
+    left: 55px;
 }
 .button-down {
     bottom: 3%;
@@ -407,7 +407,8 @@ footer{
 }
 .third {
     display: none;
-    margin-bottom: 20px;
+    margin-bottom: 100px;
+    margin-top: 80px;
 }
 .twoLelUl {
     background-color: #fff;
@@ -416,8 +417,13 @@ footer{
     display: none;
 }
 .navbar-nav .twoLelUl li {
+    height: 10px;
+    line-height: 10px;
     cursor: pointer;
     /*padding-left: 0;*/
+}
+.twoLelUl li {
+    padding-top: 14px;
 }
 .twoLelUl li:hover {
     color: #f57800;
@@ -910,7 +916,7 @@ tbody tr:nth-last-of-type(1){
         margin-top: 5px;
     }
     .font-animate {
-        left: 5%;
+        left: 55px;
     }
     .slide_banner .slide-pagination {
         left: 5%;
