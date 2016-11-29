@@ -38,17 +38,19 @@
         });
     
     // 只有当页面滚动的时候navbar的border-bottom才显示
-    var timeout = false;
-    $(window).scroll( function () {
-        if (timeout) {
-            $('.navigationbar').addClass('border-bottom');
-            clearTimeout(timeout);
-        }
-        timeout = setTimeout(function(){
-            $('.navigationbar').removeClass('border-bottom');
-        },100); 
-    });
+    // var timeout = false;
+    // $(window).scroll( function () {
+    //     if (timeout) {
+    //         $('.navigationbar').addClass('border-bottom');
+    //         clearTimeout(timeout);
+    //     }
+    //     timeout = setTimeout(function(){
+    //         $('.navigationbar').removeClass('border-bottom');
+    //     },100); 
+    // });
     
+// 暂时在所有navigationbar下面显示一条白线
+    $('.navigationbar').addClass('border-bottom');
 //  hide/show
 
         $('.nav_slide_button').click(function() {

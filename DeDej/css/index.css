@@ -62,10 +62,14 @@ p {
     background: #000;
     transition: all;
 }
-
+.logo-wrap {
+    height: 56px;
+    width: 100px;
+    display: inline-block;
+}
 .logo {
     width: 100px;
-    height: 50px;
+/*    height: 50px;*/
     padding-top: 17px;
 }
 
@@ -136,7 +140,7 @@ p {
     width: 100%;
     text-align: center;
     background: #000;
-    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
 }
 .pull-wrap {
     position: fixed;
@@ -185,6 +189,7 @@ p {
     position: absolute;
     top: 50%;
     color: #fff;
+    left: 15px;
 }
 .button-down {
     bottom: 3%;
@@ -209,6 +214,7 @@ p {
 }
 .describe {
     position: absolute;
+    left: 0;
     width: 50%;
     padding: 2%;
     bottom: 0;
@@ -223,6 +229,7 @@ p {
     color: #f57800;
     background-color: rgba(255,255,255,1);
     transition: all 1s;
+    opacity: .9;
 }
 
 /*new*/
@@ -252,7 +259,7 @@ p {
 .font-list:hover {
     color: #f57800;
     transition: all 1s;
-    background: rgba(255,255,255,1); 
+    background: rgba(255,255,255,.9); 
 }
 /*about*/
 .about {
@@ -291,7 +298,7 @@ footer{
 }
 .addres-wrap h3{
     margin-top: 0;
-    font-size:34px;
+    font-size: 20px;
     margin-bottom:10%;
 }
 .addres-wrap p{
@@ -304,6 +311,9 @@ footer{
     margin-right: 7%;
     float:left;
     cursor:pointer;
+}
+.share a:hover {
+    opacity: .4;
 }
 .addres-wrap .share ul li.o{
     background:url(../images/Share.png) no-repeat 0 0;
@@ -329,7 +339,7 @@ footer{
     padding-bottom: 3%;
     height:10%;
     text-align:center;
-    font-size:20px;
+    font-size: 14px;
 }
 
 /*search.html*/
@@ -407,7 +417,7 @@ footer{
 }
 .navbar-nav .twoLelUl li {
     cursor: pointer;
-    padding-left: 0;
+    /*padding-left: 0;*/
 }
 .twoLelUl li:hover {
     color: #f57800;
@@ -849,7 +859,42 @@ tbody tr:nth-last-of-type(1){
     100%{-webkit-transform:scale(1.05,1.05);}
 }
 
+@media only screen and (min-width: 992px) {
+    .navbar-nav .twoLelUl li {
+        padding-left: 0px;
+    }
+}
 
+@media only screen and (max-width: 767px) {
+    .navbar-nav .twoLelUl li {
+        /*padding-left: auto;*/
+        text-align: center;
+    }
+    .navbar-nav .urban,
+    .architecture,
+    .landscape {
+        /*width: 33.33%;*/
+        /*position: fixed;*/
+        /*top: 56px;*/
+        text-align: center;
+        float: left;
+    }
+    .navbar-nav .urban {
+        /*left: 0;*/
+        width: 25%;
+    }
+    .architecture {
+        /*left: 25%;*/
+        width: 40%;
+    }
+    .landscape {
+        /*left: 65%;*/
+        width: 35%;
+    }
+    .logo-wrap {
+        width: 90%;
+    }
+}
 
 /*Media Query*/
 @media only screen and (min-width: 100px) and (max-width: 640px) {
@@ -947,8 +992,8 @@ tbody tr:nth-last-of-type(1){
 }
 
 #about .font-animate:hover{
-    background-color: #fff;
-    color: #f57800;
+    /*background-color: #fff;*/
+    /*color: #f57800;*/
 }
 
 .carousel-indicators-wrap {
@@ -1037,6 +1082,18 @@ tbody tr:nth-last-of-type(1){
 
 .container-fluid {
 
+}
+
+#map div{
+    height: 100%
+}
+
+#map div img{
+    width: 100%
+}
+
+.pull ul{
+    border-bottom: 1px solid #ddd;
 }
 /*#navBar .container-fluid .logo{
     position: relative;
