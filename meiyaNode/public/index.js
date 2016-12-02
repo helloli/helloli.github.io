@@ -9,7 +9,7 @@ require.config({
             exports: 'jQuery'
         },
         'bootstrap': {
-            deps: ['jQuery'],
+            deps: ['jQuery']
         },
         'vue-touch': {
             deps: ['hammerjs']

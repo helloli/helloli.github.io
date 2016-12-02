@@ -5,39 +5,7 @@ define(['text!./view.html', 'vue'], function (view, vue) {
         data: function () {
             return {
                 diyad: this.picUrlParser('a15b4afegw1f938pm4oo6j20ki03kmxr'),
-                articles: this.formatter([
-                    {
-                        id: 1,
-                        avatar: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        pids: 'a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1477985876,
-                        author: '你丫才美工',
-                        authorLink: 'www.baidu.com',
-                        description: '测试蚊子蚊子蚊子测试蚊子蚊子蚊子测试蚊子蚊子蚊子测试蚊子蚊子蚊子测试蚊子蚊子蚊子aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',
-                        favs: 666,
-                        original: 1
-                    }, {
-                        id: 2,
-                        avatar: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        pids: 'a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1477985876,
-                        author: '你丫才黄瓜',
-                        authorLink: 'www.baidu.com',
-                        description: '测试',
-                        favs: 777,
-                        original: 1
-                    }, {
-                        id: 3,
-                        avatar: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        pids: 'a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3,a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1477985876,
-                        author: '你丫才美工',
-                        authorLink: 'www.baidu.com',
-                        description: '测试',
-                        favs: 888,
-                        original: 0
-                    }, 
-                ])
+                articles: []
             }
         },
 
@@ -47,7 +15,8 @@ define(['text!./view.html', 'vue'], function (view, vue) {
                 for (i in arr) {
                     arr[i].avatar = this.picUrlParser(arr[i].avatar);
                     arr[i].pids = this.pidsParser(arr[i].pids);
-                    arr[i].addTime = new Date(parseInt(arr[i].addTime) * 1000).toLocaleString();
+                    arr[i].addTime = new Date(arr[i].addTime).toLocaleString();
+                    // arr[i].addTime = new Date(parseInt(arr[i].addTime) * 1000).toLocaleString();
                     arr[i].author = '@' + arr[i].author;
                     arr[i].original = arr[i].original ? '原创' : '转载';
                 }
@@ -74,7 +43,12 @@ define(['text!./view.html', 'vue'], function (view, vue) {
         },
 
         ready: function () {
-
+            var self = this;
+            // 测试时间可以用1480499881000
+            $.get('/getNinePic', {time: Date.parse(new Date())}, function (data) {
+                // console.log(data.data);
+                self.articles = self.formatter(data.data);
+            })
         }
     };
 });

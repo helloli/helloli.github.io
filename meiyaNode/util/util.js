@@ -20,12 +20,12 @@ module.exports = {
         if (typeof ret === 'undefined') {
             res.json({
                 code: '-1',
-                msg: msg || 'wrong'
+                msg: msg || '出错了'
             });
         } else if (ret.length == 0) {
             res.json({
                 code: '0',
-                msg: msg || 'No data'
+                msg: msg || '没有数据'
             })
         } else {
             res.json(ret);
