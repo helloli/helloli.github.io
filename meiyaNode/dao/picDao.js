@@ -1,11 +1,9 @@
-// dao/userDao.js
+// dao/picDao.js
 // 实现与MySQL交互
 var mysql = require('mysql');
 var $conf = require('../conf/db');
 var $util = require('../util/util');
 var $sql = require('./picSqlMapping');
-
-// 
 
 // 使用连接池，提升性能
 var pool  = mysql.createPool($util.cloneObj($conf.mysql));
