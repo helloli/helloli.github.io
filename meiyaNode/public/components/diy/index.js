@@ -6,7 +6,7 @@ define(['text!./view.html', 'vue'], function (view, vue) {
             return {
                 diyad: this.picUrlParser('a15b4afegw1f938pm4oo6j20ki03kmxr'),
                 articles: [],
-                busyNinePic: false,
+                busy: false,
                 lastTime: null
             }
         },
@@ -43,22 +43,22 @@ define(['text!./view.html', 'vue'], function (view, vue) {
                 return this.picUrlParser(string.split(','));
             },
 
-            loadMoreNinePic: function() {
+            loadMore: function() {
                 if (this.lastTime) {
                     var self = this;
-                    this.busyNinePic = true;
+                    this.busy = true;
 
                     setTimeout(function () {
-                        // console.log(self.lastTime);
                         $.get('/getNinePic', {time: Date.parse(new Date(self.lastTime))}, function (data) {
-                            // console.log(data.data);
                             if (data.code == 200) {
                                 self.articles = self.articles.concat(self.formatter(data.data));
+                                // 取到数据的时候，可以继续触发上拉加载
+                                self.busy = false;
                             } else {
+                                // 取不到数据的时候，就不能上拉触发加载了
                                 console.log('Nothing got.');
                             }
                         })
-                        this.busyNinePic = false;
                     }, 1000);
                 }
             }

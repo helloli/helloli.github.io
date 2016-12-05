@@ -1,5 +1,5 @@
 <div class="content-wrap">
-    <div class="content" v-infinite-scroll="loadMoreNinePic()" infinite-scroll-disabled="busy" infinite-scroll-distance="70">
+    <div class="content" v-infinite-scroll="loadMore()" infinite-scroll-disabled="busy" infinite-scroll-distance="100">
         <div class="diy-ad" v-if="diyad">
             <img :src="diyad" alt="萌萌的广告君">
         </div>
@@ -10,7 +10,7 @@
             <div class="diy-article-content">
                 <div class="diy-article-msg">
                     <div class="diy-article-msg-right">
-                        <div class="diy-article-original">{{a.original}}</div>
+                        <div class="diy-article-original">{{a.original}}测试{{a.id}}</div>
                     </div>
                     <div class="diy-article-msg-left">
                         <div class="diy-article-name">{{a.author}}</div>
