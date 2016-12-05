@@ -1,5 +1,5 @@
 <div class="content-wrap">
-    <div class="content">
+    <div class="content" v-infinite-scroll="loadMoreNinePic()" infinite-scroll-disabled="busy" infinite-scroll-distance="70">
         <div class="diy-ad" v-if="diyad">
             <img :src="diyad" alt="萌萌的广告君">
         </div>

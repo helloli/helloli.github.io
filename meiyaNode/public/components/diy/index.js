@@ -5,13 +5,16 @@ define(['text!./view.html', 'vue'], function (view, vue) {
         data: function () {
             return {
                 diyad: this.picUrlParser('a15b4afegw1f938pm4oo6j20ki03kmxr'),
-                articles: []
+                articles: [],
+                busyNinePic: false,
+                lastTime: null
             }
         },
 
         methods: {
 
             formatter: function (arr) {
+                this.lastTime = arr[arr.length - 1].addTime;
                 for (i in arr) {
                     arr[i].avatar = this.picUrlParser(arr[i].avatar);
                     arr[i].pids = this.pidsParser(arr[i].pids);
@@ -38,6 +41,26 @@ define(['text!./view.html', 'vue'], function (view, vue) {
             // pids格式化
             pidsParser: function (string) {
                 return this.picUrlParser(string.split(','));
+            },
+
+            loadMoreNinePic: function() {
+                if (this.lastTime) {
+                    var self = this;
+                    this.busyNinePic = true;
+
+                    setTimeout(function () {
+                        // console.log(self.lastTime);
+                        $.get('/getNinePic', {time: Date.parse(new Date(self.lastTime))}, function (data) {
+                            // console.log(data.data);
+                            if (data.code == 200) {
+                                self.articles = self.articles.concat(self.formatter(data.data));
+                            } else {
+                                console.log('Nothing got.');
+                            }
+                        })
+                        this.busyNinePic = false;
+                    }, 1000);
+                }
             }
 
         },

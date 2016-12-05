@@ -10,6 +10,7 @@
     "requirejs": "^2.3.2",
     "text": "requirejs/text",
     "vue": "^1.0.21",
-    "vue-touch": "^1.1.0"
+    "vue-touch": "^1.1.0",
+    "vue-infinite-scroll": "^0.2.3"
   }
 }

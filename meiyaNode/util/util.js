@@ -19,12 +19,12 @@ module.exports = {
     jsonWrite: function (res, ret, msg) {
         if (typeof ret === 'undefined') {
             res.json({
-                code: '-1',
+                code: -1,
                 msg: msg || '出错了'
             });
         } else if (ret.length == 0) {
             res.json({
-                code: '0',
+                code: 0,
                 msg: msg || '没有数据'
             })
         } else {

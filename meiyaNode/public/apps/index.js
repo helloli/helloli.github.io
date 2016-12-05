@@ -1,6 +1,7 @@
-define(['text!./view.html', '../components/diy/index', '../components/wild/index', '../components/pet/index', 'vue', 'bootstrap', 'vue-touch', 'css!./style.css'], function (_view, diy, wild, pet, vue, bootstrap, vueTouch) {
+define(['text!./view.html', '../components/diy/index', '../components/wild/index', '../components/pet/index', 'vue', 'bootstrap', 'vue-touch', 'infiniteScroll', 'css!./style.css'], function (_view, diy, wild, pet, vue, bootstrap, vueTouch, infiniteScroll) {
     
     vue.use(vueTouch);
+    vue.use(infiniteScroll);
 
     var app = new vue({
 

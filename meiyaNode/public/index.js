@@ -31,6 +31,10 @@ require.config({
         name: 'hammerjs',
         location: 'node_modules/hammerjs',
         main: 'hammer.min'
+    }, {
+        name: 'infiniteScroll',
+        location: 'node_modules/vue-infinite-scroll',
+        main: 'vue-infinite-scroll'
     }]
 });
 
