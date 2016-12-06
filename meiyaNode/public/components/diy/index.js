@@ -4,7 +4,7 @@ define(['text!./view.html', 'vue'], function (view, vue) {
 
         data: function () {
             return {
-                diyad: this.picUrlParser('a15b4afegw1f938pm4oo6j20ki03kmxr'),
+                diyad: null,
                 articles: [],
                 busy: false,
                 lastTime: null
@@ -67,10 +67,15 @@ define(['text!./view.html', 'vue'], function (view, vue) {
 
         ready: function () {
             var self = this;
-            // 测试时间可以用1480499881000
+            // 首次进入页面获取前十条数据，测试时间可以用1480499881000
             $.get('/getNinePic', {time: Date.parse(new Date())}, function (data) {
                 // console.log(data.data);
                 self.articles = self.formatter(data.data);
+            })
+
+            $.get('/getAdPic', function (data) {
+                console.log(data);
+                self.diyad = self.picUrlParser(data.data.pid);
             })
         }
     };

@@ -21,4 +21,9 @@ router.route('/getNinePic').get(function(req, res, next) {
     // res.render('login', {username: req.body.username});
 })
 
+router.route('/getAdPic').get(function(req, res, next) {
+    // 检查用户
+    picDao.getAdPic(req, res, next);
+})
+
 module.exports = router;

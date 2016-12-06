@@ -11,6 +11,7 @@ var pool  = mysql.createPool($util.cloneObj($conf.mysql));
 
 module.exports = {
     // getNinePic: 'select * from ninepic where unix_timestamp(addTime)*1000 < ? order by addTime desc limit ?,?'
+    // getAdPic: 'select * from ads order by addTime desc limit 1',
     // insert: 'INSERT INTO user(username, password) VALUES(?, ?)',
     // update: 'update user set username=?, password=? where id=?',
     // delete: 'delete from user where username=?',
@@ -27,6 +28,26 @@ module.exports = {
                         code: 200,
                         msg: '成功',
                         data: result
+                    };
+                }
+
+                // 以json形式，把操作结果返回给前台页面
+                $util.jsonWrite(res, result);
+
+                // 释放连接 
+                connection.release();
+            })
+        })
+    },
+    getAdPic: function (req, res, next) {
+        pool.getConnection(function(err, connection) {
+            connection.query($sql.getAdPic, function(err, result) {
+                // console.log(result);
+                if (result.length) {
+                    result = {
+                        code: 200,
+                        msg: '成功',
+                        data: result[0]
                     };
                 }
 
