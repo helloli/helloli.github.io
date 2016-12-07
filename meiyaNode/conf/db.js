@@ -9,7 +9,13 @@ module.exports = {
         port: 3306,
         charset: 'utf8'
     },
-    pic: {
+    ninePic: {
         limit: 10
+    },
+    wildPic: {
+        limit: 7
+    },
+    petPic: {
+        limit: 7
     }
 };

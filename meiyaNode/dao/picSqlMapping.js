@@ -6,9 +6,10 @@ var pic = {
     // 获取九图
     getNinePic: 'select * from ninepic where unix_timestamp(addTime)*1000 < ? order by addTime desc limit ?,?',
     // 获取广告地址
-    getAdPic: 'select * from ads order by addTime desc limit 1',
-    // 获取野表情
-    // getWildPic: 'select * from wildpic '
+    getAdPic: 'select * from ads where type = ? order by addTime desc limit 1',
+    // 获取野表情,参数为起点日期和获取的天数
+    getPetPic: 'select * from petpic where addTime in (select addTime from (select distinct addTime from petpic where unix_timestamp(addTime)*1000 < ? order by addTime desc limit ?) as tmp) order by addTime desc',
+    getWildPic: 'select * from wildpic where addTime in (select addTime from (select distinct addTime from wildpic where unix_timestamp(addTime)*1000 < ? order by addTime desc limit ?) as tmp) order by addTime desc',
 
     insert: 'INSERT INTO user(username, password) VALUES(?, ?)',
     update: 'update user set username=?, password=? where id=?',

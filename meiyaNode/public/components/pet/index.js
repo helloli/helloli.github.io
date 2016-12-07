@@ -4,96 +4,17 @@ define(['text!./view.html', 'vue'], function (view, vue) {
 
         data: function () {
             return {
-                wildad: this.picUrlParser('a15b4afegw1f938pm4oo6j20ki03kmxr'),
-                articles: this.formatter([
-                    {
-                        id: 1,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1472985876000
-                    }, {
-                        id: 2,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1477985876000
-                    }, {
-                        id: 3,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1477985876000
-                    },  {
-                        id: 4,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1477985876000
-                    },  {
-                        id: 5,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1474985876000
-                    },  {
-                        id: 6,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1472985876000
-                    },  {
-                        id: 7,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1472985876000
-                    },  {
-                        id: 8,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1472985876000
-                    },  {
-                        id: 9,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1477985876000
-                    },  {
-                        id: 10,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1477985876000
-                    }, {
-                        id: 11,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1472985876000
-                    }, {
-                        id: 12,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1472985876000
-                    }, {
-                        id: 13,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1472985876000
-                    },  {
-                        id: 14,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1472985876000
-                    },  {
-                        id: 15,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1472985876000
-                    },  {
-                        id: 16,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1472985876000
-                    },  {
-                        id: 17,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1477985876000
-                    },  {
-                        id: 18,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1472985876000
-                    },  {
-                        id: 19,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1477985876000
-                    },  {
-                        id: 20,
-                        pid: 'a15b4afegw1f550ema2v8j203i03imx3',
-                        addTime: 1477985876000
-                    }, 
-                ])
+                wildad: null,
+                lastTime: null,
+                busy: false,
+                articles: []
             }
         },
 
         methods: {
 
             formatter: function (arr) {
+                this.lastTime = arr[arr.length - 1].addTime;
                 var resultObj = {},
                     resultArr = [];
                 // 把数据按照日期进行归类，放到resultObj对象中
@@ -131,12 +52,43 @@ define(['text!./view.html', 'vue'], function (view, vue) {
                     return url;
                 }
                 return 'http://ww2.sinaimg.cn/' + type + '/' + url;
+            },
+
+            loadMore: function() {
+                if (this.lastTime) {
+                    var self = this;
+                    this.busy = true;
+
+                    setTimeout(function () {
+                        $.get('/getPetPic', {time: Date.parse(new Date(self.lastTime))}, function (data) {
+                            if (data.code == 200) {
+                                self.articles = self.articles.concat(self.formatter(data.data));
+                                // 取到数据的时候，可以继续触发上拉加载
+                                self.busy = false;
+                            } else {
+                                // 取不到数据的时候，就不能上拉触发加载了
+                                console.log('Nothing got.');
+                            }
+                        })
+                    }, 1000);
+                }
             }
 
         },
 
         ready: function () {
             // alert(this.articles);
+            var self = this;
+            // 首次进入页面获取前十条数据，测试时间可以用1480499881000
+            $.get('/getPetPic', {time: Date.parse(new Date())}, function (data) {
+                // console.log(data.data);
+                self.articles = self.formatter(data.data);
+            });
+
+            $.get('/getAdPic', {type: 'petpic'}, function (data) {
+                // console.log(data);
+                self.wildad = self.picUrlParser(data.data.pid);
+            });
         }
     };
 });

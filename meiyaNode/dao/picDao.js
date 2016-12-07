@@ -21,7 +21,49 @@ module.exports = {
     getNinePic: function (req, res, next) {
         pool.getConnection(function(err, connection) {
             var param = req.query;
-            connection.query($sql.getNinePic, [param.time, 0, $conf.pic.limit], function(err, result) {
+            connection.query($sql.getNinePic, [param.time, 0, $conf.ninePic.limit], function(err, result) {
+                // console.log(result);
+                if (result.length) {
+                    result = {
+                        code: 200,
+                        msg: '成功',
+                        data: result
+                    };
+                }
+
+                // 以json形式，把操作结果返回给前台页面
+                $util.jsonWrite(res, result);
+
+                // 释放连接 
+                connection.release();
+            })
+        })
+    },
+    getWildPic: function (req, res, next) {
+        pool.getConnection(function(err, connection) {
+            var param = req.query;
+            connection.query($sql.getWildPic, [param.time, $conf.wildPic.limit], function(err, result) {
+                // console.log(result);
+                if (result.length) {
+                    result = {
+                        code: 200,
+                        msg: '成功',
+                        data: result
+                    };
+                }
+
+                // 以json形式，把操作结果返回给前台页面
+                $util.jsonWrite(res, result);
+
+                // 释放连接 
+                connection.release();
+            })
+        })
+    },
+    getPetPic: function (req, res, next) {
+        pool.getConnection(function(err, connection) {
+            var param = req.query;
+            connection.query($sql.getPetPic, [param.time, $conf.petPic.limit], function(err, result) {
                 // console.log(result);
                 if (result.length) {
                     result = {
@@ -41,7 +83,8 @@ module.exports = {
     },
     getAdPic: function (req, res, next) {
         pool.getConnection(function(err, connection) {
-            connection.query($sql.getAdPic, function(err, result) {
+            var param = req.query;
+            connection.query($sql.getAdPic, [param.type], function(err, result) {
                 // console.log(result);
                 if (result.length) {
                     result = {

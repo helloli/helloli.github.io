@@ -26,4 +26,14 @@ router.route('/getAdPic').get(function(req, res, next) {
     picDao.getAdPic(req, res, next);
 })
 
+router.route('/getPetPic').get(function(req, res, next) {
+    // 检查用户
+    picDao.getPetPic(req, res, next);
+})
+
+router.route('/getWildPic').get(function(req, res, next) {
+    // 检查用户
+    picDao.getWildPic(req, res, next);
+})
+
 module.exports = router;

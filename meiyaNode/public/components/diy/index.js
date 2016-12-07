@@ -71,12 +71,12 @@ define(['text!./view.html', 'vue'], function (view, vue) {
             $.get('/getNinePic', {time: Date.parse(new Date())}, function (data) {
                 // console.log(data.data);
                 self.articles = self.formatter(data.data);
-            })
+            });
 
-            $.get('/getAdPic', function (data) {
-                console.log(data);
+            $.get('/getAdPic', {type: 'ninepic'}, function (data) {
+                // console.log(data);
                 self.diyad = self.picUrlParser(data.data.pid);
-            })
+            });
         }
     };
 });

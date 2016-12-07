@@ -1,6 +1,6 @@
 <div class="content-wrap">
     <div class="content">
-        <div class="wild-ad" v-if="wildad">
+        <div class="wild-ad" v-if="wildad" v-infinite-scroll="loadMore()" infinite-scroll-disabled="busy" infinite-scroll-distance="100">
             <img :src="wildad" alt="萌萌的广告君">
         </div>
         <div v-for="a in articles" class="wild-article-wrap clearfix">

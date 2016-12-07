@@ -167,7 +167,7 @@ p {
     height: 16px;
     overflow: hidden;
     position: absolute;
-    left: 1%;
+    left: 40px;
     bottom: 3%;
     z-index: 1;
 }
@@ -189,7 +189,7 @@ p {
     position: absolute;
     top: 50%;
     color: #fff;
-    left: 55px;
+    left: 40px;
 }
 .button-down {
     bottom: 3%;
@@ -343,28 +343,54 @@ footer{
 }
 
 /*search.html*/
+.custom-form-control {
+    box-shadow: 0 0 0;
+}
+.custom-form-control:focus {
+    border-color: orange;
+    -webkit-box-shadow: 0 0 0;
+    box-shadow: 0 0 0;
+}
+.search {
+    margin-top: 56px;
+}
 .section-title {
     margin-bottom: 50px;
-    letter-spacing: 8px;
+    /*letter-spacing: 8px;*/
 }
 .searchBox {
     padding-bottom: 30px;
     border-bottom: 1px solid #ccc;
 }
 .single-item {
-    height: 135px;
-    overflow: hidden;
+    height: 175px;
+    /*overflow: hidden;*/
     border-bottom: 1px solid #ccc;
+}
+.single-item div img {
+    margin-top: 21px;
 }
 .name-title {
     font-size: 13px;
     font-weight: 400;
-    margin: 10px 0 5px;
+    margin: 21px 0 5px;
 }
 .test-name {
     font-weight: 700;
     letter-spacing: 1px;
-    margin: 10px 0 10px;
+    margin: 10px 0 25px;
+}
+.searchFont p,
+.test-name {
+    overflow: hidden;  
+    text-overflow: ellipsis;  
+    display: -webkit-box;  
+    -webkit-line-clamp: 3;  
+    -webkit-box-orient: vertical;
+    text-justify : auto;
+}
+.test-name {
+    -webkit-line-clamp: 1;  
 }
 .searchFont:hover {
     color: #f57800;
@@ -496,11 +522,12 @@ footer{
 }
 .concept-warp .describe h3 {
     font-size:16px;
-    margin:20px 0;
+    margin:0;
 }
-.concept-wrap .describe h4{
+.concept-wrap .describe h4 {
     font-size:26px;
     line-height:34px;
+    margin: 0;
 }
 .concept-warp .describe:hover {
     left: 0;
@@ -871,6 +898,12 @@ tbody tr:nth-last-of-type(1){
     }
 }
 
+@media only screen and (max-width: 992px) {
+    .single-item {
+        height: 320px;
+    }
+}
+
 @media only screen and (max-width: 767px) {
     .navbar-nav .twoLelUl li {
         /*padding-left: auto;*/
@@ -1100,6 +1133,53 @@ tbody tr:nth-last-of-type(1){
 
 .pull ul{
     border-bottom: 1px solid #ddd;
+}
+
+.fontBox h2{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.fontBox h3{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.fontBox h4{
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.describe h4 {
+    margin: 0;
+}
+
+.btnGroup .close img{
+    width: 21px;
+}
+
+.btnGroup .clearfix .close{
+    margin-bottom: 5px;
+}
+
+.projectContent .wrapper .third{
+    margin-left: 6%;
+    margin-right: 6%;
+}
+
+.navigationbar .row .navbar-nav .landscape {
+        padding-left: 58px;
+        padding-right: 0;
+}
+
+.detailed .wrapper .third{
+    margin-left: 6%;
+    margin-right: 6%;
+}
+
+.navigationbar .news-third .events{
+    padding-left: 58px;
+    padding-right: 0;
 }
 /*#navBar .container-fluid .logo{
     position: relative;
