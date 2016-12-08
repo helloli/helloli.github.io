@@ -11,7 +11,7 @@
  Target Server Version : 50505
  File Encoding         : utf-8
 
- Date: 12/06/2016 11:55:53 AM
+ Date: 12/08/2016 10:00:06 AM
 */
 
 SET NAMES utf8;
@@ -25,14 +25,15 @@ CREATE TABLE `ads` (
   `id` int(255) NOT NULL AUTO_INCREMENT,
   `pid` varchar(255) DEFAULT NULL,
   `addTime` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `type` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `ads`
 -- ----------------------------
 BEGIN;
-INSERT INTO `ads` VALUES ('1', 'a15b4afegw1f938pm4oo6j20ki03kmxr', '2016-12-06 11:42:31');
+INSERT INTO `ads` VALUES ('1', 'a15b4afegw1f938pm4oo6j20ki03kmxr', '2016-12-06 11:42:31', 'ninepic'), ('2', 'a15b4afegw1f938pm4oo6j20ki03kmxr', '2016-12-06 11:42:31', 'wildpic'), ('3', 'a15b4afegw1f938pm4oo6j20ki03kmxr', '2016-12-06 11:42:31', 'petpic');
 COMMIT;
 
 -- ----------------------------
@@ -85,15 +86,15 @@ CREATE TABLE `petpic` (
   `id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'id号，自增的',
   `pid` varchar(1024) NOT NULL COMMENT '图片的链接地址',
   `visible` int(1) NOT NULL DEFAULT '1' COMMENT '可见性，0表示不可见，1表示可见',
-  `addTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `addTime` date NOT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `petpic`
 -- ----------------------------
 BEGIN;
-INSERT INTO `petpic` VALUES ('1', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-11-16 16:35:51');
+INSERT INTO `petpic` VALUES ('1', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('2', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('3', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('4', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('5', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('6', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('7', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('8', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('9', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('10', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('11', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('12', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-03'), ('13', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-03'), ('14', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-03'), ('15', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-03'), ('16', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-03'), ('17', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-04'), ('18', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-04'), ('19', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-04'), ('20', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-04'), ('21', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-02'), ('22', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-01'), ('23', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-01'), ('24', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-11-01'), ('25', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-02');
 COMMIT;
 
 -- ----------------------------
@@ -123,15 +124,15 @@ CREATE TABLE `wildpic` (
   `id` int(255) NOT NULL AUTO_INCREMENT COMMENT 'id号，自增的',
   `pid` varchar(1024) NOT NULL COMMENT '图片的链接地址',
   `visible` int(1) NOT NULL DEFAULT '1' COMMENT '可见性，0表示不可见，1表示可见',
-  `addTime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '添加时间',
+  `addTime` date NOT NULL COMMENT '添加时间',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 --  Records of `wildpic`
 -- ----------------------------
 BEGIN;
-INSERT INTO `wildpic` VALUES ('1', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-11-16 16:35:51');
+INSERT INTO `wildpic` VALUES ('1', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('2', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('3', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('4', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('5', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('6', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('7', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('8', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('9', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('10', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('11', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-06'), ('12', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-03'), ('13', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-03'), ('14', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-03'), ('15', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-03'), ('16', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-03'), ('17', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-04'), ('18', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-04'), ('19', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-04'), ('20', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-04'), ('21', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-02'), ('22', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-01'), ('23', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-01'), ('24', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-11-01'), ('25', 'a15b4afegw1f550ema2v8j203i03imx3', '1', '2016-12-02');
 COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
