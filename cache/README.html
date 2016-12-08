@@ -1017,15 +1017,27 @@ body .markdown-body
 </style><title>README</title></head><body><article class="markdown-body"><h2 id="web"><a name="user-content-web" href="#web" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Web缓存技术</h2>
 <h3 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>一、缓存概述</h3>
 <p>缓存原本是一个硬件的概念：缓存就是数据交换的缓冲区（称作Cache），当某一硬件要读取数据时，会首先从缓存中查找需要的数据，如果找到了则直接执行，找不到的话则从内存中找。由于缓存的运行速度比内存快得多，故缓存的作用就是帮助硬件更快地运行。</p>
-<p><img alt="缓存结构" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/cache.png" /></p>
+<p>在一个Web应用中，应用到缓存的地方有很多，主要有浏览器缓存，页面缓存，服务器缓存，数据库缓存等。缓存的作用表现在前端可以大大加快页面加载速度，在后端表现为大大减少服务器和数据库压力。</p>
+<p><img alt="缓存结构" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/cache.png" /></p>
 <h3 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>二、浏览器缓存</h3>
+<p>浏览器端缓存规则主要在HTTP协议头和HTML的meta标签中定义。他们分别从新鲜度和校验值两个维度来规定浏览器是否可以直接使用缓存中的副本，还是需要去源服务器获取更新的版本。</p>
+<p><strong>新鲜度（过期机制）</strong>：也就是缓存副本有效期。一个缓存副本必须满足以下条件，浏览器会认为它是有效的，足够新的：</p>
+<ul>
+<li>含有完整的过期时间控制头信息（HTTP协议报头），并且仍在有效期内；</li>
+<li>浏览器已经使用过这个缓存副本，并且在一个会话中已经检查过新鲜度</li>
+<li>满足以上两个情况的一种，浏览器会直接从缓存中获取副本并渲染。</li>
+</ul>
+<p>满足以上两个情况的一种，浏览器会直接从缓存中获取副本并渲染。</p>
+<p><strong>校验值（验证机制）</strong>：服务器返回资源的时候有时在控制头信息带上这个资源的实体标签Etag（Entity Tag），它可以用来作为浏览器再次请求过程的校验标识。如过发现校验标识不匹配，说明资源已经被修改或过期，浏览器需求重新获取资源内容。</p>
 <h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>三、模块缓存</h3>
 <h3 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>四、页面缓存</h3>
 <h3 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>五、数据库缓存</h3>
 <h3 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>六、缓存的复制与分发</h3>
-<h3 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用一、快速消除各类缓存</h3>
-<h3 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用二、图片缓存的预载与分发</h3>
-<h4 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>参考文档：</h4>
+<h3 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>七、与缓存相关的算法</h3>
+<h3 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用一、快速消除各类缓存</h3>
+<h3 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用二、图片缓存的预载与分发</h3>
+<hr />
+<h4 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>参考文档：</h4>
 <ol>
 <li><a href="https://my.oschina.net/thinkive/blog/685716"><a href="https://my.oschina.net/thinkive/blog/685716"><a href="https://my.oschina.net/thinkive/blog/685716">https://my.oschina.net/thinkive/blog/685716</a></a></a></li>
 <li>test</li>
