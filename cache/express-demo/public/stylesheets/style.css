@@ -1,0 +1,15 @@
+body {
+  /*padding: 50px;*/
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.test {
+    background-color: orange;
+    background-color: green;
+    width: 500px;
+    height: 500px;
+}

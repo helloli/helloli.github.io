@@ -8,9 +8,9 @@
 
 缓存的作用主要有：
 
+- 加快页面打开速度
 - 减少网络带宽消耗
 - 降低服务器压力
-- 减少网络延迟，加快页面打开速度
 
 ![缓存结构](images/cache.png)
 
@@ -42,6 +42,15 @@
 - **协商缓存阶段**：如果在本地缓存找到对应的资源，但是不知道该资源是否过期或者已经过期，则发一个http请求到服务器,然后服务器判断这个请求，如果请求的资源在服务器上没有改动过，则返回304，让浏览器使用本地找到的那个资源；
 - **缓存失败阶段**：当服务器发现请求的资源已经修改过，或者这是一个新的请求(在本来没有找到资源)，服务器则返回该资源的数据，并且返回200， 当然这个是指找到资源的情况下，如果服务器上没有这个资源，则返回404。
 
+**用户操作行为与缓存的关系**
+![用户操作与缓存的关系](images/action.png)
+
+浏览器中的操作对缓存的影响:
+
+- 强制刷新 – 当按下ctrl+F5来刷新页面的时候, 浏览器将绕过各种缓存(本地缓存和协商缓存), 直接让服务器返回最新的资源;
+- 普通刷新 – 当按下F5或者点击刷新按钮来刷新页面的时候,浏览器将绕过本地缓蹲来发送请求到服务器, 此时, 协商缓存是有效的
+- 回车或转向 – 当在地址栏上输入回车或者按下跳转按钮的时候, 所有缓存都生效
+
 ### 三、模块缓存
 ### 四、页面缓存
 ### 五、数据库缓存
@@ -55,4 +64,5 @@
 #### 参考文档：
 
 1. [https://my.oschina.net/thinkive/blog/685716](https://my.oschina.net/thinkive/blog/685716)
-2. test
+2. [http://evanhahn.com/express-dot-static-deep-dive/](http://evanhahn.com/express-dot-static-deep-dive/)
+3. [http://stackoverflow.com/questions/18557251/why-does-browser-still-sends-request-for-cache-control-public-with-max-age](http://stackoverflow.com/questions/18557251/why-does-browser-still-sends-request-for-cache-control-public-with-max-age)
