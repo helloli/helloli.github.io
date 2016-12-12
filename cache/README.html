@@ -1037,7 +1037,7 @@ body .markdown-body
 <p><strong>校验值（验证机制）</strong>：服务器返回资源的时候有时在控制头信息带上这个资源的实体标签Etag（Entity Tag），它可以用来作为浏览器再次请求过程的校验标识。如过发现校验标识不匹配，说明资源已经被修改或过期，浏览器需求重新获取资源内容。</p>
 <p>在HTTP请求和响应的消息报头中，常见的与缓存有关的消息报头有：</p>
 <p><img alt="缓存结构" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/http.png" /></p>
-<p><strong>HTTP缓存机制</strong>：</p>
+<h4 id="http"><a name="user-content-http" href="#http" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>HTTP缓存机制：</h4>
 <p>缓存行为主要由缓存策略决定，而缓存策略由内容拥有者设置。这些策略主要通过特定的HTTP头部来清晰地表达。</p>
 <p>当一个用户发起一个静态资源请求的时候，浏览器会通过以下几步来获取资源：</p>
 <ul>
@@ -1045,23 +1045,70 @@ body .markdown-body
 <li><strong>协商缓存阶段</strong>：如果在本地缓存找到对应的资源，但是不知道该资源是否过期或者已经过期，则发一个http请求到服务器,然后服务器判断这个请求，如果请求的资源在服务器上没有改动过，则返回304，让浏览器使用本地找到的那个资源；</li>
 <li><strong>缓存失败阶段</strong>：当服务器发现请求的资源已经修改过，或者这是一个新的请求(在本来没有找到资源)，服务器则返回该资源的数据，并且返回200， 当然这个是指找到资源的情况下，如果服务器上没有这个资源，则返回404。</li>
 </ul>
-<p><strong>用户操作行为与缓存的关系</strong><br />
-<img alt="用户操作与缓存的关系" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/action.png" /></p>
+<h4 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>用户操作行为与缓存的关系</h4>
+<p><img alt="用户操作与缓存的关系" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/action.png" /></p>
 <p>浏览器中的操作对缓存的影响:</p>
 <ul>
 <li>强制刷新 – 当按下ctrl+F5来刷新页面的时候, 浏览器将绕过各种缓存(本地缓存和协商缓存), 直接让服务器返回最新的资源;</li>
-<li>普通刷新 – 当按下F5或者点击刷新按钮来刷新页面的时候,浏览器将绕过本地缓蹲来发送请求到服务器, 此时, 协商缓存是有效的</li>
+<li>普通刷新 – 当按下F5或者点击刷新按钮来刷新页面的时候,浏览器将绕过本地缓存来发送请求到服务器, 此时, 协商缓存是有效的</li>
 <li>回车或转向 – 当在地址栏上输入回车或者按下跳转按钮的时候, 所有缓存都生效</li>
 </ul>
-<h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>三、模块缓存</h3>
-<h3 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>四、页面缓存</h3>
-<h3 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>五、数据库缓存</h3>
-<h3 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>六、缓存的复制与分发</h3>
-<h3 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>七、与缓存相关的算法</h3>
-<h3 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用一、快速消除各类缓存</h3>
-<h3 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用二、图片缓存的预载与分发</h3>
+<h4 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>本地缓存阶段</h4>
+<p><strong>Expires</strong></p>
+<p>指定缓存到期GMT的绝对时间，如果设了max-age，max-age就会覆盖expires。如果expires到期需要重新请求。</p>
+<p><strong>Cache-Control</strong></p>
+<p>Cache-Control是http 1.1中为了弥补 Expires 缺陷新加入的。对已缓存的内容进行控制：</p>
+<ul>
+<li>Cache-control: public表示缓存的版本可以被代理服务器或者其他中间服务器识别。</li>
+<li>Cache-control: private意味着这个文件对不同的用户是不同的。只有用户自己的浏览器能够进行缓存，公共的代理服务器不允许缓存。</li>
+<li>Cache-control: no-cache意味着文件的内容不应当被缓存。这在搜索或者翻页结果中非常有用，因为同样的URL，对应的内容会发生变化。</li>
+</ul>
+<p><strong>其他相关控制字段</strong></p>
+<ul>
+<li>max-age: 指定缓存过期的相对时间秒数，max-ag=0或者是负值，浏览器会在对应的缓存中把Expires设置为1970-01-01 08:00:00。</li>
+<li>s-maxage: 类似于max-age，只用在共享缓存上，比如proxy。</li>
+<li>public: 通常情况下需要http身份验证的情况，响应是不可cahce的，加上public可以使它被cache。</li>
+<li>no-cache: 强制浏览器在使用cache拷贝之前先提交一个http请求到源服务器进行确认。这对身份验证来说是非常有用的,能比较好的遵守 (可以结合public进行考虑)。它对维持一个资源总是最新的也很有用，与此同时还不完全丧失cache带来的好处)，因为它在本地是有拷贝的，但是在用之前都进行了确认，这样http请求并未减少，但可能会减少一个响应体。</li>
+<li>no-store: 告诉浏览器在任何情况下都不要进行cache，不在本地保留拷贝。</li>
+<li>must-revalidate: 强制浏览器严格遵守你设置的cache规则。</li>
+<li>proxy-revalidate: 强制proxy严格遵守你设置的cache规则。</li>
+<li>cache：使用本地缓存，不发生请求。</li>
+</ul>
+<p>用法举例: Cache-Control: max-age=3600, must-revalidate</p>
+<h4 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>协商缓存阶段</h4>
+<p><strong>Last-Modified &amp; if-modified-since</strong></p>
+<p>Last-Modified与If-Modified-Since是一对报文头，属于http 1.0。<br />
+last-modified是WEB服务器认为对象的最后修改时间，比如文件的最后修改时间，动态页面的最后产生时间。</p>
+<p><strong>ETag &amp; If-None-Match</strong></p>
+<p>ETag与If-None-Match是一对报文，属于http 1.1。</p>
+<p>ETag可以用来解决这种问题。ETag是一个文件的唯一标志符。就像一个哈希或者指纹，每个文件都有一个单独的标志，只要这个文件发生了改变，这个标志就会发生变化。</p>
+<p>ETag机制类似于乐观锁机制，如果请求报文的ETag与服务器的不一致，则表示该资源已经被修改过来，需要发最新的内容给浏览器。</p>
+<p>同时使用这两个报文头，在完全匹配If-Modified-Since和If-None-Match即检查完修改时间和Etag之后，如都与服务器的相符，服务器返回304，否则，发送最新内容给浏览器。</p>
+<p>Etag/lastModified过程如下：</p>
+<ol>
+<li>客户端请求一个页面（A）。</li>
+<li>服务器返回页面A，并在给A加上一个Last-Modified/ETag。</li>
+<li>客户端展现该页面，并将页面连同Last-Modified/ETag一起缓存。</li>
+<li>客户再次请求页面A，并将上次请求时服务器返回的Last-Modified/ETag一起传递给服务器。</li>
+<li>服务器检查该Last-Modified或ETag，并判断出该页面自上次客户端请求之后还未被修改，直接返回响应304和一个空的响应体。</li>
+</ol>
+<p>304：通过If-Modified-Since If-Match判断资源是否修改，如未修改则返回304，发生了一次请求，但请求内容长度为0，节省了带宽。 如果有多台负载均衡的服务器，不同服务器计算出的Etag可能不同，这样就会造成资源的重复加载。</p>
+<p>Etag 主要为了解决 Last-Modified 无法解决的一些问题：</p>
+<p>1、一些文件也许会周期性的更改，但是他的内容并不改变(仅仅改变的修改时间)，这个时候我们并不希望客户端认为这个文件被修改了，而重新GET；</p>
+<p>2、某些文件修改非常频繁，比如在秒以下的时间内进行修改，(比方说1s内修改了N次)，If-Modified-Since能检查到的粒度是s级的，这种修改无法判断(或者说UNIX记录MTIME只能精确到秒)；</p>
+<p>3、某些服务器不能精确的得到文件的最后修改时间。</p>
+<p>其他标签</p>
+<p>Content-Length：尽管并没有在缓存中明确涉及，Content-Length头部在设置缓存策略时很重要。某些软件如果不提前获知内容的大小以留出足够空间，则会拒绝缓存该内容。</p>
+<p>Vary：缓存系统通常使用请求的主机和路径作为存储该资源的键。当判断一个请求是否是请求同样内容时，Vary头部可以被用来提醒缓存系统需要注意另一个附加头部。它通常被用来告诉缓存系统同样注意Accept-Encoding头部，以便缓存系统能够区分压缩和未压缩的内容。</p>
+<h3 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>三、模块缓存</h3>
+<h3 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>四、页面缓存</h3>
+<h3 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>五、数据库缓存</h3>
+<h3 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>六、缓存的复制与分发</h3>
+<h3 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>七、与缓存相关的算法</h3>
+<h3 id="_11"><a name="user-content-_11" href="#_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用一、快速消除各类缓存</h3>
+<h3 id="_12"><a name="user-content-_12" href="#_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用二、图片缓存的预载与分发</h3>
 <hr />
-<h4 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>参考文档：</h4>
+<h4 id="_13"><a name="user-content-_13" href="#_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>参考文档：</h4>
 <ol>
 <li><a href="https://my.oschina.net/thinkive/blog/685716"><a href="https://my.oschina.net/thinkive/blog/685716"><a href="https://my.oschina.net/thinkive/blog/685716">https://my.oschina.net/thinkive/blog/685716</a></a></a></li>
 <li><a href="http://evanhahn.com/express-dot-static-deep-dive/"><a href="http://evanhahn.com/express-dot-static-deep-dive/"><a href="http://evanhahn.com/express-dot-static-deep-dive/">http://evanhahn.com/express-dot-static-deep-dive/</a></a></a></li>
