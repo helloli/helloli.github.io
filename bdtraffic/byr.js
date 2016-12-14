@@ -6,3 +6,7 @@
 // chrome.extension.sendMessage({greeting:"hello"},function(response){
 //     alert(response.farewell);
 // });
+
+var s = document.createElement('script');
+s.innerHTML = 'console.log("Hello, byr!")';
+document.querySelector('body').appendChild(s);
