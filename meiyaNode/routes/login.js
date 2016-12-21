@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var userDao = require('../dao/userDao');
+var $util = require('../util/util');
 
 /* GET login listing. */
 router.get('/', function(req, res, next) {
@@ -13,10 +14,12 @@ router.get('/', function(req, res, next) {
 
 router.route('/login').post(function(req, res, next) {
     // 检查用户
-    userDao.checkPassword(req, res, next);
+    userDao.checkPassword(req, res, next, function (data) {
+        console.log(data, 'data');
+    });
 
-    req.session.uid = req.body.username;
-    console.log(req.body.username);
+    // req.session.uid = req.body.username;
+    // console.log(req.body.username);
     // console.log(req.session);
     // res.json(req.body);
     // res.send(200);

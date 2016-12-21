@@ -20,12 +20,12 @@ module.exports = {
         if (typeof ret === 'undefined') {
             res.json({
                 code: -1,
-                msg: msg || '出错了'
+                msg: msg || '服务器出错了，程序猿小黄瓜表示压力山大>_<'
             });
         } else if (ret.length == 0) {
             res.json({
                 code: 0,
-                msg: msg || '没有数据'
+                msg: msg || '木有数据了>_<'
             })
         } else {
             res.json(ret);

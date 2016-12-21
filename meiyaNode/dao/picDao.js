@@ -8,7 +8,6 @@ var $sql = require('./picSqlMapping');
 // 使用连接池，提升性能
 var pool  = mysql.createPool($util.cloneObj($conf.mysql));
 
-
 module.exports = {
     // getNinePic: 'select * from ninepic where unix_timestamp(addTime)*1000 < ? order by addTime desc limit ?,?'
     // getAdPic: 'select * from ads order by addTime desc limit 1',
@@ -20,158 +19,188 @@ module.exports = {
     // checkPassword: 'select * from user where username=? and password=?'
     getNinePic: function (req, res, next) {
         pool.getConnection(function(err, connection) {
-            var param = req.query;
-            connection.query($sql.getNinePic, [param.time, 0, $conf.ninePic.limit], function(err, result) {
-                // console.log(result);
-                if (result.length) {
-                    result = {
-                        code: 200,
-                        msg: '成功',
-                        data: result
-                    };
-                }
-
+            if (!connection) {
                 // 以json形式，把操作结果返回给前台页面
-                $util.jsonWrite(res, result);
+                $util.jsonWrite(res);
+            } else {
+                var param = req.query;
+                connection.query($sql.getNinePic, [param.time, 0, $conf.ninePic.limit], function(err, result) {
+                    // console.log(result);
+                    if (result.length) {
+                        result = {
+                            code: 200,
+                            msg: '成功',
+                            data: result
+                        };
+                    }
 
-                // 释放连接 
-                connection.release();
-            })
+                    // 以json形式，把操作结果返回给前台页面
+                    $util.jsonWrite(res, result);
+
+                    // 释放连接 
+                    connection.release();
+                })
+            }
         })
     },
     getWildPic: function (req, res, next) {
         pool.getConnection(function(err, connection) {
-            var param = req.query;
-            connection.query($sql.getWildPic, [param.time, $conf.wildPic.limit], function(err, result) {
-                // console.log(result);
-                if (result.length) {
-                    result = {
-                        code: 200,
-                        msg: '成功',
-                        data: result
-                    };
-                }
-
+            if (!connection) {
                 // 以json形式，把操作结果返回给前台页面
-                $util.jsonWrite(res, result);
+                $util.jsonWrite(res);
+            } else {
+                var param = req.query;
+                connection.query($sql.getWildPic, [param.time, $conf.wildPic.limit], function(err, result) {
+                    // console.log(result);
+                    if (result.length) {
+                        result = {
+                            code: 200,
+                            msg: '成功',
+                            data: result
+                        };
+                    }
 
-                // 释放连接 
-                connection.release();
-            })
+                    // 以json形式，把操作结果返回给前台页面
+                    $util.jsonWrite(res, result);
+
+                    // 释放连接 
+                    connection.release();
+                })
+            }
         })
     },
     getPetPic: function (req, res, next) {
         pool.getConnection(function(err, connection) {
-            var param = req.query;
-            connection.query($sql.getPetPic, [param.time, $conf.petPic.limit], function(err, result) {
-                // console.log(result);
-                if (result.length) {
-                    result = {
-                        code: 200,
-                        msg: '成功',
-                        data: result
-                    };
-                }
-
+            if (!connection) {
                 // 以json形式，把操作结果返回给前台页面
-                $util.jsonWrite(res, result);
+                $util.jsonWrite(res);
+            } else {
+                var param = req.query;
+                connection.query($sql.getPetPic, [param.time, $conf.petPic.limit], function(err, result) {
+                    // console.log(result);
+                    if (result.length) {
+                        result = {
+                            code: 200,
+                            msg: '成功',
+                            data: result
+                        };
+                    }
 
-                // 释放连接 
-                connection.release();
-            })
+                    // 以json形式，把操作结果返回给前台页面
+                    $util.jsonWrite(res, result);
+
+                    // 释放连接 
+                    connection.release();
+                })
+            }
         })
     },
     getAdPic: function (req, res, next) {
         pool.getConnection(function(err, connection) {
-            var param = req.query;
-            connection.query($sql.getAdPic, [param.type], function(err, result) {
-                // console.log(result);
-                if (result.length) {
-                    result = {
-                        code: 200,
-                        msg: '成功',
-                        data: result[0]
-                    };
-                }
-
+            if (!connection) {
                 // 以json形式，把操作结果返回给前台页面
-                $util.jsonWrite(res, result);
+                $util.jsonWrite(res);
+            } else {
+                var param = req.query;
+                connection.query($sql.getAdPic, [param.type], function(err, result) {
+                    // console.log(result);
+                    if (result.length) {
+                        result = {
+                            code: 200,
+                            msg: '成功',
+                            data: result[0]
+                        };
+                    }
 
-                // 释放连接 
-                connection.release();
-            })
+                    // 以json形式，把操作结果返回给前台页面
+                    $util.jsonWrite(res, result);
+
+                    // 释放连接 
+                    connection.release();
+                })
+            }
         })
     },
     checkPassword: function (req, res, next) {
         pool.getConnection(function(err, connection) {
-            // 获取前台页面传过来的参数
-            // var param = req.query || req.params;
-            var param = req.body;
-
-            // 建立连接，向表中插入值
-            // 'INSERT INTO user(username, password) VALUES(?, ?)',
-            connection.query($sql.checkPassword, [param.username, param.password], function(err, result) {
-                if (result.length) {
-                    result = {
-                        code: 200,
-                        msg: 'success',
-                        data: {
-                            uid: result[0].uid,
-                            username: result[0].username,
-                            // authority: result[0].authority
-                        }
-                    };
-                }
-
+            if (!connection) {
                 // 以json形式，把操作结果返回给前台页面
-                $util.jsonWrite(res, result);
-                // 释放连接 
-                connection.release();
-            });
+                $util.jsonWrite(res);
+            } else {
+                // 获取前台页面传过来的参数
+                // var param = req.query || req.params;
+                var param = req.body;
+
+                // 建立连接，向表中插入值
+                // 'INSERT INTO user(username, password) VALUES(?, ?)',
+                connection.query($sql.checkPassword, [param.username, param.password], function(err, result) {
+                    if (result.length) {
+                        result = {
+                            code: 200,
+                            msg: 'success',
+                            data: {
+                                uid: result[0].uid,
+                                username: result[0].username,
+                                // authority: result[0].authority
+                            }
+                        };
+                    }
+
+                    // 以json形式，把操作结果返回给前台页面
+                    $util.jsonWrite(res, result);
+                    // 释放连接 
+                    connection.release();
+                });
+            }
         });
     },
     add: function (req, res, next) {
         pool.getConnection(function(err, connection) {
-            // 获取前台页面传过来的参数
-            // var param = req.query || req.params;
-            var param = req.body;
-
-            // 建立连接，向表中插入值
-            // 'INSERT INTO user(username, password) VALUES(?, ?)',
-            connection.query($sql.insert, [param.username, param.password], function(err, result) {
-                if(result) {
-                    result = {
-                        code: 200,
-                        msg:'增加成功'
-                    };
-                }
-
+            if (!connection) {
                 // 以json形式，把操作结果返回给前台页面
-                $util.jsonWrite(res, result);
+                $util.jsonWrite(res);
+            } else {
+                // 获取前台页面传过来的参数
+                // var param = req.query || req.params;
+                var param = req.body;
 
-                // 释放连接 
-                connection.release();
-            });
+                // 建立连接，向表中插入值
+                // 'INSERT INTO user(username, password) VALUES(?, ?)',
+                connection.query($sql.insert, [param.username, param.password], function(err, result) {
+                    if(result) {
+                        result = {
+                            code: 200,
+                            msg:'增加成功'
+                        };
+                    }
+
+                    // 以json形式，把操作结果返回给前台页面
+                    $util.jsonWrite(res, result);
+
+                    // 释放连接 
+                    connection.release();
+                });
+            }
         });
     },
-    delete: function (req, res, next) {
-        // delete by Id
-        pool.getConnection(function(err, connection) {
-            var username = +req.body.username;
-            connection.query($sql.delete, username, function(err, result) {
-                if(result.affectedRows > 0) {
-                    result = {
-                        code: 200,
-                        msg:'删除成功'
-                    };
-                } else {
-                    result = void 0;
-                }
-                $util.jsonWrite(res, result);
-                connection.release();
-            });
-        });
-    },
+    // delete: function (req, res, next) {
+    //     // delete by Id
+    //     pool.getConnection(function(err, connection) {
+    //         var username = +req.body.username;
+    //         connection.query($sql.delete, username, function(err, result) {
+    //             if(result.affectedRows > 0) {
+    //                 result = {
+    //                     code: 200,
+    //                     msg:'删除成功'
+    //                 };
+    //             } else {
+    //                 result = void 0;
+    //             }
+    //             $util.jsonWrite(res, result);
+    //             connection.release();
+    //         });
+    //     });
+    // },
     // update: function (req, res, next) {
     //     // update by id
     //     // 为了简单，要求同时传name和age两个参数
@@ -202,19 +231,29 @@ module.exports = {
     queryByUsername: function (req, res, next) {
         var username = +req.query.username; // 为了拼凑正确的sql语句，这里要转下整数
         pool.getConnection(function(err, connection) {
-            connection.query($sql.queryByUsername, username, function(err, result) {
-                $util.jsonWrite(res, result);
-                connection.release();
+            if (!connection) {
+                // 以json形式，把操作结果返回给前台页面
+                $util.jsonWrite(res);
+            } else {
+                connection.query($sql.queryByUsername, username, function(err, result) {
+                    $util.jsonWrite(res, result);
+                    connection.release();
 
-            });
+                });
+            }
         });
     },
     queryAll: function (req, res, next) {
         pool.getConnection(function(err, connection) {
-            connection.query($sql.queryAll, function(err, result) {
-                $util.jsonWrite(res, result);
-                connection.release();
-            });
+            if (!connection) {
+                // 以json形式，把操作结果返回给前台页面
+                $util.jsonWrite(res);
+            } else {
+                connection.query($sql.queryAll, function(err, result) {
+                    $util.jsonWrite(res, result);
+                    connection.release();
+                });
+            }
         });
     }
 };

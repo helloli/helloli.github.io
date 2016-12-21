@@ -70,12 +70,20 @@ define(['text!./view.html', 'vue'], function (view, vue) {
             // 首次进入页面获取前十条数据，测试时间可以用1480499881000
             $.get('/getNinePic', {time: Date.parse(new Date())}, function (data) {
                 // console.log(data.data);
-                self.articles = self.formatter(data.data);
+                if (data.code == 200) {
+                    self.articles = self.formatter(data.data);
+                } else {
+                    console.log(data.msg);
+                }
             });
 
             $.get('/getAdPic', {type: 'ninepic'}, function (data) {
                 // console.log(data);
-                self.diyad = self.picUrlParser(data.data.pid);
+                if (data.code == 200) {
+                    self.diyad = self.picUrlParser(data.data.pid);
+                } else {
+                    console.log(data.msg);
+                }
             });
         }
     };

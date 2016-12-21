@@ -15,6 +15,11 @@ var users = require('./routes/users');
 
 var app = express();
 
+// 全局错误处理，使得进程在出错的时候也不会挂掉
+// process.on('uncaughtException', function (err) {
+//     console.log('Caught exception: ', err);
+// });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
