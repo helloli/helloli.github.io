@@ -21,8 +21,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public'), {
-    etag: false,
-    lastModified: false,
+    // etag: false,
+    // lastModified: false,
     maxage: '30s'
 }));
 
