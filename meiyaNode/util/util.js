@@ -20,7 +20,7 @@ module.exports = {
         if (typeof ret === 'undefined') {
             res.json({
                 code: -1,
-                msg: msg || '服务器出错了，程序猿小黄瓜表示压力山大>_<'
+                msg: msg || '服务器又出错了，程序猿小黄瓜表示压力山大>_<'
             });
         } else if (ret.length == 0) {
             res.json({
@@ -28,7 +28,11 @@ module.exports = {
                 msg: msg || '木有数据了>_<'
             })
         } else {
-            res.json(ret);
+            res.json({
+                code: 200,
+                data: ret,
+                msg: 'success'
+            });
         }
     }
 }

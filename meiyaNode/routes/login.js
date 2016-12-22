@@ -16,6 +16,15 @@ router.route('/login').post(function(req, res, next) {
     // 检查用户
     userDao.checkPassword(req, res, next, function (data) {
         console.log(data, 'data');
+        if (data.length > 0) {
+            $util.jsonWrite(res, {
+                uid: data[0].uid,
+                username: data[0].username
+            });
+            req.session.uid = req.body.username;
+        } else {
+            $util.jsonWrite(res, [], '用户名或密码错啦！');
+        }
     });
 
     // req.session.uid = req.body.username;
