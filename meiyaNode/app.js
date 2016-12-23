@@ -45,7 +45,7 @@ app.use('/', routes);
 app.use('/users', users);
 app.get('/admin', function (req, res, next) {
   if (req.session.uid) {
-    res.render('admin');
+    res.render('admin', {user: req.session.uid});
   } else {
     res.redirect('login');
   }

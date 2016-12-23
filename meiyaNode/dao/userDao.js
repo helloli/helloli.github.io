@@ -8,14 +8,7 @@ var $sql = require('./userSqlMapping');
 // 使用连接池，提升性能
 var pool  = mysql.createPool($util.cloneObj($conf.mysql));
 
-
 module.exports = {
-    // insert: 'INSERT INTO user(username, password) VALUES(?, ?)',
-    // update: 'update user set username=?, password=? where id=?',
-    // delete: 'delete from user where username=?',
-    // queryByUsername: 'select * from user where username=?',
-    // queryAll: 'select * from user',
-    // checkPassword: 'select * from user where username=? and password=?'
     checkPassword: function (req, res, next, callback) {
         pool.getConnection(function(err, connection) {
             if (!connection) {
@@ -26,25 +19,10 @@ module.exports = {
                 // var param = req.query || req.params;
                 var param = req.body;
 
-                // 建立连接，向表中插入值
-                // 'INSERT INTO user(username, password) VALUES(?, ?)',
+                // 建立连接，执行查询
                 connection.query($sql.checkPassword, [param.username, param.password], function(err, result) {
-                    // if (result.length) {
-                    //     result = {
-                    //         code: 200,
-                    //         msg: 'success',
-                    //         data: {
-                    //             uid: result[0].uid,
-                    //             username: result[0].username,
-                    //             // authority: result[0].authority
-                    //         }
-                    //     };
-                    // }
-                    // console.log(result);
+                    // 执行回调
                     callback(result);
-
-                    // 以json形式，把操作结果返回给前台页面
-                    // $util.jsonWrite(res, result);
                     // 释放连接 
                     connection.release();
                 });

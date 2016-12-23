@@ -10,6 +10,7 @@ var http = require('http');
 
 /**
  * Get port from environment and store in Express.
+ * BAE expect the PORT to be 18080
  */
 
 var port = normalizePort(process.env.PORT || '18080');

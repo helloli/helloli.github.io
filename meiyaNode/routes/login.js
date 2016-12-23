@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 router.route('/login').post(function(req, res, next) {
     // 检查用户
     userDao.checkPassword(req, res, next, function (data) {
-        console.log(data, 'data');
+        // console.log(data, 'data');
         if (data.length > 0) {
             req.session.uid = req.body.username;
             $util.jsonWrite(res, {
