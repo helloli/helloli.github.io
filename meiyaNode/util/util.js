@@ -22,6 +22,11 @@ module.exports = {
                 code: -1,
                 msg: msg || '服务器又出错了，程序猿小黄瓜表示压力山大>_<'
             });
+        } else if (ret == null) {
+            res.json({
+                code: 200,
+                msg: msg || '成功啦♪(^∇^*)'
+            });
         } else if (ret.length == 0) {
             res.json({
                 code: 0,
@@ -31,7 +36,7 @@ module.exports = {
             res.json({
                 code: 200,
                 data: ret,
-                msg: 'success'
+                msg: msg || '成功啦♪(^∇^*)'
             });
         }
     }

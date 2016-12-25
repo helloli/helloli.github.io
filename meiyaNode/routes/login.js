@@ -27,12 +27,6 @@ router.route('/login').post(function(req, res, next) {
         }
     });
 
-    // req.session.uid = req.body.username;
-    // console.log(req.body.username);
-    // console.log(req.session);
-    // res.json(req.body);
-    // res.send(200);
-    // res.render('login', {username: req.body.username});
 })
 
 module.exports = router;

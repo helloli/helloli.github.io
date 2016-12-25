@@ -6,13 +6,18 @@
     <title>美丫后台管理</title>
     <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="stylesheets/admin.css">
+    <link rel="stylesheet" type="text/css" href="node_modules/webuploader/dist/webuploader.css">
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="node_modules/vue/dist/vue.min.js"></script>
     <script src="javascripts/admin.js"></script>
+    <script src="javascripts/upload.js"></script>
+    <script src="node_modules/webuploader/dist/webuploader.min.js"></script>
 </head>
 <body>
-    <nav class="navbar navbar-default" role="navigation">
+
+    <!-- 导航栏开始 -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse"
@@ -52,6 +57,98 @@
         </div>
         </div>
     </nav>
+    <!-- 导航栏结束 -->
+<div class="container">
+    <!-- 网站数据分析开始 -->
+    <!-- 网站数据分析结束 -->
+
+    <!-- 九图管理开始 -->
+    <form class="form-horizontal" role="form">
+
+        <!-- 提醒现在是管理的哪个版块 -->
+        <div class="form-group">
+            <label for="nie_board" class="col-sm-2 control-label">当前管理版块</label>
+            <div class="col-sm-6">
+                <input id="nine_board" type="text" class="form-control" value="九图表情" disabled>
+            </div>
+        </div>
+
+        <!-- 作者 -->
+        <div class="form-group">
+            <label for="nine_author" class="col-sm-2 control-label">作者</label>
+            <div class="col-sm-6">
+                <input id="nine_author" type="text" class="form-control" v-model="nine_author">
+            </div>
+        </div>
+
+        <!-- 作者链接 -->
+        <div class="form-group">
+            <label for="nine_author_link" class="col-sm-2 control-label">作者链接</label>
+            <div class="col-sm-6">
+                <input id="nine_author_link" type="text" class="form-control" v-model="nine_author_link">
+            </div>
+        </div>
+
+        <!-- 作者头像 -->
+        <div class="form-group">
+            <label for="nine_avatar" class="col-sm-2 control-label">作者头像</label>
+            <div class="col-sm-6">
+                <input id="nine_avatar" type="file" class="form-control" v-model="nine_avatar">
+            </div>
+        </div>
+
+        <!-- 类型 -->
+        <div class="form-group">
+            <label for="nine_type" class="col-sm-2 control-label">类型</label>
+            <div class="col-sm-6">
+                <select id="nine_type" class="form-control" v-model="nine_type">
+                    <option value="">请选择</option>
+                    <option v-for="type in nine_type_options" :value="type.value">{{type.name}}</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- 配文 -->
+        <div class="form-group">
+            <label for="nine_description" class="col-sm-2 control-label">配文</label>
+            <div class="col-sm-6">
+                <textarea class="form-control" name="nine_description" id="nine_description" rows="5"></textarea>
+            </div>
+        </div>
+
+        <!-- 上传图片 -->
+        <div class="form-group">
+            <label for="nine_description" class="col-sm-2 control-label">图片</label>
+            <div class="col-sm-6">
+                <div id="container">
+                    <div id="uploader">
+                        <div class="queueList">
+                            <div id="dndArea" class="placeholder">
+                                <div id="filePicker"></div>
+                                <p>或将照片拖到这里，单次最多可选300张</p>
+                            </div>
+                        </div>
+                        <div class="statusBar" style="display:none;">
+                            <div class="progress">
+                                <span class="text">0%</span>
+                                <span class="percentage"></span>
+                            </div><div class="info"></div>
+                            <div class="btns">
+                                <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default">提交</button>
+            </div>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>

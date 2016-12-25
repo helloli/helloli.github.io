@@ -43,13 +43,15 @@ app.use(['/admin', '/login'], session({
 app.use('/', routes);
 // app.use('/admin', admin);
 app.use('/users', users);
-app.get('/admin', function (req, res, next) {
-  if (req.session.uid) {
-    res.render('admin', {user: req.session.uid});
-  } else {
-    res.redirect('login');
-  }
-});
+app.use('/admin', admin);
+// app.get('/admin', function (req, res, next) {
+//   if (req.session.uid) {
+//     // res.render('admin', {user: req.session.uid});
+//     app.use('/admin', admin);
+//   } else {
+//     res.redirect('/login');
+//   }
+// });
 // app.get('/login', function (req, res, next) {
 //   if (req.session.uid) {
 //     res.redirect('admin');
