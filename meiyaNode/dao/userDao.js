@@ -29,6 +29,26 @@ module.exports = {
             }
         });
     },
+    checkAuth: function (req, res, next, callback) {
+        pool.getConnection(function(err, connection) {
+            if (!connection) {
+                // 以json形式，把操作结果返回给前台页面
+                $util.jsonWrite(res);
+            } else {
+                // 获取前台页面传过来的参数
+                // var param = req.query || req.params;
+                var param = req.body;
+
+                // 建立连接，执行查询
+                connection.query($sql.checkAuth, [param.username], function(err, result) {
+                    // 执行回调
+                    callback(result);
+                    // 释放连接 
+                    connection.release();
+                });
+            }
+        });
+    },
     // add: function (req, res, next) {
     //     pool.getConnection(function(err, connection) {
     //         if (!connection) {

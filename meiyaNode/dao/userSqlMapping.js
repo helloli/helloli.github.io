@@ -6,7 +6,8 @@ var user = {
     delete: 'delete from user where username=?',
     queryByUsername: 'select * from user where username=?',
     queryAll: 'select * from user',
-    checkPassword: 'select * from user where username=? and password=?'
+    checkPassword: 'select * from user where username=? and password=?',
+    checkAuth: 'select * from user where username=?'
 };
 
 module.exports = user;

@@ -21,10 +21,26 @@ $(function(){
         },
 
         methods: {
+
+            // 登出
             logout: function () {
                 $.get('admin/logout', function (res) {
                     console.log('res.msg');
                 })
+            },
+
+            getPids: function () {
+                var result = [];
+                $('.filelist li').each(function() {
+                    result.push($(this).attr('pid'));
+                });
+                return result.join(',');
+            },
+
+            // 九图提交
+            nineSubmit: function () {
+                // console.log(this.getPids());
+                
             }
         },
 

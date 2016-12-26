@@ -151,6 +151,7 @@ $(function() {
         chunked: false,
         chunkSize: 512 * 1024,
         server: 'http://x.mouto.org/wb/x.php?up',
+        duplicate: true,
         // runtimeOrder: 'flash',
 
         // accept: {
@@ -167,8 +168,9 @@ $(function() {
     });
 
     uploader.on('uploadSuccess', function (file, data) {
-        console.log(file, 'file');
-        console.log(data, 'data');
+        // console.log(file, 'file');
+        // console.log(data, 'data');
+        $('#'+file.id).attr('pid', data.pid);
     });
 
     // 拖拽时不接受 js, txt 文件。
@@ -191,7 +193,7 @@ $(function() {
     });
 
     uploader.on('dialogOpen', function() {
-        console.log('here');
+        // console.log('here');
     });
 
     // uploader.on('filesQueued', function() {
@@ -481,7 +483,9 @@ $(function() {
             case 'finish':
                 stats = uploader.getStats();
                 if ( stats.successNum ) {
-                    alert( '上传成功' );
+                    alert('上传成功,拖动可以排序');
+                    $('.filelist').sortable();
+                    $('.filelist').disableSelection();
                 } else {
                     // 没有成功的图片，重设
                     state = 'done';
