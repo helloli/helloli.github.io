@@ -10,7 +10,7 @@ var pic = {
     // 获取野表情,参数为起点日期和获取的天数
     getPetPic: 'select * from petpic where addTime in (select addTime from (select distinct addTime from petpic where unix_timestamp(addTime)*1000 < ? order by addTime desc limit ?) as tmp) order by addTime desc',
     getWildPic: 'select * from wildpic where addTime in (select addTime from (select distinct addTime from wildpic where unix_timestamp(addTime)*1000 < ? order by addTime desc limit ?) as tmp) order by addTime desc',
-    insertNinePic: 'insert into ninepic(pids, visible, addTime, author, authorLink, description, favs, avatar, original) values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+    insertNinePic: 'insert into ninepic(pids, visible, addTime, author, authorLink, description, favs, avatar, original) values(?, ?, CURRENT_TIMESTAMP(), ?, ?, ?, ?, ?, ?)',
 
     // insert: 'INSERT INTO user(username, password) VALUES(?, ?)',
     // update: 'update user set username=?, password=? where id=?',

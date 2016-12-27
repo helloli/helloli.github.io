@@ -62,6 +62,9 @@
     <!-- 导航栏结束 -->
 <div class="container">
     <!-- 网站数据分析开始 -->
+    <!-- <form class="form-horizontal" role="form" v-if="view=='dataAnalysis'">
+        
+    </form> -->
     <!-- 网站数据分析结束 -->
 
     <!-- 九图管理开始 -->
@@ -96,16 +99,17 @@
             <label for="nine_avatar" class="col-sm-2 control-label">作者头像</label>
             <div class="col-sm-6">
                 <input id="nine_avatar" type="file" class="form-control" v-model="nine_avatar">
+                <img :src="picUrlParser(nine_avatar_pid)" v-if="nine_avatar_pid">
             </div>
         </div>
 
         <!-- 类型 -->
         <div class="form-group">
-            <label for="nine_type" class="col-sm-2 control-label">类型</label>
+            <label for="nine_original" class="col-sm-2 control-label">类型</label>
             <div class="col-sm-6">
-                <select id="nine_type" class="form-control" v-model="nine_type">
+                <select id="nine_original" class="form-control" v-model="nine_original">
                     <option value="">请选择</option>
-                    <option v-for="type in nine_type_options" :value="type.value">{{type.name}}</option>
+                    <option v-for="type in nine_original_options" :value="type.value">{{type.name}}</option>
                 </select>
             </div>
         </div>
@@ -114,20 +118,20 @@
         <div class="form-group">
             <label for="nine_description" class="col-sm-2 control-label">配文</label>
             <div class="col-sm-6">
-                <textarea class="form-control" name="nine_description" id="nine_description" rows="5"></textarea>
+                <textarea class="form-control" name="nine_description" id="nine_description" rows="5" v-model='nine_description'></textarea>
             </div>
         </div>
 
         <!-- 上传图片 -->
         <div class="form-group">
-            <label for="nine_description" class="col-sm-2 control-label">图片</label>
+            <label for="container" class="col-sm-2 control-label">图片</label>
             <div class="col-sm-6">
                 <div id="container">
                     <div id="uploader">
                         <div class="queueList">
                             <div id="dndArea" class="placeholder">
                                 <div id="filePicker"></div>
-                                <p>或将照片拖到这里，单次最多可选300张</p>
+                                <p>或将照片拖到这里</p>
                             </div>
                         </div>
                         <div class="statusBar" style="display:none;">

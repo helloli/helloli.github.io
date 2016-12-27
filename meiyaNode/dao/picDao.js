@@ -84,6 +84,28 @@ module.exports = {
             }
         })
     },
+    insertNinePic: function (req, res, next, callback) {
+        pool.getConnection(function(err, connection) {
+            if (!connection) {
+                // 以json形式，把操作结果返回给前台页面
+                $util.jsonWrite(res);
+            } else {
+                // 获取前台页面传过来的参数
+                // var param = req.query || req.params;
+                var param = req.body;
+
+                // 建立连接，向表中插入值
+                //     insertNinePic: 'insert into ninepic(pids, visible, addTime, author, authorLink, description, favs, avatar, original) values(?, ?, ?, ?, ?, ?, ?, ?, ?)',
+                connection.query($sql.insertNinePic, [param.pids, 1, param.author, param.authorLink, param.description, 0, param.avatar, param.original], function(err, result) {
+                    // 执行回调
+                    callback(result);
+
+                    // 释放连接 
+                    connection.release();
+                });
+            }
+        });
+    },
     // checkPassword: function (req, res, next) {
     //     pool.getConnection(function(err, connection) {
     //         if (!connection) {
@@ -111,35 +133,6 @@ module.exports = {
 
     //                 // 以json形式，把操作结果返回给前台页面
     //                 $util.jsonWrite(res, result);
-    //                 // 释放连接 
-    //                 connection.release();
-    //             });
-    //         }
-    //     });
-    // },
-    // add: function (req, res, next) {
-    //     pool.getConnection(function(err, connection) {
-    //         if (!connection) {
-    //             // 以json形式，把操作结果返回给前台页面
-    //             $util.jsonWrite(res);
-    //         } else {
-    //             // 获取前台页面传过来的参数
-    //             // var param = req.query || req.params;
-    //             var param = req.body;
-
-    //             // 建立连接，向表中插入值
-    //             // 'INSERT INTO user(username, password) VALUES(?, ?)',
-    //             connection.query($sql.insert, [param.username, param.password], function(err, result) {
-    //                 if(result) {
-    //                     result = {
-    //                         code: 200,
-    //                         msg:'增加成功'
-    //                     };
-    //                 }
-
-    //                 // 以json形式，把操作结果返回给前台页面
-    //                 $util.jsonWrite(res, result);
-
     //                 // 释放连接 
     //                 connection.release();
     //             });

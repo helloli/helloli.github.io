@@ -7,8 +7,14 @@ $(function(){
         
         data: function () {
             return {
-                nine_type: '',
-                nine_type_options: [
+                nine_author: '',
+                nine_author_link: '',
+                nine_avatar: '',
+                nine_avatar_pid: '',
+                nine_original: '',
+                nine_description: '',
+                nine_pids: '',
+                nine_original_options: [
                     {
                         name: '原创',
                         value: 0
@@ -20,7 +26,54 @@ $(function(){
             }
         },
 
+        watch: {
+            nine_avatar: function (val) {
+                var self = this;
+                var file = $('#nine_avatar')[0];
+                // 如果上传框里没有数据则返回
+                if (!file || !file.files[0]) {
+                    return alert('选取文件出错！');
+                }
+                // 监测上传的文件是不是图片
+                if (file.files[0].type.indexOf('image') != 0) {
+                    return alert('这不是一个图像呀！');
+                }
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', 'http://x.mouto.org/wb/x.php?up', 1);
+
+                xhr.onload = function (r) {
+                    try {
+                        var r = JSON.parse(xhr.responseText);
+
+                        if (r.error) {
+                            return error(r.error);
+                        }
+
+                        if (r.pid) {
+                            self.nine_avatar_pid = r.pid;
+                        }
+                    } catch(e) {
+                        alert('上传图片失败了！');
+                    }
+                }
+
+                xhr.send(file.files[0]);
+            }
+        },
+
         methods: {
+
+            // url格式化。支持数组。
+            picUrlParser: function (url, type) {
+                type = type || 'large';
+                if (url instanceof Array) {
+                    for (var i in url) {
+                        url[i] = this.picUrlParser(url[i], type);
+                    }
+                    return url;
+                }
+                return 'http://ww2.sinaimg.cn/' + type + '/' + url;
+            },
 
             // 登出
             logout: function () {
@@ -40,7 +93,20 @@ $(function(){
             // 九图提交
             nineSubmit: function () {
                 // console.log(this.getPids());
-                
+                // [param.pids, 1, param.author, param.authorLink, param.description, 0, param.avatar, param.original]
+                var postData = {
+                    pids: this.getPids(),
+                    author: this.nine_author,
+                    authorLink: this.nine_author_link,
+                    description: this.nine_description,
+                    // avatar: 'a15b4afegw1f550ema2v8j203i03imx3',
+                    avatar: this.nine_avatar_pid,
+                    original: this.nine_original
+                }
+
+                $.post('/admin/insertNinePic', postData, function (res) {
+                    console.log(res);
+                })
             }
         },
 

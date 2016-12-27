@@ -18,6 +18,7 @@ router.route('/login').post(function(req, res, next) {
         // console.log(data, 'data');
         if (data.length > 0) {
             req.session.uid = req.body.username;
+            req.session.authority = data[0].authority;
             $util.jsonWrite(res, {
                 uid: data[0].uid,
                 username: data[0].username
