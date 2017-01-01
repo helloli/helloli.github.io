@@ -92,20 +92,18 @@ $(function(){
 
             // 九图提交
             nineSubmit: function () {
-                // console.log(this.getPids());
-                // [param.pids, 1, param.author, param.authorLink, param.description, 0, param.avatar, param.original]
                 var postData = {
                     pids: this.getPids(),
                     author: this.nine_author,
                     authorLink: this.nine_author_link,
                     description: this.nine_description,
-                    // avatar: 'a15b4afegw1f550ema2v8j203i03imx3',
                     avatar: this.nine_avatar_pid,
                     original: this.nine_original
                 }
 
                 $.post('/admin/insertNinePic', postData, function (res) {
-                    console.log(res);
+                    alert('添加成功啦~');
+                    window.location.reload();
                 })
             }
         },
