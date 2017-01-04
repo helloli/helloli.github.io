@@ -15,6 +15,11 @@ var users = require('./routes/users');
 
 var app = express();
 
+// 全局错误处理，使得进程在出错的时候也不会挂掉
+// process.on('uncaughtException', function (err) {
+//     console.log('Caught exception: ', err);
+// });
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 // app.set('view engine', 'jade');
@@ -38,13 +43,15 @@ app.use(['/admin', '/login'], session({
 app.use('/', routes);
 // app.use('/admin', admin);
 app.use('/users', users);
-app.get('/admin', function (req, res, next) {
-  if (req.session.uid) {
-    res.render('admin');
-  } else {
-    res.redirect('login');
-  }
-});
+app.use('/admin', admin);
+// app.get('/admin', function (req, res, next) {
+//   if (req.session.uid) {
+//     // res.render('admin', {user: req.session.uid});
+//     app.use('/admin', admin);
+//   } else {
+//     res.redirect('/login');
+//   }
+// });
 // app.get('/login', function (req, res, next) {
 //   if (req.session.uid) {
 //     res.redirect('admin');

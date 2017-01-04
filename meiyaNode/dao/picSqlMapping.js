@@ -10,13 +10,14 @@ var pic = {
     // 获取野表情,参数为起点日期和获取的天数
     getPetPic: 'select * from petpic where addTime in (select addTime from (select distinct addTime from petpic where unix_timestamp(addTime)*1000 < ? order by addTime desc limit ?) as tmp) order by addTime desc',
     getWildPic: 'select * from wildpic where addTime in (select addTime from (select distinct addTime from wildpic where unix_timestamp(addTime)*1000 < ? order by addTime desc limit ?) as tmp) order by addTime desc',
+    insertNinePic: 'insert into ninepic(pids, visible, addTime, author, authorLink, description, favs, avatar, original) values(?, ?, CURRENT_TIMESTAMP(), ?, ?, ?, ?, ?, ?)',
 
-    insert: 'INSERT INTO user(username, password) VALUES(?, ?)',
-    update: 'update user set username=?, password=? where id=?',
-    delete: 'delete from user where username=?',
-    queryByUsername: 'select * from user where username=?',
-    queryAll: 'select * from user',
-    checkPassword: 'select * from user where username=? and password=?'
+    // insert: 'INSERT INTO user(username, password) VALUES(?, ?)',
+    // update: 'update user set username=?, password=? where id=?',
+    // delete: 'delete from user where username=?',
+    // queryByUsername: 'select * from user where username=?',
+    // queryAll: 'select * from user',
+    // checkPassword: 'select * from user where username=? and password=?'
 };
 
 module.exports = pic;
