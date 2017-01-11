@@ -1,7 +1,7 @@
 define(['text!./view.html', '../components/diy/index', '../components/wild/index', '../components/pet/index', 'vue', 'bootstrap', 'css!./style.css'], function (_view, diy, wild, pet, vue, bootstrap) {
     
     // vue.use(vueTouch);
-    vue.use(infiniteScroll);
+    // vue.use(infiniteScroll);
 
     var app = new vue({
 
