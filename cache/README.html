@@ -1014,28 +1014,7 @@ body .markdown-body
     page-break-after: avoid;
   }
 }
-</style><title>README</title></head><body><article class="markdown-body"><div class="toc">
-<ul>
-<li><a href="#web">Web缓存技术</a><ul>
-<li><a href="#_1">一、缓存概述</a></li>
-<li><a href="#_2">二、浏览器缓存</a><ul>
-<li><a href="#http">HTTP缓存机制</a></li>
-<li><a href="#_3">用户操作行为与缓存的关系</a></li>
-<li><a href="#_4">本地缓存阶段</a></li>
-<li><a href="#_5">协商缓存阶段</a></li>
-</ul>
-</li>
-<li><a href="#_6">三、页面缓存</a></li>
-<li><a href="#_7">四、数据库缓存</a></li>
-<li><a href="#_8">五、缓存的同步、复制与分发</a></li>
-<li><a href="#_9">六、与缓存相关的算法</a></li>
-<li><a href="#_10">应用：图片缓存的预载与分发</a></li>
-<li><a href="#_11">参考文档：</a></li>
-</ul>
-</li>
-</ul>
-</div>
-<h2 id="web"><a name="user-content-web" href="#web" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Web缓存技术</h2>
+</style><title>README</title></head><body><article class="markdown-body"><h2 id="web"><a name="user-content-web" href="#web" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Web缓存技术</h2>
 <h3 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>一、缓存概述</h3>
 <p>缓存原本是一个硬件的概念：缓存就是数据交换的缓冲区（称作Cache），当某一硬件要读取数据时，会首先从缓存中查找需要的数据，如果找到了则直接执行，找不到的话则从内存中找。由于缓存的运行速度比内存快得多，故缓存的作用就是帮助硬件更快地运行。</p>
 <p>在一个Web应用中，应用到缓存的地方有很多，主要有浏览器缓存，页面缓存，服务器缓存，数据库缓存等。</p>
@@ -1057,7 +1036,9 @@ body .markdown-body
 <p>满足以上两个情况的一种，浏览器会直接从缓存中获取副本并渲染。</p>
 <p><strong>校验值（验证机制）</strong>：服务器返回资源的时候有时在控制头信息带上这个资源的实体标签Etag（Entity Tag），它可以用来作为浏览器再次请求过程的校验标识。如过发现校验标识不匹配，说明资源已经被修改或过期，浏览器需求重新获取资源内容。</p>
 <p>使用HTML Meta 标签，Web开发者可以在HTML页面的<code>&lt;head&gt;</code>节点中加入<code>&lt;meta&gt;</code>标签，代码如下：</p>
-<p><code>&lt;META HTTP-EQUIV="Pragma" CONTENT="no-cache"&gt;</code></p>
+<pre><code>&lt;META HTTP-EQUIV=&quot;Pragma&quot; CONTENT=&quot;no-cache&quot;&gt;
+</code></pre>
+
 <p>上述代码的作用是告诉浏览器当前页面不被缓存，每次访问都需要去服务器拉取。使用上很简单，但只有部分浏览器可以支持，而且所有缓存代理服务器都不支持，因为代理不解析HTML内容本身。而广泛应用的还是 HTTP头信息 来控制缓存。</p>
 <p>在HTTP请求和响应的消息报头中，常见的与缓存有关的消息报头有：</p>
 <p><img alt="缓存结构" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/http.png" /></p>
@@ -1133,7 +1114,7 @@ last-modified是WEB服务器认为对象的最后修改时间，比如文件的�
 <h3 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>三、页面缓存</h3>
 <p>页面缓存是将动态页面直接生成静态的页面放在服务器端，用户调取相同页面时，静态页面将直接下载到客户端，不再需要通过程序的运行和数据库的访问，大大节约了服务器的负载。每次访问页面时，会检测相应的缓存页面是否存在，若不存在，则连接数据库得到数据渲染页面并生成缓存页面文件，这样下次访问的页面文件就发挥作用了。</p>
 <p>MemCache的缓存策略：</p>
-<p><img alt="页面缓存" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/page.jpeg" /></p>
+<p><img alt="页面缓存" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/page.jpg" /></p>
 <h3 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>四、数据库缓存</h3>
 <p>数据库的缓存一般由数据库提供，可以对表建立高速缓存。数据库中，用户可能多次执行相同的查询语句，为了提高查询效率，数据库会在内存划分一个专门的区域，用来存放用户最近执行的查询，这块区域就是缓存。</p>
 <p>数据库缓存的使用必须在一定的应用环境下：查询的数据库表不会经常变动、有大量相同的查询(如订单信息查询)。</p>
