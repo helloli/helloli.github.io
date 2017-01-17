@@ -1110,7 +1110,6 @@ last-modified是WEB服务器认为对象的最后修改时间，比如文件的�
 <p><img alt="浏览器第一次请求时" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/first.png" /></p>
 <p>浏览器再次请求时：</p>
 <p><img alt="浏览器再次请求" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/second.png" /></p>
-<p><strong>Question</strong>: 设置了一个月才过期的缓存，如果服务器端更新了css代码，要怎么让用户更新缓存呢？</p>
 <h3 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>三、页面缓存</h3>
 <p>页面缓存是将动态页面直接生成静态的页面放在服务器端，用户调取相同页面时，静态页面将直接下载到客户端，不再需要通过程序的运行和数据库的访问，大大节约了服务器的负载。每次访问页面时，会检测相应的缓存页面是否存在，若不存在，则连接数据库得到数据渲染页面并生成缓存页面文件，这样下次访问的页面文件就发挥作用了。</p>
 <p>MemCache的缓存策略：</p>
