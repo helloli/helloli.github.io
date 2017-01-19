@@ -1,6 +1,0 @@
-# 参数配置
-argOptions:
-  # 测试配置
-  test:
-    a: x
-    b: y

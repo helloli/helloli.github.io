@@ -1,17 +1,31 @@
-// node模块
 var gulp = require('gulp'),
-    yaml = require('js-yaml'),
-    fs = require('fs'),
-    path = require('path')
+    del = require('del'),
+    babel = require('gulp-babel'),
+    less = require('gulp-less'),
+    gulpSequence = require('gulp-sequence');
 
-// 测试开始
-try {
-    var doc = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '/_config.yml'), 'utf8'));
-    console.log(doc);
-} catch (e) {
-    console.log(e);
-}
 
-gulp.task('default', function() {
-  // 做一些事
+gulp.task('clean', function () {
+    return del('./amd', {
+        force: true
+    });
 });
+
+gulp.task('babel', function () {
+    return gulp.src('./es6/**/*.es6')
+        .pipe(babel({
+            // 默认转为CMD，这个插件是转换为AMD的，这样才能让require使用
+            'plugins': ['transform-es2015-modules-amd'],
+            // es6转es5
+            'presets': ['es2015']
+        }))
+        .pipe(gulp.dest('./amd'));
+});
+
+gulp.task('less', function () {
+    return gulp.src('./es6/**/*.less')
+        .pipe(less())
+        .pipe(gulp.dest('./amd'));
+});
+
+gulp.task('default', gulpSequence('clean', ['babel', 'less']));
