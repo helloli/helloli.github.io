@@ -1035,9 +1035,14 @@ body .markdown-body
 </ul>
 <p>满足以上两个情况的一种，浏览器会直接从缓存中获取副本并渲染。</p>
 <p><strong>校验值（验证机制）</strong>：服务器返回资源的时候有时在控制头信息带上这个资源的实体标签Etag（Entity Tag），它可以用来作为浏览器再次请求过程的校验标识。如过发现校验标识不匹配，说明资源已经被修改或过期，浏览器需求重新获取资源内容。</p>
+<p>使用HTML Meta 标签，Web开发者可以在HTML页面的<code>&lt;head&gt;</code>节点中加入<code>&lt;meta&gt;</code>标签，代码如下：</p>
+<pre><code>&lt;META HTTP-EQUIV=&quot;Pragma&quot; CONTENT=&quot;no-cache&quot;&gt;
+</code></pre>
+
+<p>上述代码的作用是告诉浏览器当前页面不被缓存，每次访问都需要去服务器拉取。使用上很简单，但只有部分浏览器可以支持，而且所有缓存代理服务器都不支持，因为代理不解析HTML内容本身。而广泛应用的还是 HTTP头信息 来控制缓存。</p>
 <p>在HTTP请求和响应的消息报头中，常见的与缓存有关的消息报头有：</p>
 <p><img alt="缓存结构" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/http.png" /></p>
-<h4 id="http"><a name="user-content-http" href="#http" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>HTTP缓存机制：</h4>
+<h4 id="http"><a name="user-content-http" href="#http" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>HTTP缓存机制</h4>
 <p>缓存行为主要由缓存策略决定，而缓存策略由内容拥有者设置。这些策略主要通过特定的HTTP头部来清晰地表达。</p>
 <p>当一个用户发起一个静态资源请求的时候，浏览器会通过以下几步来获取资源：</p>
 <ul>
@@ -1100,17 +1105,56 @@ last-modified是WEB服务器认为对象的最后修改时间，比如文件的�
 <p><strong>其他标签</strong></p>
 <p>Content-Length：尽管并没有在缓存中明确涉及，Content-Length头部在设置缓存策略时很重要。某些软件如果不提前获知内容的大小以留出足够空间，则会拒绝缓存该内容。</p>
 <p>Vary：缓存系统通常使用请求的主机和路径作为存储该资源的键。当判断一个请求是否是请求同样内容时，Vary头部可以被用来提醒缓存系统需要注意另一个附加头部。它通常被用来告诉缓存系统同样注意Accept-Encoding头部，以便缓存系统能够区分压缩和未压缩的内容。</p>
-<h3 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>三、模块缓存</h3>
-<h3 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>四、页面缓存</h3>
-<h3 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>五、数据库缓存</h3>
-<h3 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>六、缓存的复制与分发</h3>
-<h3 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>七、与缓存相关的算法</h3>
-<h3 id="_11"><a name="user-content-_11" href="#_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用一、快速消除各类缓存</h3>
-<h3 id="_12"><a name="user-content-_12" href="#_12" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用二、图片缓存的预载与分发</h3>
+<p><strong>总结</strong></p>
+<p>浏览器第一次请求时:</p>
+<p><img alt="浏览器第一次请求时" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/first.png" /></p>
+<p>浏览器再次请求时：</p>
+<p><img alt="浏览器再次请求" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/second.png" /></p>
+<h3 id="_6"><a name="user-content-_6" href="#_6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>三、页面缓存</h3>
+<p>页面缓存是将动态页面直接生成静态的页面放在服务器端，用户调取相同页面时，静态页面将直接下载到客户端，不再需要通过程序的运行和数据库的访问，大大节约了服务器的负载。每次访问页面时，会检测相应的缓存页面是否存在，若不存在，则连接数据库得到数据渲染页面并生成缓存页面文件，这样下次访问的页面文件就发挥作用了。</p>
+<p>MemCache的缓存策略：</p>
+<p><img alt="页面缓存" src="/Users/lizhenghua/Documents/lzh/helloli.github.io/cache/images/page.jpg" /></p>
+<h3 id="_7"><a name="user-content-_7" href="#_7" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>四、数据库缓存</h3>
+<p>数据库的缓存一般由数据库提供，可以对表建立高速缓存。数据库中，用户可能多次执行相同的查询语句，为了提高查询效率，数据库会在内存划分一个专门的区域，用来存放用户最近执行的查询，这块区域就是缓存。</p>
+<p>数据库缓存的使用必须在一定的应用环境下：查询的数据库表不会经常变动、有大量相同的查询(如订单信息查询)。</p>
+<p>PS：这个缓存策略也可以用在前端，比如订单信息不变的情况下，可以在前端设置一个对象，保存请求的地址、参数、结果，第一次请求时会保存请求的地址、参数和结果，再次请求时，如果请求的地址、参数一样，则查询该对象直接返回请求的结果。</p>
+<h3 id="_8"><a name="user-content-_8" href="#_8" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>五、缓存的同步、复制与分发</h3>
+<p><strong>缓存的同步</strong>指的是写命中缓存的时候，如果保持缓存与磁盘上数据一致性的问题。一般有两种方案：</p>
+<ul>
+<li><code>直写式WT(Write Through)</code>：当CPU要将数据写入内存时，除了更新缓冲内存上的数据外，也将数据写在磁盘中以维持主存与缓冲内存的一致性，当要写入内存的数据多起来的话,速度自然就慢了下来。</li>
+<li><code>回写式WB(Write Back)</code>：当CPU要将数据写入内存时，只会先更新缓冲内存上的数据，随后再让缓冲内存在总线不塞车的时候才把数据写回磁盘，所以速度会快得多。</li>
+</ul>
+<p>两种方式各有利弊，直写缓存方法利用了高速缓存中的数据始终与主存储器中数据匹配的特点。但是，需要的总线周期却非常耗时，从而降低性能。回写缓存可以维持性能，因为写入始终是在“爆发”中进行的，因而运行所需的总线周期将大大减少。<br />
+两个CPU，或者CPU与DMA同时共享一块物理内存时，writer在写完后，要write back，这样另一个reader才能看到它写入的数据；在writer变为reader的时候，需要invalidate，否则看不到另一个 writer写入的数据。所以在共享的时候，需要同时做writeback和invalidate。</p>
+<h3 id="_9"><a name="user-content-_9" href="#_9" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>六、与缓存相关的算法</h3>
+<ul>
+<li>先进先出算法(FIFO)：如果一个数据最先进入缓存中，则应该最早淘汰掉。如果服务器接受到的数据请求与时间高度相关，可以考虑使用FIFO算法。</li>
+<li>最不经常使用算法（LFU）：这个缓存算法使用一个计数器来记录条目被访问的频率。通过使用LFU缓存算法，最低访问数的条目首先被移除。这个方法并不经常使用，因为它无法对一个拥有最初高访问率之后长时间没有被访问的条目缓存负责。</li>
+<li>最近最少使用算法（LRU）：这个缓存算法将最近使用的条目存放到靠近缓存顶部的位置。当一个新条目被访问时，LRU将它放置到缓存的顶部。当缓存达到极限时，较早之前访问的条目将从缓存底部开始被移除。这里会使用到昂贵的算法，而且它需要记录“年龄位”来精确显示条目是何时被访问的。此外，当一个LRU缓存算法删除某个条目后，“年龄位”将随其他条目发生改变。</li>
+</ul>
+<!-- ### 应用一、快速消除各类缓存 -->
+
+<h3 id="_10"><a name="user-content-_10" href="#_10" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>应用：图片缓存的预载与分发</h3>
+<p><strong>图片的预加载</strong></p>
+<p>为了防止图片在需要的时候才加载，而付出的时间开销，可以将图片进行预加载。代码如下：</p>
+<pre><code>&lt;html&gt;
+&lt;script&gt;
+    var img = new Image();
+    image.src = &quot;b.jpg&quot;;
+&lt;/script&gt;
+&lt;body&gt;
+    &lt;img src=&quot;a.jpg&quot; alt=&quot;pic&quot; onmouseover=&quot;this.src='b.jpg'&quot;&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+<p><strong>图片的分发</strong></p>
+<p>网页传输过程中，图片会占用大量的数据量，是影响网站性能的主要因素，因此大部分网站会将图片存储从网站中分离出来，假设一个或多个图片服务器来存储图片，将图片放到一个虚拟目录中，而网页上仍然用同一个URL地址指向服务器上的某一个图片的地址。这样可以大大提高网站的性能。</p>
 <hr />
-<h4 id="_13"><a name="user-content-_13" href="#_13" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>参考文档：</h4>
+<h3 id="_11"><a name="user-content-_11" href="#_11" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>参考文档：</h3>
 <ol>
 <li><a href="https://my.oschina.net/thinkive/blog/685716"><a href="https://my.oschina.net/thinkive/blog/685716"><a href="https://my.oschina.net/thinkive/blog/685716">https://my.oschina.net/thinkive/blog/685716</a></a></a></li>
 <li><a href="http://evanhahn.com/express-dot-static-deep-dive/"><a href="http://evanhahn.com/express-dot-static-deep-dive/"><a href="http://evanhahn.com/express-dot-static-deep-dive/">http://evanhahn.com/express-dot-static-deep-dive/</a></a></a></li>
 <li><a href="http://stackoverflow.com/questions/18557251/why-does-browser-still-sends-request-for-cache-control-public-with-max-age"><a href="http://stackoverflow.com/questions/18557251/why-does-browser-still-sends-request-for-cache-control-public-with-max-age"><a href="http://stackoverflow.com/questions/18557251/why-does-browser-still-sends-request-for-cache-control-public-with-max-age">http://stackoverflow.com/questions/18557251/why-does-browser-still-sends-request-for-cache-control-public-with-max-age</a></a></a></li>
+<li><a href="http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html"><a href="http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html"><a href="http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html">http://www.cnblogs.com/skynet/archive/2012/11/28/2792503.html</a></a></a></li>
 </ol></article></body></html>

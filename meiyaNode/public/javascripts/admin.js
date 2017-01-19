@@ -22,7 +22,9 @@ $(function(){
                         name: '转载',
                         value: 1
                     }
-                ]
+                ],
+                // 控制显示哪一个视图，取值分别为dataAnalysis、ninepic、ninepicAdd、wildpic、wildpicAdd、petpic、petpicAdd
+                view: 'dataAnalysis'
             }
         },
 
@@ -73,6 +75,11 @@ $(function(){
                     return url;
                 }
                 return 'http://ww2.sinaimg.cn/' + type + '/' + url;
+            },
+
+            // 导航栏切换view
+            changeView: function (view) {
+                this.view = view;
             },
 
             // 登出
