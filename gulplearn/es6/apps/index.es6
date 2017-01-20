@@ -1,1 +1,1 @@
-import '../node_modules/requirejs/require.js'
+console.log('a');

@@ -2,23 +2,24 @@ define([], function () {
     'use strict';
 
     require.config({
-        // paths: {
-        //     'bootstrap': 'node_modules/bootstrap/dist/js/bootstrap.min',
-        //     'jQuery': 'node_modules/jquery/dist/jquery.min',
-        //     'vue-touch': 'node_modules/vue-touch/vue-touch'
-        // },
-        // shim: {
-        //     'jQuery': {
-        //         exports: 'jQuery'
-        //     },
-        //     'bootstrap': {
-        //         deps: ['jQuery']
-        //     },
-        //     'vue-touch': {
-        //         deps: ['hammerjs']
-        //     }
-        // },
-        // packages: [ {
+        paths: {
+            // 'bootstrap': 'node_modules/bootstrap/dist/js/bootstrap.min',
+            // 'jQuery': 'node_modules/jquery/dist/jquery.min',
+            // 'vue-touch': 'node_modules/vue-touch/vue-touch'
+        },
+        shim: {
+            // 'jQuery': {
+            //     exports: 'jQuery'
+            // },
+            // 'bootstrap': {
+            //     deps: ['jQuery']
+            // },
+            // 'vue-touch': {
+            //     deps: ['hammerjs']
+            // }
+        },
+        packages: []
+        // [{
         //     name: 'vue',
         //     location: 'node_modules/vue',
         //     main: 'dist/vue.min'
@@ -40,6 +41,8 @@ define([], function () {
         //     main: 'vue-infinite-scroll'
         // }]
     });
+    console.log('yes');
 
     require(['apps/index']);
 });
+//# sourceMappingURL=map/index.js.map

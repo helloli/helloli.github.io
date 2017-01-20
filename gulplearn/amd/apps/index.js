@@ -1,3 +1,6 @@
-define(['../node_modules/requirejs/require.js'], function () {
+define([], function () {
   'use strict';
+
+  console.log('a');
 });
+//# sourceMappingURL=../map/apps/index.js.map

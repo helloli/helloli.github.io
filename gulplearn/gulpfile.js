@@ -1,55 +1,80 @@
+/**
+ *  gulp构建工具
+ *
+ *  clean：清除amd文件夹
+ *  babel：es6转为AMD格式的es5
+ *  less：less文件转为带prefix的css文件
+ *  copy：所有非es6和less格式的文件直接复制到amd文件夹
+ *  watch：监控任务，监控es6文件夹内的文件变化，并根据增量执行任务
+ */
+
 var gulp = require('gulp'),
     del = require('del'),
     babel = require('gulp-babel'),
     less = require('gulp-less'),
+    autoprefixer = require('gulp-autoprefixer'),
+    cssmin = require('gulp-cssmin'),
+    rename = require('gulp-rename'),
+    cache = require('gulp-cached'),
+    progeny = require('gulp-progeny'),
+    sourcemaps = require('gulp-sourcemaps'),
     gulpSequence = require('gulp-sequence');
 
-
+// 清空amd文件夹
 gulp.task('clean', function () {
     return del('./amd', {
         force: true
     });
 });
 
+// es6转AMD格式的es5
 gulp.task('babel', function () {
     return gulp.src('./es6/**/*.es6')
-        .pipe(babel({
-            // 默认转为CMD，这个插件是转换为AMD的，这样才能让require使用
-            'plugins': ['transform-es2015-modules-amd'],
-            // es6转es5
-            'presets': ['es2015']
-        }))
+        .pipe(cache('watchBabel'))
+        .pipe(progeny())
+        .pipe(sourcemaps.init())
+            .pipe(babel({
+                // 默认转为CMD，这个插件是转换为AMD的，这样才能让require使用
+                'plugins': ['transform-es2015-modules-amd'],
+                // es6转es5
+                'presets': ['es2015']
+            }))
+        .pipe(sourcemaps.write('./map'))
         .pipe(gulp.dest('./amd'));
 });
 
+// less转css
 gulp.task('less', function () {
     return gulp.src('./es6/**/*.less')
-        .pipe(less())
+        .pipe(cache('watchLess'))
+        .pipe(progeny())
+        .pipe(sourcemaps.init())
+            .pipe(less())
+            .pipe(autoprefixer({
+                browsers: ['last 2 versions']
+            }))
+            .pipe(cssmin())
+            .pipe(rename({
+                suffix: '.min'
+            }))
+        .pipe(sourcemaps.write('./map'))
         .pipe(gulp.dest('./amd'));
 });
 
-gulp.task('default', gulpSequence('clean', ['babel', 'less']));
-// =======
-//     yaml = require('js-yaml'),
-//     fs = require('fs'),
-//     path = require('path'),
-//     del = require('del')
+// 将所有非less/es6文件直接copy
+gulp.task('copy', function () {
+    return gulp.src(['./es6/**/*', '!./es6/**/*.es6', '!./es6/**/*.less'])
+        // .pipe(cache('watchCopy'))
+        // .pipe(progeny())
+        .pipe(gulp.dest('./amd'));
+});
 
-// // 测试开始
-// // try {
-// //     var doc = yaml.safeLoad(fs.readFileSync(path.join(__dirname, '/_config.yml'), 'utf8'));
-// //     console.log(doc);
-// // } catch (e) {
-// //     console.log(e);
-// // }
+gulp.task('watch', function () {
+    return gulp.watch(['es6/**/*'], ['copy'])
+        .on('change', function (e) {
+            console.log('File ' + e.path + ' was ' + e.type + ', running tasks...');
+        });
+});
 
-// gulp.task('cleanRoot', function (done) {
-//     return del('./amd/*', {
-//         force: true
-//     });
-// })
-
-// // gulp.task('')
-
-// gulp.task('default', ['cleanRoot', '']);
-// >>>>>>> b68485a3cce0f37ec0986fcb1411a5c049ec79fa
+// gulp会执行的默认任务
+gulp.task('default', gulpSequence('clean', ['babel', 'less', 'copy'], 'watch'));
