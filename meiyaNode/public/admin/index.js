@@ -1,4 +1,4 @@
-define(['text!./view.html', '../components/diy/index', '../components/wild/index', '../components/pet/index', 'vue', 'bootstrap', 'css!./style.css'], function (_view, diy, wild, pet, vue, bootstrap) {
+define(['text!./view.html', './comps/statistics/index', './comps/ninepic/index', './comps/wildpic/index', './comps/petpic/index', 'vue', 'bootstrap', 'css!./style.css'], function (_view, statistics, ninepic, wildpic, petpic, vue, bootstrap) {
     
     // vue.use(vueTouch);
     // vue.use(infiniteScroll);
@@ -13,19 +13,20 @@ define(['text!./view.html', '../components/diy/index', '../components/wild/index
         
         data: function () {
             return {
-                currentView: 'app-diy'
+                currentView: 'statistics'
             }
         },
 
         components: {
-            'app-diy': diy,
-            'app-wild': wild,
-            'app-pet': pet
+            'statistics': statistics,
+            'ninepic': ninepic,
+            'wildpic': wildpic,
+            'petpic': petpic
         },
 
         methods: {
             changeView: function (view) {
-                this.currentView = 'app-' + view;
+                this.currentView = view;
             }
         },
 
