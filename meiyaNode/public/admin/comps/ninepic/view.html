@@ -1,1 +1,85 @@
-九图页面
+<!-- 九图展示，是一个列表 -->
+列表展示
+<!-- 九图展示结束 -->
+
+
+<!-- 九图添加开始 -->
+<form class="form-horizontal" role="form">
+
+    <!-- 作者 -->
+    <div class="form-group">
+        <label for="nine_author" class="col-sm-2 control-label">作者</label>
+        <div class="col-sm-6">
+            <input id="nine_author" type="text" class="form-control" v-model="nine_author">
+        </div>
+    </div>
+
+    <!-- 作者链接 -->
+    <div class="form-group">
+        <label for="nine_author_link" class="col-sm-2 control-label">作者链接</label>
+        <div class="col-sm-6">
+            <input id="nine_author_link" type="text" class="form-control" v-model="nine_author_link">
+        </div>
+    </div>
+
+    <!-- 作者头像 -->
+    <div class="form-group">
+        <label for="nine_avatar" class="col-sm-2 control-label">作者头像</label>
+        <div class="col-sm-6">
+            <input id="nine_avatar" type="file" class="form-control" v-model="nine_avatar">
+            <img :src="picUrlParser(nine_avatar_pid)" v-if="nine_avatar_pid">
+        </div>
+    </div>
+
+    <!-- 类型 -->
+    <div class="form-group">
+        <label for="nine_original" class="col-sm-2 control-label">类型</label>
+        <div class="col-sm-6">
+            <select id="nine_original" class="form-control" v-model="nine_original">
+                <option value="">请选择</option>
+                <option v-for="type in nine_original_options" :value="type.value">{{type.name}}</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- 配文 -->
+    <div class="form-group">
+        <label for="nine_description" class="col-sm-2 control-label">配文</label>
+        <div class="col-sm-6">
+            <textarea class="form-control" name="nine_description" id="nine_description" rows="5" v-model='nine_description'></textarea>
+        </div>
+    </div>
+
+    <!-- 上传图片 -->
+    <div class="form-group">
+        <label for="container" class="col-sm-2 control-label">图片</label>
+        <div class="col-sm-6">
+            <div id="container">
+                <div id="uploader">
+                    <div class="queueList">
+                        <div id="dndArea" class="placeholder">
+                            <div id="filePicker"></div>
+                            <p>或将照片拖到这里</p>
+                        </div>
+                    </div>
+                    <div class="statusBar" style="display:none;">
+                        <div class="progress">
+                            <span class="text">0%</span>
+                            <span class="percentage"></span>
+                        </div><div class="info"></div>
+                        <div class="btns">
+                            <div id="filePicker2"></div><div class="uploadBtn">开始上传</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-default" @click.prevent="nineSubmit">提交</button>
+        </div>
+    </div>
+</form>
+<!-- 九图添加结束

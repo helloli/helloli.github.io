@@ -33,7 +33,7 @@
             </li> -->
         </ul>
         <ul class="nav navbar-nav navbar-right"> 
-            <li><a href="javascript:;"><span class="glyphicon glyphicon-user"></span> <%= user %></a></li> 
+            <li><a href="javascript:;"><span class="glyphicon glyphicon-user"></span>{{user}}</a></li> 
             <li><a href="javascript:;" @click="logout"><span class="glyphicon glyphicon-log-out"></span> 注销</a></li> 
         </ul> 
     </div>
@@ -41,4 +41,6 @@
 </nav>
 <!-- 导航栏结束 -->
 
+<!-- Body开始 -->
 <component :is="currentView"></component>
+<!-- Body结束 -->

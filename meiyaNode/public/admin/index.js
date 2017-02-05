@@ -13,6 +13,7 @@ define(['text!./view.html', './comps/statistics/index', './comps/ninepic/index',
         
         data: function () {
             return {
+                user: '',
                 currentView: 'statistics'
             }
         },
@@ -31,6 +32,13 @@ define(['text!./view.html', './comps/statistics/index', './comps/ninepic/index',
         },
 
         ready: function () {
+            
+            var self = this;
+            // $.get('getLoginInfo', function (data) {
+            //     self.user = data.data.username;
+            // })
+            self.user = 'lizhenghua';
+
         }
 
     });
