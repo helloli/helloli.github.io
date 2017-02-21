@@ -9,7 +9,9 @@
 
 使用说明：
 
-- npm install安装依赖
-- 在gulpfile.js所在目录下新建名字为es6的文件夹，在es6中编写源代码，运行gulp编译后的代码会生成到amd文件夹中
-- 请不要将其他文件夹命名为es6或者amd
-- 运行gulp,enjoy coding
+- 新建工作目录，将`gulpfile.js`和`package.json`复制到工作目录下
+- 在工作目录下新建一个文件夹命名为es6
+- 打开终端，如果没有安装过gulp，请全局安装gulp: `npm install --global gulp`
+- 在终端中执行`npm install`安装gulp依赖
+- 在终端中执行`gulp`，然后就可以在es6文件夹中编写源码了，编译后的文件在工作目录下的amd文件夹中
+- enjoy coding
