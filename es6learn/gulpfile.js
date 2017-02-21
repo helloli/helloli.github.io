@@ -39,7 +39,7 @@ gulp.task('babel', function () {
         .pipe(progeny())
         .pipe(sourcemaps.init())
             .pipe(babel({
-                // 默认转为CMD，这个插件是转换为AMD的，这样才能让require使用
+                // 默认转为commonjs，这个插件是转换为AMD的，这样才能让require使用
                 // 'plugins': ['transform-es2015-modules-amd'],
                 // es6转es5
                 'presets': ['es2015']

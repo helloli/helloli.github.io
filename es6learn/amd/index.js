@@ -1,26 +1,10 @@
 'use strict';
 
-function f() {
-  console.log('I am outside!');
-}
-(function () {
-  if (false) {
-    // 重复声明一次函数f
-    var _f = function _f() {
-      console.log('I am inside!');
-    };
-  }
+var _b = require('./b');
 
-  f();
-})();
+var _b2 = _interopRequireDefault(_b);
 
-var a = {
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-  arrow: function arrow() {
-
-    console.log(undefined);
-  }
-};
-
-var a = 1;
+_b2.default.func();
 //# sourceMappingURL=map/index.js.map
