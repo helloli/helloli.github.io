@@ -1,6 +1,7 @@
 /**
  *  gulp构建工具
- *
+ *  @author: leesirbupt
+ *  @time: 2017年02月21日11:52:21
  *  clean：清除amd文件夹
  *  babel：es6转为AMD格式的es5
  *  less：less文件转为带prefix的css文件
