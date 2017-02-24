@@ -2,6 +2,7 @@
  *  gulp构建工具
  *  @author: leesirbupt
  *  @time: 2017年02月21日11:52:21
+ *
  *  clean：清除amd文件夹
  *  babel：es6转为AMD格式的es5
  *  less：less文件转为带prefix的css文件
@@ -40,7 +41,7 @@ gulp.task('babel', function () {
         .pipe(progeny())
         .pipe(sourcemaps.init())
             .pipe(babel({
-                // 默认转为CMD，这个插件是转换为AMD的，这样才能让require使用
+                // 默认转为commonjs，这个插件是转换为AMD的，这样才能让require使用
                 // 'plugins': ['transform-es2015-modules-amd'],
                 // es6转es5
                 'presets': ['es2015']

@@ -1016,15 +1016,98 @@ body .markdown-body
 }
 </style><title>README</title></head><body><article class="markdown-body"><div class="toc">
 <ul>
-<li><a href="#es6">es6</a><ul>
+<li><a href="#ecma6">ECMA6学习笔记</a><ul>
 <li><a href="#letconst">let和const命令</a></li>
+<li><a href="#_1">变量的解构赋值</a></li>
+<li><a href="#_2">字符串的扩展</a></li>
+<li><a href="#_3">数组的扩展</a></li>
+<li><a href="#_4">函数的扩展</a></li>
+<li><a href="#_5">对象的扩展</a></li>
+<li><a href="#module">模块Module</a></li>
+<li><a href="#promise">Promise对象</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<h2 id="es6"><a name="user-content-es6" href="#es6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>es6</h2>
+<h2 id="ecma6"><a name="user-content-ecma6" href="#ecma6" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>ECMA6学习笔记</h2>
 <h3 id="letconst"><a name="user-content-letconst" href="#letconst" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>let和const命令</h3>
 <ol>
-<li>使用let不存在变量提升</li>
-<li>呵呵</li>
+<li>使用let和const不存在变量提升。</li>
+<li>暂存性死区：使用let和const声明的变量，在声明前不能使用。变量声明前的空间称为“死区”。这样typeof也不会是绝对安全的函数了，死区内使用会报引用错误。</li>
+<li>let和const变量不允许重复声明。</li>
+<li>内层作用域可以定义外层作用域变量。块级作用域的出现，实际上使得获得广泛应用的立即执行函数表达式（IIFE）不再必要了。</li>
+<li>ES5中函数作用域只能在顶层作用域和函数作用域中声明，浏览器为了兼容老版本没有遵守这个规范，声明将会被提前。而在ES6中，声明会存在块级作用域中，不会被提前。</li>
+<li>const在声明时候就得赋值，不然会报错。当赋给对象时候，不可指向别的对象，但是对象的值是可以变的。</li>
+</ol>
+<h3 id="_1"><a name="user-content-_1" href="#_1" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>变量的解构赋值</h3>
+<p>ES6 允许按照一定模式，从数组和对象中提取值，对变量进行赋值，这被称为解构（Destructuring）。</p>
+<ol>
+<li>可以从数组或对象中提取值，按照对应位置，对变量赋值。 <code>let [a, b, c] = [1, 2, 3];</code></li>
+<li>解构赋值允许指定默认值 <code>let [foo = true] = [];</code> 如果默认值是表达式，则是惰性求值的，只有取不到值的时候才会运行默认表达式</li>
+<li>解构的作用：<br />
+3.1 交换变量的值<code>[x, y] = [y, x]</code><br />
+3.2 从函数返回多个值<code>let { foo, bar } = example();</code><br />
+3.3 函数参数的定义<code>function f({x, y, z}) { ... }</code><br />
+3.4 提取JSON对象中的数据<br />
+3.5 函数参数的默认值</li>
+</ol>
+<h3 id="_2"><a name="user-content-_2" href="#_2" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>字符串的扩展</h3>
+<ol>
+<li>字符串遍历使用<code>for...of</code>,也可以用于遍历数组的值(<code>for...in</code>只能遍历数组的index)</li>
+<li>includes(), startsWith(), endsWith()分别用来寻找参数字符串是否在源字符串中，在头部，在尾部</li>
+<li>repeat方法返回一个新字符串，表示将原字符串重复n次。</li>
+<li>字符串补全长度的功能。如果某个字符串不够指定长度，会在头部或尾部补全。padStart()用于头部补全，padEnd()用于尾部补全。<code>'x'.padStart(4, 'ab') // 'abax'</code></li>
+<li>模板字符串使用` `包裹，变量使用<code>$()</code>包裹</li>
+</ol>
+<h3 id="_3"><a name="user-content-_3" href="#_3" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>数组的扩展</h3>
+<ol>
+<li>Array.of方法用于将一组值，转换为数组。</li>
+<li>数组实例的find方法，用于找出第一个符合条件的数组成员。<code>[1, 4, -5, 10].find((n) =&gt; n &lt; 0)</code></li>
+<li>fill方法使用给定值，填充一个数组。<code>Array.fill(num, start, end)</code></li>
+<li>数组也可以用includes()方法来检查是否包含某个元素</li>
+</ol>
+<h3 id="_4"><a name="user-content-_4" href="#_4" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>函数的扩展</h3>
+<ol>
+<li>函数参数的默认值<code>function log(x, y = 'World')</code></li>
+<li>ES6 引入 rest 参数（形式为“&hellip;变量名”），用于获取函数的多余参数，这样就不需要使用arguments对象了<code>function add(...values){}</code></li>
+<li>扩展运算符（spread）是三个点（&hellip;）。它好比 rest 参数的逆运算，将一个数组转为用逗号分隔的参数序列。求数组中元素最大值：<code>Math.max(...[14, 3, 77])</code></li>
+<li>函数有name属性，返回函数的名字</li>
+<li>箭头函数<code>var f = v =&gt; v;</code>等价于 <code>var f = function(v) {return v;};</code> 如果箭头函数不需要参数或需要多个参数，就使用一个圆括号代表参数部分。如果箭头函数的代码块部分多于一条语句，就要使用大括号将它们括起来，并且使用return语句返回。由于大括号被解释为代码块，所以如果箭头函数直接返回一个对象，必须在对象外面加上括号。</li>
+<li>箭头函数内的this对象只有一种指向，就是定义箭头函数时包含它的函数所在的this,如果没有就是全局变量。</li>
+<li>函数绑定运算符是并排的两个双冒号（::），双冒号左边是一个对象，右边是一个函数。该运算符会自动将左边的对象，作为上下文环境（即this对象），绑定到右边的函数上面。</li>
+<li>尾递归优化：最后一步只调用本身，这样函数的运行只会保存一个调用帧，不会发生栈溢出。<br />
+<pre><code>function factorial(n, total = 1) {
+  if (n === 1) return total;
+  return factorial(n - 1, n * total);
+}
+
+factorial(5) // 120
+</code></pre></li>
+</ol>
+<h3 id="_5"><a name="user-content-_5" href="#_5" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>对象的扩展</h3>
+<ol>
+<li>ES6允许直接写入变量和函数，作为对象的属性和方法。<code>var baz = {foo};</code>等同于<code>var baz = {foo: foo};</code></li>
+<li>Object.assign方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。Object.assign方法的第一个参数是目标对象，后面的参数都是源对象。该方法是浅拷贝。</li>
+</ol>
+<h3 id="module"><a name="user-content-module" href="#module" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>模块Module</h3>
+<ol>
+<li>ES6模块通过export和import实现</li>
+<li>import命令具有代码提升效果</li>
+<li><code>import * as a from './test.js'</code></li>
+<li>如果模块用了<code>export default</code>方法，则在被引用时候可以直接使用<code>import name from './test.js'</code></li>
+</ol>
+<h3 id="promise"><a name="user-content-promise" href="#promise" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Promise对象</h3>
+<ol>
+<li>Promise 是异步编程的一种解决方案。<br />
+<pre><code>var promise = new Promise(function(resolve, reject) {
+  // ... some code
+
+  if (/* 异步操作成功 */){
+    resolve(value);
+  } else {
+    reject(error);
+  }
+});
+</code></pre></li>
+<li>ddd</li>
 </ol></article></body></html>
