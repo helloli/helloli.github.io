@@ -41,6 +41,8 @@ gulp.task('babel', function () {
         .pipe(progeny())
         .pipe(sourcemaps.init())
             .pipe(babel({
+                // 兼容es7的async和await语法
+                'plugins': ['transform-async-to-generator', 'transform-runtime'],
                 // 默认转为commonjs，这个插件是转换为AMD的，这样才能让require使用
                 // 'plugins': ['transform-es2015-modules-amd'],
                 // es6转es5
