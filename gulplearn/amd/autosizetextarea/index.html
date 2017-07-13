@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自适应高度textarea</title>
+    <link href="http://cdn.bootcss.com/element-ui/1.3.6/theme-default/index.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/vue/2.3.4/vue.js"></script>
+    <script src="http://cdn.bootcss.com/element-ui/1.3.6/index.js"></script>
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script src="./index.js"></script>
+</head>
+<body>
+    <div id="app">
+        <el-input
+          type="textarea"
+          autosize
+          placeholder="请输入内容"
+          v-model="textarea2">
+        </el-input>
+        <div style="margin: 20px 0;"></div>
+        <el-input
+          type="textarea"
+          :autosize="{ minRows: 2, maxRows: 4}"
+          placeholder="请输入内容"
+          v-model="textarea3">
+        </el-input>
+    </div>
+</body>
+</html>
