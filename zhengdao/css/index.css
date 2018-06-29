@@ -156,6 +156,7 @@ ul.page-1-ul li::before {
 
 /* page-2 */
 #page-2 {
+  height: 1050px;
   background-color: #F2F2F4;
 }
 #page-2-title {
@@ -165,7 +166,7 @@ ul.page-1-ul li::before {
   font-size: 38px;
   text-align: center;
 }
-.page-2-flex-flex {
+.page-2-flex {
   width: 280px;
 }
 #page-2-flex-wrap-1 {
@@ -174,6 +175,7 @@ ul.page-1-ul li::before {
 }
 #page-2-flex-wrap-2 {
   margin-top: 130px;
+  margin-bottom: 100px;
 }
 .page-2-card-title {
   margin-top: 20px;
@@ -187,5 +189,50 @@ ul.page-1-ul li::before {
   margin-top: 25px;
   color: #636E9E;
   font-size: 16px;
-  line-height: 30px;
+}
+
+/* page-3 */
+#page-3 {
+  height: 1083px;
+  margin-top: -200px;
+  background: url(../img/page-3-bg.svg) no-repeat top center;
+}
+#page-3-title {
+  height: 48px;
+  line-height: 48px;
+  margin-top: 230px;
+  font-weight: 700;
+  letter-spacing: 10px;
+  color: #FFF;
+  font-size: 38px;
+  text-align: center;
+}
+#page-3-title img {
+  margin-right: 20px;
+}
+#page-3-desc {
+  margin-top: 30px;
+  height: 28px;
+  line-height: 28px;
+  font-size: 20px;
+  text-align: center;
+  color: #FFF;
+  opacity: .7;
+}
+#page-3-flex-wrap {
+  margin-top: 75px;
+}
+.page-3-flex {
+  width: 155px;
+  color: #fff;
+  opacity: .3;
+  font-size: 20px;
+  height: 28px;
+  line-height: 28px;
+}
+.page-3-flex.active {
+  opacity: 1;
+}
+.page-3-flex img {
+  margin-right: 10px;
 }
