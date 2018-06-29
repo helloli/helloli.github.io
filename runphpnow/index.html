@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Run PHP now!</title>
+
+    <link href="http://cdn.bootcss.com/codemirror/5.27.4/codemirror.css" rel="stylesheet">
+    <script src="http://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/codemirror.js"></script>
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/mode/php/php.js"></script>
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/mode/javascript/javascript.js"></script>
+
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/mode/clike/clike.js"></script>
+
+    <!--引入css文件，用以支持主题-->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/codemirror/5.27.4/theme/eclipse.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/codemirror/5.27.4/theme/seti.css">
+    <link rel="stylesheet" href="http://cdn.bootcss.com/codemirror/5.27.4/theme/dracula.css">
+
+    <!--引入js，绑定Vim-->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/codemirror/5.27.4/addon/dialog/dialog.css">
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/keymap/vim.js"></script>
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/addon/search/searchcursor.js"></script>
+    <!--改善vim输入命令时的样式-->
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/addon/dialog/dialog.js"></script>
+
+    <!--支持代码折叠-->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/codemirror/5.27.4/addon/fold/foldgutter.css"/>
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/addon/fold/foldcode.js"></script>
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/addon/fold/foldgutter.js"></script>
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/addon/fold/brace-fold.js"></script>
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/addon/fold/comment-fold.js"></script>
+
+    <!--全屏模式-->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/codemirror/5.27.4/addon/display/fullscreen.css">
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/addon/display/fullscreen.js"></script>
+
+    <!--括号匹配-->
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/addon/edit/matchbrackets.js"></script>
+
+    <!--自动补全-->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/codemirror/5.27.4/addon/hint/show-hint.css">
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/addon/hint/show-hint.js"></script>
+    <script src="http://cdn.bootcss.com/codemirror/5.27.4/addon/hint/anyword-hint.js"></script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html,
+        body {
+            height: 100%;
+        }
+        .CodeMirror {
+            /*border: 1px solid black;*/
+            font-size: 15px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            height: auto;
+        }
+        #run {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            padding: 4px;
+            z-index: 100;
+        }
+        #result {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 0;
+            overflow: auto;
+            border: 1px solid black;
+        }
+        body.running .CodeMirror {
+            transition: bottom .5s;
+            bottom: 150px;
+        }
+        body.running #result {
+            height: 150px;
+            transition: height .5s;
+        }
+    </style>
+</head>
+<body>
+    <textarea name="editor" id="editor"></textarea>
+    <div id="result"></div>
+    <button id="run" onclick="run()">运行</button>
+
+    <script>
+
+        // result 框是否开启
+        var isRunning = false;
+
+        function run() {
+            isRunning = true;
+            $('body').addClass('running');
+            // alert(phpMirror.getValue());
+            // 
+        };
+
+        var phpMirror = CodeMirror.fromTextArea($('#editor').get(0), {
+            mode: "javascript",
+            lineNumbers: true,
+            theme: "seti",
+            // keyMap: "vim",
+            lineWrapping: true,
+            foldGutter: true,
+            gutters: ["CodeMirror-linenumbers", "CodeMirror-foldgutter"],
+            // fullScreen: true,
+            matchBrackets: true,
+            extraKeys: {"Ctrl-Space": "autocomplete"}   //ctrl-space唤起智能提示
+        });
+
+    </script>
+</body>
+</html>
