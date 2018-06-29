@@ -55,11 +55,17 @@ p {
 #header {
   /*height: 100px;*/
 }
-#login-btn {
+#login-wrap {
   float: right;
+
+}
+#login-btn {
+  display: inline-block;
   color: #fff;
   width: 70px;
   height: 30px;
+  line-height: 30px;
+  text-align: center;
   border: 1px solid rgba(255, 255, 255, .5);
   border-radius: 30px;
 }
