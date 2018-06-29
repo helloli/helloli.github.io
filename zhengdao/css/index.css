@@ -55,12 +55,8 @@ p {
 #header {
   /*height: 100px;*/
 }
-#login-wrap {
-  float: right;
-  height: 32px;
-}
 #login-btn {
-  display: inline-block;
+  float: right;
   color: #fff;
   width: 70px;
   height: 30px;
