@@ -60,7 +60,7 @@ p {
 
 /* header */
 #header-wrap {
-  background: url(../img/header-bg.svg) no-repeat;
+  background: url(../img/header-bg.svg) no-repeat top center;
   height: 880px;
 }
 #header-navs {
@@ -170,6 +170,7 @@ ul.page-1-ul li::before {
 }
 #page-2-flex-wrap-1 {
   margin-top: 90px;
+  justify-content: space-between;
 }
 #page-2-flex-wrap-2 {
   margin-top: 130px;
