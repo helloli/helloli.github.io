@@ -76,6 +76,9 @@ p {
   border: 1px solid rgba(255, 255, 255, .5);
   border-radius: 30px;
 }
+#login-btn:hover {
+  background-color: rgba(255, 255, 255, .2);
+}
 
 #slogon {
   margin-top: 140px;
@@ -91,7 +94,6 @@ p {
   margin-top: 20px;
   opacity: .8;
 }
-
 #try-btn {
   margin-top: 40px;
   width: 170px;
@@ -102,7 +104,9 @@ p {
   background-color: #EF5A2A;
   box-shadow: rgba(91, 23, 2, .4) 0 8px 6px;
 }
-
+#try-btn:hover {
+  background-color: #FF865F;
+}
 #header-chart {
   position: absolute;
   top: 300px;
@@ -221,7 +225,7 @@ ul.page-1-ul li::before {
   margin-top: 75px;
 }
 .page-3-flex {
-  width: 155px;
+  width: 160px;
   color: #fff;
   opacity: .3;
   font-size: 20px;
@@ -263,11 +267,27 @@ ul.page-1-ul li::before {
   margin-top: 90px;
 }
 .page-5-flex {
+  position: relative;
+  top: 0;
   width: 360px;
   background-color: #fff;
   color: #333;
   text-align: center;
   border-radius: 9px;
+  transition: top .5s;
+}
+.page-5-flex:hover {
+  position: relative;
+  top: -20px;
+}
+#page-5-card-1.page-5-flex:hover {
+  box-shadow: rgba(0, 0, 0, .1) 0 21px 40px;
+}
+#page-5-card-2.page-5-flex:hover {
+  box-shadow: rgba(0, 46, 172, .3) 0 21px 40px;
+}
+#page-5-card-3.page-5-flex:hover {
+  box-shadow: rgba(255, 117, 73, .3) 0 21px 40px;
 }
 .page-5-card-title {
   margin-top: 50px;
@@ -276,8 +296,8 @@ ul.page-1-ul li::before {
   height: 50px;
   line-height: 50px;
   padding: 0 25px;
-  border: 2px solid #fff;
-  border-radius: 2px;
+  /* border: 2px solid #fff;
+  border-radius: 2px; */
   display: inline-block;
   text-shadow: #CFCFCF 0 6px 6px;
 }
@@ -325,6 +345,29 @@ ul.page-5-ul li::before {
   display: inline-block;
   font-size: 13px;
   color: #AAA;
+}
+#page-5-card-2 {
+  background-color: #1567D2;
+}
+#page-5-card-3 {
+  background-color: #FF7549;
+}
+.page-5-card-white {
+  color: #FFF;
+}
+.page-5-card-white .page-5-card-title {
+  text-shadow: #004E86 0 6px 6px;
+}
+.page-5-card-white .page-5-card-cost {
+  border-top-color: rgba(255, 255, 255, .5)
+}
+.page-5-card-white ul.page-5-ul li,
+.page-5-card-white .page-5-card-cost,
+.page-5-card-white .page-5-card-cost span {
+  color: #FFF;
+}
+.page-5-card-white ul.page-5-ul li::before {
+  background-color: #FFF;
 }
 
 /* page-6 */
