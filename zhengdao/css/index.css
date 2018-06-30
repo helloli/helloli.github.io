@@ -274,7 +274,7 @@ ul.page-1-ul li::before {
   color: #333;
   text-align: center;
   border-radius: 9px;
-  transition: top .5s;
+  transition: all .5s;
 }
 .page-5-flex:hover {
   position: relative;
@@ -424,4 +424,9 @@ ul.page-5-ul li::before {
   opacity: 0.2;
   font-size: 14px;
   color: #FFFFFF;
+}
+
+/* animate */
+.page-1-flex img, .page-1-flex li, .page-1-flex p, .page-2-flex img, .page-2-flex p {
+  opacity: 0;
 }
