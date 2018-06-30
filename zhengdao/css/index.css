@@ -195,7 +195,7 @@ ul.page-1-ul li::before {
 #page-3 {
   height: 1083px;
   margin-top: -200px;
-  background: url(../img/page-3-bg.svg) no-repeat top center;
+  background: url(../img/page-3-bg.png) no-repeat top center;
 }
 #page-3-title {
   height: 48px;
