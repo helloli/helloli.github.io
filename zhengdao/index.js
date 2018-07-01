@@ -53,8 +53,11 @@ sr.reveal('.page-2-flex p, .page-2-flex img', {
 // var $headerChart = $('#header-chart');
 // $headerChart.on('mouseenter', function () {
 //   console.log(1);
-//   // $('#header-chart #Group-23-Copy #Path-8')
-//   // polygonAnimation($('#header-chart #Group-23-Copy #Path-8'),  '28.4601887 0.656194283 0.517342114 15.505764 33.8010981 28.5551961 62.5199957 13.616058');
+//   $('.header-chart-animation-on').each(function () {
+//     this.beginElement();
+//   });
+//   $('#header-chart #Group-23-Copy').attr('transform', 'translate(0.428298, 0)');
+//   // $('#header-chart #Group-23-Copy #Path-8').attr('points', '28.4601887 0.656194283 0.517342114 15.505764 33.8010981 28.5551961 62.5199957 13.616058');
 // }).on('mouseleave', function () {
 //   console.log(2);
 // });

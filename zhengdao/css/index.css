@@ -538,3 +538,7 @@ ul.page-5-ul li::before {
 .move-4 {
   animation: run-4 8s infinite;
 }
+
+.transition {
+  transition: transform 1s;
+}
