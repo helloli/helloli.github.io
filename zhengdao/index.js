@@ -137,7 +137,8 @@ $headerChart.on('mouseenter', function () {
     // 纵坐标需要在圆弧以上
     // 越往上，越稀疏
     this.offsety = getMinRandom() * (canvas.height - settings.height);
-    this.y = b - Math.sqrt(settings.r * settings.r - (this.x - a) * (this.x - a)) - this.offsety;
+    this.y = b + this.offsety;
+    // this.y = b - Math.sqrt(settings.r * settings.r - (this.x - a) * (this.x - a)) - this.offsety;
 
     this.vx = Math.random() * 0.05 + 0.025;    // 水平偏移，也是移动速度
 
@@ -191,7 +192,7 @@ $headerChart.on('mouseenter', function () {
 
     // 星星的数目
     // IE下CUP性能有限，数目小
-    var length = 400;
+    var length = 300;
     if (!history.pushState) {
       // IE9
       length = 200;
