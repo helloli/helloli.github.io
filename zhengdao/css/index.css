@@ -35,6 +35,7 @@ p {
   display: inline-block;
   color: #fff;
   text-align: center;
+  transition: background-color .15s;
 }
 .page-wrap {
   overflow: hidden;
@@ -60,6 +61,7 @@ p {
 #header-wrap {
   background: url(../img/header-bg.svg) no-repeat top center;
   height: 880px;
+  overflow-y: visible;
 }
 #header-navs {
   height: 100px;
@@ -240,6 +242,11 @@ ul.page-1-ul li::before {
 }
 #page-3-chart {
   margin-top: 80px;
+}
+.page-3-mac-pic {
+  position: absolute;
+  top: 118px;
+  left: 209px;
 }
 
 /* page-4 */
@@ -427,6 +434,23 @@ ul.page-5-ul li::before {
 }
 
 /* animate */
-.page-1-flex img, .page-1-flex li, .page-1-flex p, .page-2-flex img, .page-2-flex p {
+/* .page-1-flex img, .page-1-flex li, .page-1-flex p, .page-2-flex img, .page-2-flex p {
   opacity: 0;
+} */
+#header-chart,
+#header-chart #Path-5-Copy-2 {
+  transition: all .2s;
+}
+#header-chart:hover {
+  top: 290px;
+}
+#header-chart:hover #Path-5-Copy-2 {
+  transform: translate(2.5% ,10px) scaleX(.95);
+}
+#header-chart:hover #Group-23-Copy #Path-8-Copy,
+#header-chart:hover #Group-23-Copy #Path-8-Copy-2 {
+  /* transform: scaleY(2); */
+}
+#header-chart:hover #Group-23-Copy #Path-8 {
+  /* transform: translateY(100%); */
 }
