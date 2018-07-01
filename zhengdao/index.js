@@ -39,18 +39,18 @@ sr.reveal('.page-1-flex img, .page-2-flex img', {
 /**
  * header chart hover animation
  */
-function polygonAnimation($el, value) {
-  $el.attr('points', value);
+// function polygonAnimation($el, value) {
+//   $el.attr('points', value);
 
-}
-var $headerChart = $('#header-chart');
-$headerChart.on('mouseenter', function () {
-  console.log(1);
-  // $('#header-chart #Group-23-Copy #Path-8')
-  // polygonAnimation($('#header-chart #Group-23-Copy #Path-8'),  '28.4601887 0.656194283 0.517342114 15.505764 33.8010981 28.5551961 62.5199957 13.616058');
-}).on('mouseleave', function () {
-  console.log(2);
-});
+// }
+// var $headerChart = $('#header-chart');
+// $headerChart.on('mouseenter', function () {
+//   console.log(1);
+//   // $('#header-chart #Group-23-Copy #Path-8')
+//   // polygonAnimation($('#header-chart #Group-23-Copy #Path-8'),  '28.4601887 0.656194283 0.517342114 15.505764 33.8010981 28.5551961 62.5199957 13.616058');
+// }).on('mouseleave', function () {
+//   console.log(2);
+// });
 
 // function moveDiv() {
 //   var $span = $("#header-chart");
@@ -69,7 +69,34 @@ $headerChart.on('mouseenter', function () {
 // setInterval(moveDiv, 1000);
 
 
+// 头图背景动画
+// (function() {
+//   if (!window.addEventListener) return;
 
+//   var els = $('#header-bg #Group-2 g *');
+//   var bigels = $('#header-bg .header-circle');
+
+//   function reposition($el) {
+//     let x = $el.attr('position-x');
+//     let y = $el.attr('position-y');
+//     if (x === undefined && y === undefined) {
+//       $el.attr('position-x', '0');
+//       $el.attr('position-y', '0');
+//     } else {
+//       console.log(333);
+//       var nx = parseFloat(x) + Math.random() * 0.5 + 0.25;
+//       var ny = parseFloat(y) + Math.random() * 0.5 + 0.25;
+//       $el.attr('position-x', nx);
+//       $el.attr('position-y', ny);
+//       $el.attr('transform', 'translate('+nx+', '+ny+')');
+//     }
+//   }
+//   // setInterval(() => {
+//   //   els.each(function () {
+//   //     reposition($(this));
+//   //   })
+//   // }, 1000);
+// })();
 
 // 星星效果
 (function () {
@@ -103,7 +130,7 @@ $headerChart.on('mouseenter', function () {
       arr.push(Math.random());
     }
 
-    return Math.min.apply(null, arr);
+    return Math.max.apply(null, arr);
   };
 
   function resizeCanvas() {
