@@ -11,10 +11,17 @@ sr.reveal('.page-1-flex li, .page-1-flex p, .page-2-flex p', {
   viewFactor: .6,
 }, 50);
 
-sr.reveal('.page-1-flex img, .page-2-flex img', {
+sr.reveal('.page-1-flex img', {
   duration: 1000,
   // distance: '50px',
   viewFactor: .1,
+}, 50);
+
+sr.reveal('.page-2-flex p, .page-2-flex img', {
+  duration: 1000,
+  // distance: '10px',
+  viewFactor: .6,
+  scale: .7
 }, 50);
 
 // $(window).scroll(function () {
