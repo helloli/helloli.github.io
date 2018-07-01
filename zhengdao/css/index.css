@@ -212,7 +212,7 @@ ul.page-1-ul li::before {
   position: relative;
   height: 1283px;
   margin-top: -200px;
-  background: url(../img/page-3-bg.png) no-repeat top center;
+  background: url(../img/page-3-bg.jpg) no-repeat top center;
 }
 #page-3-title {
   height: 48px;
@@ -262,7 +262,8 @@ ul.page-1-ul li::before {
 .page-3-mac-pic {
   position: absolute;
   top: 118px;
-  left: 209px;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #page-3-net {
   position: absolute;
