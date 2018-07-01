@@ -40,7 +40,7 @@ p {
   transition: background-color .15s;
 }
 .page-wrap {
-  overflow: hidden;
+  overflow-x: hidden;
   width: 100%;
 }
 .page {
@@ -64,9 +64,12 @@ p {
   /* background: url(../img/header-bg.svg) no-repeat top center; */
   height: 880px;
   overflow-y: visible;
+  position: relative;
 }
 #header-bg {
   position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
 }
 #header-navs {
   height: 100px;
