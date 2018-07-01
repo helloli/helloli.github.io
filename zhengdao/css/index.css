@@ -545,3 +545,13 @@ ul.page-5-ul li::before {
 .transition {
   transition: transform 1s;
 }
+
+/* 适配窄屏 */
+@media screen and (max-width: 1200px) {
+  #page-4-1 img {
+    width: 120%;
+  }
+  #page-6-1 img {
+    width: 100%;
+  }
+}
