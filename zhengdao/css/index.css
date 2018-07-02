@@ -52,11 +52,31 @@ p {
   display: flex;
   justify-content: space-around;
 }
-.page-1-flex {
-  max-width: 595px;
-}
 .center {
   text-align: center;
+}
+.page-title {
+  margin-top: 125px;
+  font-weight: 700;
+  color: #323852;
+  font-size: 38px;
+  text-align: center;
+}
+.page-table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+  color: #333;
+  font-size: 16px;
+}
+.page-table tr th {
+  height: 80px;
+  background-color: #DAE1FF;
+}
+.page-table tr td {
+  height: 90px;
+  background-color: #F2F3F7;
+  padding: 0 25px;
 }
 
 /* header */
@@ -149,6 +169,9 @@ p {
   color: #323852;
   font-weight: 700;
 }
+.page-1-flex {
+  max-width: 595px;
+}
 ul.page-1-ul {
   margin-top: 70px;
 }
@@ -174,13 +197,6 @@ ul.page-1-ul li::before {
 #page-2 {
   height: 1050px;
   background-color: #F2F2F4;
-}
-#page-2-title {
-  font-weight: 700;
-  margin-top: 125px;
-  color: #323852;
-  font-size: 38px;
-  text-align: center;
 }
 .page-2-flex {
   width: 280px;
@@ -212,17 +228,14 @@ ul.page-1-ul li::before {
   position: relative;
   height: 1283px;
   margin-top: -200px;
-  background: url(../img/page-3-bg.png) no-repeat top center;
+  background: url(../img/page-3-bg.jpg) no-repeat top center;
 }
 #page-3-title {
   height: 48px;
   line-height: 48px;
   margin-top: 230px;
-  font-weight: 700;
   letter-spacing: 10px;
   color: #FFF;
-  font-size: 38px;
-  text-align: center;
 }
 #page-3-title img {
   margin-right: 20px;
@@ -239,7 +252,7 @@ ul.page-1-ul li::before {
 #page-3-flex-wrap {
   margin-top: 75px;
 }
-.page-3-flex {
+.page-3-flex a {
   width: 160px;
   color: #fff;
   opacity: .3;
@@ -247,7 +260,7 @@ ul.page-1-ul li::before {
   height: 28px;
   line-height: 28px;
 }
-.page-3-flex.active {
+.page-3-flex a.active {
   opacity: 1;
 }
 .page-3-flex img {
@@ -277,13 +290,67 @@ ul.page-1-ul li::before {
 }
 
 /* page-4 */
-#page-4-1 {
+/* #page-4-1 {
   height: 1050px;
-}
-#page-4-1 img {
+} */
+/* #page-4-1 img {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
+} */
+#page-4-title {
+  margin-top: 10px;
+}
+#page-4-table-wrap {
+  position: relative;
+}
+#page-4-table {
+  margin-top: 100px;
+  margin-bottom: 170px;
+}
+#page-4-table tr:nth-child(2n) td {
+  background-color: #FBFCFD;
+}
+#page-4-table-box {
+  margin-top: -15px;
+  height: 765px;
+  position: absolute;
+  width: 50%;
+  margin-left: 15%;
+  text-align: center;
+  border: 1px solid #3356E6;
+  box-shadow: 0 12px 24px 0 rgba(0,0,0,0.20);
+}
+#page-4-table-box p {
+  height: 95px;
+  font-size: 26px;
+  line-height: 95px;
+  background: #3356E6;
+  box-shadow: 0 12px 24px 0 rgba(0,45,231,0.25);
+  color: #FFF;
+}
+.page-4-img {
+  position: absolute;
+}
+#page-4-1 {
+  top: 386px;
+  left: -26px;
+}
+#page-4-2 {
+  top: 760px;
+  left: -69px;
+}
+#page-4-3 {
+  top: 100px;
+  left: 98%;
+}
+#page-4-4 {
+  top: 438px;
+  left: 110%;
+}
+#page-4-5 {
+  top: 678px;
+  left: 96%;
 }
 
 /* page-5 */
@@ -291,11 +358,7 @@ ul.page-1-ul li::before {
   background-color: #F2F2F4;
 }
 #page-5-title {
-  font-weight: 700;
   margin-top: 125px;
-  color: #323852;
-  font-size: 38px;
-  text-align: center;
 }
 #page-5-flex-wrap {
   margin-top: 90px;
@@ -405,14 +468,47 @@ ul.page-5-ul li::before {
 }
 
 /* page-6 */
-#page-6-1 {
-  height: 760px;
+#page-6-desc {
+  margin-top: 40px;
+  opacity: 0.7;
+  font-size: 20px;
+  color: #323852;
+  letter-spacing: 3px;
 }
-#page-6-1 img {
+#page-6-table {
+  margin-top: 65px;
+  margin-bottom: 120px;
+}
+#page-6-table tr {
+  border-bottom: 1px solid rgba(0, 0, 0, .1);
+  border-top: 1px solid rgba(0, 0, 0, .1);
+}
+#page-6-table tr:first-child,
+#page-6-table tr:nth-child(2),
+#page-6-table tr:last-child {
+  border: none;
+}
+#page-6-p-wrap {
+  border-left: 1px solid rgba(0, 0, 0, .1);
+}
+.page-6-table-p {
+  font-size: 15px;
+  position: relative;
+  padding-left: 20px;
+  text-align: left;
+}
+.page-6-table-p::before {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
+  left: 0;
+  top: 7px;
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 6px;
+  background-color: #333;
+}
+.page-6-table-p + p {
+  margin-top: 40px;
 }
 
 /* footer */
@@ -421,10 +517,7 @@ ul.page-5-ul li::before {
   color: #fff;
 }
 #footer-title {
-  font-weight: 700;
-  margin-top: 125px;
-  font-size: 38px;
-  text-align: center;
+  color: #fff;
 }
 .footer-card-key {
   font-size: 18px;

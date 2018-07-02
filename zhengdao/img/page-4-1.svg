@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 61</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="40" height="40"></rect>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="正道官网_20180626" transform="translate(-392.000000, -6026.000000)">
+            <g id="Group-66" transform="translate(187.000000, 5492.000000)">
+                <g id="Group-61" transform="translate(225.000000, 554.000000) rotate(-90.000000) translate(-225.000000, -554.000000) translate(205.000000, 534.000000)">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <g id="Rectangle-26"></g>
+                    <g id="Group-60" mask="url(#mask-2)" stroke="#EF5A2A" stroke-linecap="square" stroke-width="0.5">
+                        <g transform="translate(18.094514, 22.404132) rotate(-315.000000) translate(-18.094514, -22.404132) translate(-7.168644, -13.836469)">
+                            <path d="M50.075188,0.15037594 L50.075188,72.3458647" id="Line-5-Copy-15"></path>
+                            <path d="M45.5639098,0.15037594 L45.5639098,72.3458647" id="Line-5-Copy-14"></path>
+                            <path d="M41.0526316,0.15037594 L41.0526316,72.3458647" id="Line-5-Copy-13"></path>
+                            <path d="M36.5413534,0.15037594 L36.5413534,72.3458647" id="Line-5-Copy-12"></path>
+                            <path d="M32.0300752,0.15037594 L32.0300752,72.3458647" id="Line-5-Copy-11"></path>
+                            <path d="M27.518797,0.15037594 L27.518797,72.3458647" id="Line-5-Copy-10"></path>
+                            <path d="M23.0075188,0.15037594 L23.0075188,72.3458647" id="Line-5-Copy-9"></path>
+                            <path d="M18.4962406,0.15037594 L18.4962406,72.3458647" id="Line-5-Copy-8"></path>
+                            <path d="M13.9849624,0.15037594 L13.9849624,72.3458647" id="Line-5-Copy-7"></path>
+                            <path d="M9.47368421,0.15037594 L9.47368421,72.3458647" id="Line-5-Copy-6"></path>
+                            <path d="M4.96240602,0.15037594 L4.96240602,72.3458647" id="Line-5-Copy"></path>
+                            <path d="M0.45112782,0.15037594 L0.45112782,72.3458647" id="Line-5"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
