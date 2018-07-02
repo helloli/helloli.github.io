@@ -52,7 +52,7 @@ p {
   display: flex;
   justify-content: space-around;
 }
-.center {
+.text-center {
   text-align: center;
 }
 .page-title {
