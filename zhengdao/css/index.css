@@ -212,7 +212,7 @@ ul.page-1-ul li::before {
   position: relative;
   height: 1283px;
   margin-top: -200px;
-  background: url(../img/page-3-bg.jpg) no-repeat top center;
+  background: url(../img/page-3-bg.png) no-repeat top center;
 }
 #page-3-title {
   height: 48px;
@@ -361,7 +361,7 @@ ul.page-5-ul li::before {
 }
 .page-5-card-cost {
   margin: 0 auto;
-  width: 310px;
+  width: 90%;
   height: 95px;
   line-height: 95px;
   border-top: 1px dashed rgba(153, 153, 153, .5);
@@ -549,10 +549,22 @@ ul.page-5-ul li::before {
 
 /* 适配窄屏 */
 @media screen and (max-width: 1200px) {
+  .page {
+    max-width: 1000px;
+  }
+  #header-chart {
+    left: 300px;
+  }
   #page-4-1 img {
     width: 120%;
   }
   #page-6-1 img {
     width: 100%;
+  }
+  .page-5-flex {
+    width: 300px;
+  }
+  .page-5-card-cost {
+    /* width: 90%; */
   }
 }
