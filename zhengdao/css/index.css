@@ -139,7 +139,7 @@ p {
 #header-chart {
   position: absolute;
   top: 300px;
-  left: 500px;
+  left: 45%;
 }
 
 /* page-1 */
@@ -623,8 +623,59 @@ ul.page-5-ul li::before {
   animation: run-4 8s infinite;
 }
 
-.transition {
-  transition: transform 1s;
+#header-chart #Group-24 * {
+  transition: all 1s linear;
+}
+#header-chart:hover #Group-23-Copy {
+  transform: translate(0.428298px, 0.571076px);
+}
+#header-chart:hover #Group-23-Copy #Path-8 {
+  d: path('M28.4601887 0.524025113 0.517342114 15.3735949 33.8010981 28.423027 62.5199957 13.4838888');
+}
+#header-chart:hover #Group-23-Copy #Path-8-Copy-2 {
+  d: path('M61.7439447 137.738173 33.8010981 152.587743 33.8010981 28.413691 62.4962611 13.5057641');
+}
+#header-chart:hover #Group-23-Copy #Path-8-Copy {
+  d: path('M0.517342114 139.673766 0.517342114 15.3595755 33.8010981 28.426012 33.8010981 152.568906');
+}
+
+#header-chart:hover #Group-23 {
+  transform: translate(58.000000px, 66.000000px);
+}
+#header-chart:hover #Group-23 #Path-8 {
+  d: path('M28.4601887 0.656194283 0.517342114 15.505764 33.8010981 28.5551961 62.5199957 13.616058');
+}
+#header-chart:hover #Group-23 #Path-8-Copy-2 {
+  d: path('M61.7439447 95.7381731 33.8010981 110.587743 33.8010981 28.5635644 62.4957007 13.6173119');
+}
+#header-chart:hover #Group-23 #Path-8-Copy {
+  d: path('M0.517342114 97.6676294 0.517342114 15.5230951 33.8010981 28.5600403 33.8010981 110.568906');
+}
+
+#header-chart:hover #Group-23-Copy-2 {
+  transform: translate(118.000000px, 94.000000px);
+}
+#header-chart:hover #Group-23-Copy-2 #Path-8 {
+  d: path('M28.4601887 0.15380608 0.517342114 15.0033758 33.8010981 28.0528079 62.5199957 13.1136697');
+}
+#header-chart:hover #Group-23-Copy-2 #Path-8-Copy-2 {
+  d: path('M62.5199957 92.5931226 33.8010981 107.587743 33.8010981 28.0818916 62.5199957 13.1038358');
+}
+#header-chart:hover #Group-23-Copy-2 #Path-8-Copy {
+  d: path('M0.517342114 94.3734415 0.517342114 15.0269657 33.8010981 28.0478362 33.8010981 107.568906');
+}
+
+#header-chart:hover #Group-23-Copy-3 {
+  transform: translate(177.000000px, 99.000000px);
+}
+#header-chart:hover #Group-23-Copy-3 #Path-8 {
+  d: path('M28.4601887 0.59935871 0.517342114 15.4489285 33.8010981 28.4983606 62.5199957 13.5592224');
+}
+#header-chart:hover #Group-23-Copy-3 #Path-8-Copy-2 {
+  d: path('M62.5199957 111.197983 33.8010981 126.587743 33.8010981 28.5001531 62.5199957 13.5322731');
+}
+#header-chart:hover #Group-23-Copy-3 #Path-8-Copy {
+  d: path('M0.517342114 113.534002 0.517342114 15.4506281 33.8010981 28.5178559 33.8010981 126.568906');
 }
 
 /* 适配窄屏 */

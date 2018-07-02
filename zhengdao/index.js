@@ -24,25 +24,6 @@ sr.reveal('.page-2-flex p, .page-2-flex img', {
   scale: .7
 }, 50);
 
-// $(window).scroll(function () {
-//   var scrollTop = $(document).scrollTop();
-//   var sightBottom = scrollTop + $(window).height();
-//   var viewFactor = .6;
-
-//   $('.page-1-flex img, .page-1-flex li, .page-1-flex p, .page-2-flex img, .page-2-flex p').each(function () {
-//     var $this = $(this);
-//     var top = $this.offset().top;
-//     var height = $this.height();
-//     var distance = height * viewFactor;
-//     if (top + distance < sightBottom) {
-//       if ($this.hasClass('fadeInUp')) return;
-//       $this.addClass('animated fadeInUp');
-//     } else if (top > sightBottom + height) {
-//       $this.removeClass('animated fadeInUp');
-//     }
-//   });
-// });
-
 /**
  * header chart hover animation
  */
@@ -56,57 +37,15 @@ sr.reveal('.page-2-flex p, .page-2-flex img', {
 //   $('.header-chart-animation-on').each(function () {
 //     this.beginElement();
 //   });
-//   $('#header-chart #Group-23-Copy').attr('transform', 'translate(0.428298, 0)');
+//   $('#header-chart #Group-23-Copy').attr('transform', 'translate(0.428298, 0.571076)');
 //   // $('#header-chart #Group-23-Copy #Path-8').attr('points', '28.4601887 0.656194283 0.517342114 15.505764 33.8010981 28.5551961 62.5199957 13.616058');
 // }).on('mouseleave', function () {
+//   $('#header-chart #Group-23-Copy').attr('transform', 'translate(0.428298, 66.571076)');
+//   $('.header-chart-animation-off').each(function () {
+//     this.beginElement();
+//   });
 //   console.log(2);
 // });
-
-// function moveDiv() {
-//   var $span = $("#header-chart");
-
-//   $span.fadeOut(1000, function () {
-//     var maxLeft = $(window).width() - $span.width();
-//     var maxTop = $(window).height() - $span.height();
-//     var leftPos = Math.floor(Math.random() * (maxLeft + 1))
-//     var topPos = Math.floor(Math.random() * (maxTop + 1))
-
-//     $span.css({ left: leftPos, top: topPos }).fadeIn(1000);
-//   });
-// };
-
-// moveDiv();
-// setInterval(moveDiv, 1000);
-
-
-// 头图背景动画
-// (function() {
-//   if (!window.addEventListener) return;
-
-//   var els = $('#header-bg #Group-2 g *');
-//   var bigels = $('#header-bg .header-circle');
-
-//   function reposition($el) {
-//     let x = $el.attr('position-x');
-//     let y = $el.attr('position-y');
-//     if (x === undefined && y === undefined) {
-//       $el.attr('position-x', '0');
-//       $el.attr('position-y', '0');
-//     } else {
-//       console.log(333);
-//       var nx = parseFloat(x) + Math.random() * 0.5 + 0.25;
-//       var ny = parseFloat(y) + Math.random() * 0.5 + 0.25;
-//       $el.attr('position-x', nx);
-//       $el.attr('position-y', ny);
-//       $el.attr('transform', 'translate('+nx+', '+ny+')');
-//     }
-//   }
-//   // setInterval(() => {
-//   //   els.each(function () {
-//   //     reposition($(this));
-//   //   })
-//   // }, 1000);
-// })();
 
 // 星星效果
 (function () {
