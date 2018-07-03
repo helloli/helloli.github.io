@@ -541,20 +541,7 @@ ul.page-5-ul li::before {
 }
 
 /* animate */
-/* .page-1-flex img, .page-1-flex li, .page-1-flex p, .page-2-flex img, .page-2-flex p {
-  opacity: 0;
-} */
-#header-chart,
-#header-chart #Path-5-Copy-2 {
-  transition: all .5s linear;
-}
-#header-chart:hover {
-  top: 290px;
-}
-#header-chart:hover #Path-5-Copy-2 {
-  transform: translate(2.5% ,10px) scaleX(.95);
-}
-
+/* header background elements */
 @keyframes run-1 {
   0% {
     transform: translate(0, 0);
@@ -600,16 +587,28 @@ ul.page-5-ul li::before {
   }
 }
 .move-1 {
-  animation: run-1 8s infinite;
+  animation: run-1 6s infinite;
 }
 .move-2 {
-  animation: run-2 8s infinite;
+  animation: run-2 6s infinite;
 }
 .move-3 {
-  animation: run-3 8s infinite;
+  animation: run-3 6s infinite;
 }
 .move-4 {
-  animation: run-4 8s infinite;
+  animation: run-4 6s infinite;
+}
+
+/* header-chart */
+#header-chart,
+#header-chart #Path-5-Copy-2 {
+  transition: all .5s linear;
+}
+#header-chart:hover {
+  top: 290px;
+}
+#header-chart:hover #Path-5-Copy-2 {
+  transform: translate(2.5% ,10px) scaleX(.95);
 }
 
 #header-chart #Group-24 * {
