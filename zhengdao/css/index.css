@@ -546,7 +546,7 @@ ul.page-5-ul li::before {
 } */
 #header-chart,
 #header-chart #Path-5-Copy-2 {
-  transition: all .2s;
+  transition: all .5s linear;
 }
 #header-chart:hover {
   top: 290px;
@@ -555,17 +555,6 @@ ul.page-5-ul li::before {
   transform: translate(2.5% ,10px) scaleX(.95);
 }
 
-#header-chart:hover #Group-23-Copy #Path-8-Copy,
-#header-chart:hover #Group-23-Copy #Path-8-Copy-2 {
-  /* transform: scaleY(1.3); */
-}
-#header-chart:hover #Group-23-Copy #Path-8 {
-  /* transform: translateY(100%); */
-}
-#header-chart:hover #Group-23-Copy {
-  /* transform: scaleY(1.1);
-  transform-origin: center bottom; */
-}
 @keyframes run-1 {
   0% {
     transform: translate(0, 0);
@@ -624,7 +613,7 @@ ul.page-5-ul li::before {
 }
 
 #header-chart #Group-24 * {
-  transition: all 1s linear;
+  transition: all .5s linear;
 }
 #header-chart:hover #Group-23-Copy {
   transform: translate(0.428298px, 0.571076px);
