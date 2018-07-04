@@ -666,6 +666,166 @@ ul.page-5-ul li::before {
   d: path('M0.517342114 113.534002 0.517342114 15.4506281 33.8010981 28.5178559 33.8010981 126.568906');
 }
 
+/* paga-1-1 */
+@keyframes page-1-1 {
+  0% {
+    transform: translate(154.837310px, 57.644342px);
+  }
+  50% {
+    transform: translate(181.837310px, 57.644342px);
+  }
+  100% {
+    transform: translate(154.837310px, 57.644342px);
+  }
+}
+@keyframes page-1-2 {
+  0% {
+    transform: translate(299.006211px, 60.315545px);
+  }
+  50% {
+    transform: translate(269.006211px, 60.315545px);
+  }
+  100% {
+    transform: translate(299.006211px, 60.315545px);
+  }
+}
+@keyframes page-1-3 {
+  0% {
+    transform: translate(53.076305px, 0.000000px);
+  }
+  50% {
+    transform: translate(53.076305px, -20.000000px);
+  }
+  100% {
+    transform: translate(53.076305px, 0.000000px);
+  }
+}
+@keyframes page-1-4-1 {
+  0% {
+    transform: translate(294.536101px, 123.247104px);
+  }
+  50% {
+    transform: translate(294.536101px, 170.247104px);
+  }
+  100% {
+    transform: translate(294.536101px, 123.247104px);
+  }
+}
+@keyframes page-1-4-2 {
+  0% {
+    d: path("M23.7696789 7.50766831 11.4550166 11.7546686 11.4550166 111.083647 23.7696789 106.396538");
+  }
+  50% {
+    d: path("M23.7696789 7.58311231 11.4550166 11.7385865 11.4550166 64.0836466 23.7696789 59.3965383");
+  }
+  100% {
+    d: path("M23.7696789 7.50766831 11.4550166 11.7546686 11.4550166 111.083647 23.7696789 106.396538");
+  }
+}
+@keyframes page-1-4-3 {
+  0% {
+    d: path("M0.815932125 5.3976834 11.4550166 11.7546686 11.4550166 111.083647 0.815932125 104.286553");
+  }
+  50% {
+    d: path("M0.815932125 5.38931596 11.4550166 11.6818859 11.4550166 64.0836466 0.815932125 57.2865533");
+  }
+  100% {
+    d: path("M0.815932125 5.3976834 11.4550166 11.7546686 11.4550166 111.083647 0.815932125 104.286553");
+  }
+}
+@keyframes page-1-4-4 {
+  0% {
+    d: path("M0.815932125 5.3976834 11.4550166 11.7546686 23.7793679 7.51647637 13.1402834 0.719383145");
+  }
+  50% {
+    d: path("M0.815932125 5.3976834 11.4550166 11.7546686 23.7793679 7.51647637 13.1402834 0.719383145");
+  }
+  100% {
+    d: path("M0.815932125 5.3976834 11.4550166 11.7546686 23.7793679 7.51647637 13.1402834 0.719383145");
+  }
+}
+@keyframes page-1-4-5 {
+  0% {
+    transform: translate(321.557762px, 185.320463px);
+  }
+  50% {
+    transform: translate(321.557762px, 154.320463px);
+  }
+  100% {
+    transform: translate(321.557762px, 185.320463px);
+  }
+}
+@keyframes page-1-4-6 {
+  0% {
+    d: path("M0 4.4980695 9.79985196 11.6536979 9.79985196 66.0019809 0 58.4062445");
+  }
+  50% {
+    d: path("M0 4.4980695 9.79985196 11.6536979 9.79985196 97.0019809 0 89.4062445");
+  }
+  100% {
+    d: path("M0 4.4980695 9.79985196 11.6536979 9.79985196 66.0019809 0 58.4062445");
+  }
+}
+@keyframes page-1-4-7 {
+  0% {
+    d: path("M21.6645781 7.22956475 9.80459987 11.6628439 9.80459987 66.0111269 21.6645781 61.1377397");
+  }
+  50% {
+    d: path("M21.6645781 7.22956475 9.80459987 11.6628439 9.80459987 97.0111269 21.6645781 92.1377397");
+  }
+  100% {
+    d: path("M21.6645781 7.22956475 9.80459987 11.6628439 9.80459987 66.0111269 21.6645781 61.1377397");
+  }
+}
+@keyframes page-1-4-8 {
+  0% {
+    d: path("M0 4.67830025 9.86982134 11.7561234 21.7207198 7.22411854 12.3243513 0");
+  }
+  50% {
+    d: path("M0.0236732227 4.54682624 9.86982134 11.7561234 21.7207198 7.22411854 12.3243513 0");
+  }
+  100% {
+    d: path("M0 4.67830025 9.86982134 11.7561234 21.7207198 7.22411854 12.3243513 0");
+  }
+}
+svg {
+  overflow: visible;
+}
+#page-1-1:hover #Group-8 {
+  animation: page-1-1 2s infinite;
+}
+#page-1-2:hover #Group-44 {
+  animation: page-1-2 2s infinite;
+}
+#page-1-3:hover #page-1-3-Group-34 {
+  animation: page-1-3 2s infinite;
+}
+#page-1-4:hover #page-1-4-Group-39 {
+  animation: page-1-4-1 2s infinite;
+}
+#page-1-4:hover #page-1-4-Group-39 #page-1-4-Rectangle-22-Copy-4 {
+  animation: page-1-4-2 2s infinite;
+}
+#page-1-4:hover #page-1-4-Group-39 #page-1-4-Rectangle-22-Copy-6 {
+  animation: page-1-4-3 2s infinite;
+}
+#page-1-4:hover #page-1-4-Group-39 #page-1-4-Rectangle-22-Copy-5 {
+  animation: page-1-4-4 2s infinite;
+}
+#page-1-4:hover #page-1-4-Group-39-Copy {
+  animation: page-1-4-5 2s infinite;
+}
+#page-1-4:hover #page-1-4-Group-39-Copy #page-1-4-Rectangle-22-Copy-4 {
+  animation: page-1-4-6 2s infinite;
+}
+#page-1-4:hover #page-1-4-Group-39-Copy #page-1-4-Rectangle-22-Copy-6 {
+  animation: page-1-4-7 2s infinite;
+}
+#page-1-4:hover #page-1-4-Group-39-Copy #page-1-4-Rectangle-22-Copy-5 {
+  animation: page-1-4-8 2s infinite;
+}
+
+
 /* 适配窄屏 */
 @media screen and (max-width: 1200px) {
   .page {
