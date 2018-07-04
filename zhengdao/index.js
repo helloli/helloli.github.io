@@ -168,14 +168,14 @@ sr.reveal('.page-2-flex p, .page-2-flex img', {
 
     // 星星的数目
     // IE下CUP性能有限，数目小
-    var length = 300;
-    if (!history.pushState) {
-      // IE9
-      length = 200;
-    } else if (document.msHidden != undefined) {
-      // IE10+
-      length = 300;
-    }
+    var length = 100;
+    // if (!history.pushState) {
+    //   // IE9
+    //   length = 200;
+    // } else if (document.msHidden != undefined) {
+    //   // IE10+
+    //   length = 300;
+    // }
 
     if (Object.keys(stars).length > length) {
       settings.density = 0;
