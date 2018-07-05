@@ -251,14 +251,12 @@ ul.page-1-ul li::before {
 #page-3-flex-wrap label {
   width: 160px;
   color: #fff;
-  /* opacity: .3; */
   font-size: 20px;
   height: 28px;
   cursor: pointer;
 }
 #page-3-flex-wrap label input {
   display: none;
-  /* visibility: hidden; */
 }
 #page-3-flex-wrap label input a.active {
   opacity: 1;
@@ -399,8 +397,6 @@ ul.page-1-ul li::before {
   height: 50px;
   line-height: 50px;
   padding: 0 25px;
-  /* border: 2px solid #fff;
-  border-radius: 2px; */
   display: inline-block;
   text-shadow: #CFCFCF 0 6px 6px;
 }
