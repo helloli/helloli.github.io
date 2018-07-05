@@ -82,7 +82,7 @@ p {
 /* header */
 #header-wrap {
   height: 880px;
-  overflow-y: visible;
+  /* overflow-y: visible; */
   position: relative;
 }
 #header-bg {
