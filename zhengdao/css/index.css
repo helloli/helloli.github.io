@@ -276,7 +276,8 @@ ul.page-1-ul li::before {
   left: 50%;
   transform: translateX(-50%);
 }
-.page-3-mac-pic {
+#page-3-flex-wrap label .page-3-mac-pic {
+  margin-right: 0px;
   z-index: 1;
   position: absolute;
   display: none;
