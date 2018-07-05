@@ -542,7 +542,7 @@ ul.page-5-ul li::before {
 
 /* animate */
 /* header background elements */
-@keyframes run-1 {
+/* @keyframes run-1 {
   0% {
     transform: translate(0, 0);
   }
@@ -597,7 +597,7 @@ ul.page-5-ul li::before {
 }
 .move-4 {
   animation: run-4 6s infinite;
-}
+} */
 
 /* header-chart */
 #header-chart,
