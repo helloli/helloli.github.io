@@ -124,7 +124,8 @@ sr.reveal('.page-2-flex p, .page-2-flex img', {
     particleIndex++;
     stars[particleIndex] = this;
     this.alpha = 0.0;
-    this.maxAlpha = 0.2 + (this.y / canvas.height) * Math.random() * 0.8;
+    this.maxAlpha = 1;
+    // this.maxAlpha = 0.2 + (this.y / canvas.height) * Math.random() * 0.8;
     this.alphaAction = 1;
   }
 
@@ -138,13 +139,13 @@ sr.reveal('.page-2-flex p, .page-2-flex img', {
     // 透明度慢慢起来
     if (this.alphaAction == 1) {
       if (this.alpha < this.maxAlpha) {
-        this.alpha += 0.1 * Math.random();
+        this.alpha += 0.04 * Math.random();
       } else {
         this.alphaAction = -1;
       }
     } else {
       if (this.alpha > 0.2) {
-        this.alpha -= 0.1 * Math.random();
+        this.alpha -= 0.04 * Math.random();
       } else {
         this.alphaAction = 1;
       }
