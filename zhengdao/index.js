@@ -116,7 +116,8 @@ sr.reveal('.page-2-flex p, .page-2-flex img', {
     this.y = b + this.offsety;
     // this.y = b - Math.sqrt(settings.r * settings.r - (this.x - a) * (this.x - a)) - this.offsety;
 
-    this.vx = Math.random() * 0.05 + 0.025;    // 水平偏移，也是移动速度
+    // this.vx = Math.random() * 0.05 + 0.025;    // 水平偏移，也是移动速度
+    this.vx = 0;
 
     // 星星的尺寸
     this.particleSize = 0.5 + (Math.random() + 0.1 / 4);
@@ -137,13 +138,13 @@ sr.reveal('.page-2-flex p, .page-2-flex img', {
     // 透明度慢慢起来
     if (this.alphaAction == 1) {
       if (this.alpha < this.maxAlpha) {
-        this.alpha += 0.005;
+        this.alpha += 0.1 * Math.random();
       } else {
         this.alphaAction = -1;
       }
     } else {
       if (this.alpha > 0.2) {
-        this.alpha -= 0.002;
+        this.alpha -= 0.1 * Math.random();
       } else {
         this.alphaAction = 1;
       }
