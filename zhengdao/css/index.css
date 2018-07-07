@@ -31,6 +31,10 @@ img {
 p {
   word-wrap: break-word;
 }
+@font-face {
+  font-family: DINProBold;
+  src: url('./DINPro-Bold.otf');
+}
 
 /* common */
 .btn {
@@ -429,14 +433,17 @@ ul.page-5-ul li::before {
   width: 90%;
   height: 95px;
   line-height: 95px;
+  font-family: "DINProBold";
   border-top: 1px dashed rgba(153, 153, 153, .5);
   text-align: right;
   font-size: 15px;
   color: rgba(51, 51, 51, .7);
 }
 .page-5-card-cost span {
+  margin-right: 10px;
   color: #333;
   font-size: 40px;
+  vertical-align: sub;
 }
 #page-5-desc {
   margin-top: 80px;
@@ -446,24 +453,29 @@ ul.page-5-ul li::before {
   color: #AAA;
 }
 #page-5-card-2 {
-  background-color: #1567D2;
+  background-image: linear-gradient(-180deg, #1567D2 0%, #192DA4 100%);
 }
 #page-5-card-3 {
-  background-color: #FF7549;
+  background-image: linear-gradient(-180deg, #FF7549 0%, #E24B1A 98%);
 }
 .page-5-card-white {
   color: #FFF;
 }
-.page-5-card-white .page-5-card-title {
+#page-5-card-2 .page-5-card-title {
   text-shadow: #004E86 0 6px 6px;
+}
+#page-5-card-3 .page-5-card-title {
+  text-shadow: rgba(190, 64, 23, .5) 0 6px 6px;
 }
 .page-5-card-white .page-5-card-cost {
   border-top-color: rgba(255, 255, 255, .5)
 }
 .page-5-card-white ul.page-5-ul li,
-.page-5-card-white .page-5-card-cost,
 .page-5-card-white .page-5-card-cost span {
-  color: #FFF;
+  color: rgba(255, 255, 255, 1);
+}
+.page-5-card-white .page-5-card-cost {
+  color: rgba(255, 255, 255, .7);
 }
 .page-5-card-white ul.page-5-ul li::before {
   background-color: #FFF;
@@ -519,11 +531,14 @@ ul.page-5-ul li::before {
   color: #fff;
 }
 #footer-title {
+  letter-spacing: 10px;
+  word-spacing: 20px;
   color: #fff;
 }
 .footer-card-key {
   font-size: 18px;
   color: #375BF3;
+  margin-bottom: 10px;
 }
 .footer-card-value {
   font-size: 18px;
@@ -615,15 +630,37 @@ ul.page-5-ul li::before {
 } */
 
 /* header-chart */
+@keyframes header-chart-up {
+  0% {
+    top: 300px;
+  }
+  50% {
+    top: 290px;
+  }
+  100% {
+    top: 300px;
+  }
+}
+@keyframes header-chart-down {
+  0% {
+    transform: translate(0 ,0) scaleX(1);
+  }
+  50% {
+    transform: translate(2.5% ,10px) scaleX(.95);
+  }
+  100% {
+    transform: translate(0 ,0) scaleX(1);
+  }
+}
 #header-chart,
 #header-chart #Path-5-Copy-2 {
   transition: all .5s linear;
 }
-#header-chart:hover {
-  top: 290px;
+#header-chart {
+  animation: header-chart-up 2s infinite;
 }
-#header-chart:hover #Path-5-Copy-2 {
-  transform: translate(2.5% ,10px) scaleX(.95);
+#header-chart #Path-5-Copy-2 {
+  animation: header-chart-down 2s infinite;
 }
 
 #header-chart #Group-24 * {
