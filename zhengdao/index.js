@@ -56,7 +56,7 @@ function setCardInterval() {
     $('#page-7-li-' + currCard).removeClass('active');
     currCard === 4 ? currCard = 1 : currCard += 1;
     $('#page-7-li-' + currCard).addClass('active');
-  }, 3000);
+  }, 5000);
 }
 setCardInterval();
 $('#page-7-ul').on('click', 'li', function () {

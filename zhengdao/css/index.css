@@ -336,7 +336,7 @@ ul.page-1-ul li::before {
   padding-top: 40px;
 }
 #page-7-ul li {
-  transition: all 1s linear;
+  transition: all .3s linear;
   width: 150px;
   height: 66px;
   opacity: .1;
