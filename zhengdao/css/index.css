@@ -66,6 +66,14 @@ p {
   font-size: 38px;
   text-align: center;
 }
+.page-title-desc {
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0.7;
+  font-size: 20px;
+  color: #323852;
+  letter-spacing: 3px;
+}
 .page-table {
   width: 100%;
   text-align: center;
@@ -240,13 +248,7 @@ ul.page-1-ul li::before {
   margin-right: 20px;
 }
 #page-3-desc {
-  margin-top: 30px;
-  height: 28px;
-  line-height: 28px;
-  font-size: 20px;
-  text-align: center;
   color: #FFF;
-  opacity: .7;
 }
 #page-3-flex-wrap {
   margin-top: 75px;
@@ -297,7 +299,7 @@ ul.page-1-ul li::before {
 #page-3-net {
   position: absolute;
   left: 50%;
-  top: 280px;
+  top: 270px;
   transform: translateX(-50%);
 }
 #page-3-canvas {
@@ -306,9 +308,6 @@ ul.page-1-ul li::before {
 }
 
 /* page-4 */
-#page-4-title {
-  margin-top: 10px;
-}
 #page-4-table-wrap {
   position: relative;
 }
@@ -482,13 +481,6 @@ ul.page-5-ul li::before {
 }
 
 /* page-6 */
-#page-6-desc {
-  margin-top: 40px;
-  opacity: 0.7;
-  font-size: 20px;
-  color: #323852;
-  letter-spacing: 3px;
-}
 #page-6-table {
   margin-top: 65px;
   margin-bottom: 120px;
@@ -523,6 +515,32 @@ ul.page-5-ul li::before {
 }
 .page-6-table-p + p {
   margin-top: 40px;
+}
+
+/* page-7 */
+#page-7 {
+  background: url(../img/page-7-bg-1.jpg) no-repeat bottom center;
+}
+#page-7-title {
+  margin-top: 10px;
+}
+#page-7-1 {
+  position: relative;
+  width: 960px;
+  height: 545px;
+  background: #FFF;
+  margin-top: 100px;
+  margin-bottom: 135px;
+  box-shadow: 0 0 50px 0 rgba(0,0,0,0.15);
+}
+#page-7-1::after {
+  content: "";
+  position: absolute;
+  bottom: -108px;
+  right: -110px;
+  width: 139px;
+  height: 244px;
+  background: url(../img/page-7-bg-2.png) no-repeat bottom center;
 }
 
 /* footer */
