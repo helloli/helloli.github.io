@@ -47,6 +47,25 @@ sr.reveal('.page-2-flex p, .page-2-flex img', {
 //   console.log(2);
 // });
 
+// 轮播
+var currCard = 1;
+var cardInterval = null;
+function setCardInterval() {
+  cardInterval && clearInterval(cardInterval);
+  cardInterval = setInterval(function () {
+    $('#page-7-li-' + currCard).removeClass('active');
+    currCard === 4 ? currCard = 1 : currCard += 1;
+    $('#page-7-li-' + currCard).addClass('active');
+  }, 3000);
+}
+setCardInterval();
+$('#page-7-ul').on('click', 'li', function () {
+  $('#page-7-li-' + currCard).removeClass('active');
+  currCard = $(this).data('index');
+  $('#page-7-li-' + currCard).addClass('active');
+  setCardInterval();
+});
+
 // 星星效果
 (function () {
 
