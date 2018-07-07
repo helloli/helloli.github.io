@@ -635,7 +635,7 @@ ul.page-5-ul li::before {
     top: 300px;
   }
   50% {
-    top: 290px;
+    top: 280px;
   }
   100% {
     top: 300px;
@@ -646,21 +646,21 @@ ul.page-5-ul li::before {
     transform: translate(0 ,0) scaleX(1);
   }
   50% {
-    transform: translate(2.5% ,10px) scaleX(.95);
+    transform: translate(2.5% ,20px) scaleX(.95);
   }
   100% {
     transform: translate(0 ,0) scaleX(1);
   }
 }
-#header-chart,
+/* #header-chart,
 #header-chart #Path-5-Copy-2 {
   transition: all .5s linear;
-}
+} */
 #header-chart {
-  animation: header-chart-up 2s infinite;
+  animation: header-chart-up 3s infinite;
 }
 #header-chart #Path-5-Copy-2 {
-  animation: header-chart-down 2s infinite;
+  animation: header-chart-down 3s infinite;
 }
 
 #header-chart #Group-24 * {
