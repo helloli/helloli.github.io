@@ -4,15 +4,13 @@
     <title>Group 47</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.300000012">
-        <g id="正道官网_20180626" transform="translate(-1001.000000, -4621.000000)">
-            <g id="Group-54" transform="translate(467.000000, 4619.000000)">
-                <g id="Group-48" transform="translate(535.000000, 0.000000)">
-                    <g id="Group-47" transform="translate(0.000000, 3.000000)">
-                        <path d="M6.40049524,11.7680708 C1.94904264,11.8704483 -0.180468904,9.94775801 0.0119606135,6 C0.477487097,6 2.09386872,6 4.86110548,6 C7.62834223,6 9.01196061,7.73128451 9.01196061,11.1938535 L9.01196061,21" id="Path-60" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M9,5.96611675 C9,4.2136819 10.2879873,-0.163385867 17.4031042,0.00470886971 C18.1759607,0.0229676158 20.0851356,0.00470886971 20.9854013,0.00470886971 C21.1812591,0.00470886971 19.4265932,7 14.4977186,7 L9,7" id="Path-61" fill-opacity="0.5" fill="#FFFFFF"></path>
-                        <path d="M9,5.96611675 C9,4.2136819 10.2879873,-0.163385867 17.4031042,0.00470886971 C18.1759607,0.0229676158 20.0851356,0.00470886971 20.9854013,0.00470886971 C21.1812591,0.00470886971 19.4265932,7 14.4977186,7 L11.8042017,7" id="Path-61-Copy" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </g>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Artboard-2" transform="translate(-288.000000, -194.000000)">
+            <g id="Group-48" transform="translate(289.000000, 192.000000)">
+                <g id="Group-47" transform="translate(0.000000, 3.000000)">
+                    <path d="M6.40049524,11.7680708 C1.94904264,11.8704483 -0.180468904,9.94775801 0.0119606135,6 C0.477487097,6 2.09386872,6 4.86110548,6 C7.62834223,6 9.01196061,7.73128451 9.01196061,11.1938535 L9.01196061,21" id="Path-60" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M9,5.96611675 C9,4.2136819 10.2879873,-0.163385867 17.4031042,0.00470886971 C18.1759607,0.0229676158 20.0851356,0.00470886971 20.9854013,0.00470886971 C21.1812591,0.00470886971 19.4265932,7 14.4977186,7 L9,7" id="Path-61" fill-opacity="0.5" fill="#FFFFFF"></path>
+                    <path d="M9,5.96611675 C9,4.2136819 10.2879873,-0.163385867 17.4031042,0.00470886971 C18.1759607,0.0229676158 20.0851356,0.00470886971 20.9854013,0.00470886971 C21.1812591,0.00470886971 19.4265932,7 14.4977186,7 L11.8042017,7" id="Path-61-Copy" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
                 </g>
             </g>
         </g>
