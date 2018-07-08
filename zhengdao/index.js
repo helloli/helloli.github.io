@@ -63,7 +63,7 @@ $('#page-7-ul').on('click', 'li', function () {
   $('#page-7-li-' + currCard).removeClass('active');
   currCard = $(this).data('index');
   $('#page-7-li-' + currCard).addClass('active');
-  setCardInterval();
+  clearInterval(cardInterval);
 });
 
 // 星星效果

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="12px" height="30px" viewBox="0 0 12 30" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 7</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-11" transform="translate(-824.000000, -253.000000)">
+            <g id="Group-81" transform="translate(220.000000, 153.000000)">
+                <g id="Group-7" transform="translate(604.000000, 100.000000)">
+                    <path d="M6,0 L6,28.5043856" id="Path-2-Copy" stroke="#188FFF"></path>
+                    <polygon id="Triangle-Copy-2" fill="#188FFF" transform="translate(6.000000, 25.500000) rotate(-270.000000) translate(-6.000000, -25.500000) " points="1.5 31.5 1.5 19.5 10.5 25.5"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
