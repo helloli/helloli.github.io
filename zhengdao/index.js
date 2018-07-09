@@ -27,25 +27,97 @@ sr.reveal('.page-2-flex p, .page-2-flex img', {
 /**
  * header chart hover animation
  */
-// function polygonAnimation($el, value) {
-//   $el.attr('points', value);
 
-// }
-// var $headerChart = $('#header-chart');
-// $headerChart.on('mouseenter', function () {
-//   console.log(1);
-//   $('.header-chart-animation-on').each(function () {
-//     this.beginElement();
-//   });
-//   $('#header-chart #Group-23-Copy').attr('transform', 'translate(0.428298, 0.571076)');
-//   // $('#header-chart #Group-23-Copy #Path-8').attr('points', '28.4601887 0.656194283 0.517342114 15.505764 33.8010981 28.5551961 62.5199957 13.616058');
-// }).on('mouseleave', function () {
-//   $('#header-chart #Group-23-Copy').attr('transform', 'translate(0.428298, 66.571076)');
-//   $('.header-chart-animation-off').each(function () {
-//     this.beginElement();
-//   });
-//   console.log(2);
-// });
+ /**
+  * 路径变化函数
+  */
+function transPath(path, position, value) {
+  path = path.split(' ');
+  path[0] = path[0].slice(1);
+  position.forEach(function (i) {
+    path[i] = parseFloat(path[i]) + value;
+  });
+  return 'M' + path.join(' ');
+}
+
+// 节点定义
+function svgNode(el, attr, endValue, duration) {
+  this.$el = Snap.select(el);
+  this.attr = attr;
+  this.startValue = document.querySelector(el).getAttribute(attr);
+  this.endValue = endValue instanceof Array ? transPath(this.startValue, endValue[0], endValue[1]) : endValue;
+  this.duration = duration || 500;
+  this.stop = true;
+}
+svgNode.prototype.start = function () {
+  var tmp = {};
+  tmp[this.attr] = this.endValue;
+  this.$el.animate(tmp, this.duration, mina.linear, this.stop?function(){}:this.end.bind(this));
+}
+svgNode.prototype.end = function () {
+  var tmp = {};
+  tmp[this.attr] = this.startValue;
+  this.$el.animate(tmp, this.duration, mina.linear, this.stop?function(){}:this.start.bind(this));
+}
+
+// 批量处理动画的开始和停止
+function svgAnimate(arr) {
+  this.arr = arr.map(function(node) {
+    return new svgNode(...node);
+  });
+}
+svgAnimate.prototype.start = function () {
+  this.arr.forEach(function (node) {
+    node.start();
+  });
+}
+svgAnimate.prototype.end = function () {
+  this.arr.forEach(function (node) {
+    node.end();
+  });
+}
+svgAnimate.prototype.stop = function (val) {
+  this.arr.forEach(function (node) {
+    node.stop = val;
+  });
+}
+
+var nodes = new svgAnimate([
+  ['#header-chart #Group-23-Copy #Path-8', 'd', [[1, 3, 5, 7], -60]],
+  ['#header-chart #Group-23-Copy #Path-8-Copy-2', 'd', [[5, 7], -60]],
+  ['#header-chart #Group-23-Copy #Path-8-Copy', 'd', [[3, 5], -60]],
+  ['#header-chart #Group-23 #Path-8', 'd', [[1, 3, 5, 7], 70]],
+  ['#header-chart #Group-23 #Path-8-Copy-2', 'd', [[5, 7], 70]],
+  ['#header-chart #Group-23 #Path-8-Copy', 'd', [[3, 5], 70]],
+  ['#header-chart #Group-23-Copy-2 #Path-8', 'd', [[1, 3, 5, 7], 10]],
+  ['#header-chart #Group-23-Copy-2 #Path-8-Copy-2', 'd', [[5, 7], 10]],
+  ['#header-chart #Group-23-Copy-2 #Path-8-Copy', 'd', [[3, 5], 10]],
+  ['#header-chart #Group-23-Copy-3 #Path-8', 'd', [[1, 3, 5, 7], -80]],
+  ['#header-chart #Group-23-Copy-3 #Path-8-Copy-2', 'd', [[5, 7], -80]],
+  ['#header-chart #Group-23-Copy-3 #Path-8-Copy', 'd', [[3, 5], -80]]
+]);
+
+$('#header-chart').on('mouseenter', function () {
+  nodes.start();
+}).on('mouseleave', function () {
+  nodes.end();
+});
+
+var nodes1 = new svgAnimate([
+  ['#page-1-4 #page-1-4-Group-39 #page-1-4-Rectangle-22-Copy-4', 'd', [[1, 3], 30], 1000, true],
+  ['#page-1-4 #page-1-4-Group-39 #page-1-4-Rectangle-22-Copy-6', 'd', [[1, 3], 30], 1000, true],
+  ['#page-1-4 #page-1-4-Group-39 #page-1-4-Rectangle-22-Copy-5', 'd', [[1, 3, 5, 7], 30], 1000, true],
+  ['#page-1-4 #page-1-4-Group-39-Copy #page-1-4-Rectangle-22-Copy-4', 'd', [[1, 3], -80], 1000, true],
+  ['#page-1-4 #page-1-4-Group-39-Copy #page-1-4-Rectangle-22-Copy-6', 'd', [[1, 3], -80], 1000, true],
+  ['#page-1-4 #page-1-4-Group-39-Copy #page-1-4-Rectangle-22-Copy-5', 'd', [[1, 3, 5, 7], -80], 1000, true]
+]);
+$('#page-1-4').on('mouseenter', function () {
+  nodes1.stop(false);
+  nodes1.start();
+}).on('mouseleave', function () {
+  nodes1.stop(true);
+  nodes1.end();
+});
 
 // 轮播
 var currCard = 1;

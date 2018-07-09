@@ -64,6 +64,8 @@ p {
   font-weight: 700;
   color: #323852;
   font-size: 38px;
+  height: 53px;
+  line-height: 53px;
   text-align: center;
 }
 .page-title-desc {
@@ -927,61 +929,6 @@ ul.page-5-ul li::before {
   transform: translate(2.5% ,10px) scaleX(.95);
 }
 
-#header-chart #Group-24 * {
-  transition: all .5s linear;
-}
-#header-chart:hover #Group-23-Copy {
-  transform: translate(0.428298px, 0.571076px);
-}
-#header-chart:hover #Group-23-Copy #Path-8 {
-  d: path('M28.4601887 0.524025113 0.517342114 15.3735949 33.8010981 28.423027 62.5199957 13.4838888');
-}
-#header-chart:hover #Group-23-Copy #Path-8-Copy-2 {
-  d: path('M61.7439447 137.738173 33.8010981 152.587743 33.8010981 28.413691 62.4962611 13.5057641');
-}
-#header-chart:hover #Group-23-Copy #Path-8-Copy {
-  d: path('M0.517342114 139.673766 0.517342114 15.3595755 33.8010981 28.426012 33.8010981 152.568906');
-}
-
-#header-chart:hover #Group-23 {
-  transform: translate(58.000000px, 66.000000px);
-}
-#header-chart:hover #Group-23 #Path-8 {
-  d: path('M28.4601887 0.656194283 0.517342114 15.505764 33.8010981 28.5551961 62.5199957 13.616058');
-}
-#header-chart:hover #Group-23 #Path-8-Copy-2 {
-  d: path('M61.7439447 95.7381731 33.8010981 110.587743 33.8010981 28.5635644 62.4957007 13.6173119');
-}
-#header-chart:hover #Group-23 #Path-8-Copy {
-  d: path('M0.517342114 97.6676294 0.517342114 15.5230951 33.8010981 28.5600403 33.8010981 110.568906');
-}
-
-#header-chart:hover #Group-23-Copy-2 {
-  transform: translate(118.000000px, 94.000000px);
-}
-#header-chart:hover #Group-23-Copy-2 #Path-8 {
-  d: path('M28.4601887 0.15380608 0.517342114 15.0033758 33.8010981 28.0528079 62.5199957 13.1136697');
-}
-#header-chart:hover #Group-23-Copy-2 #Path-8-Copy-2 {
-  d: path('M62.5199957 92.5931226 33.8010981 107.587743 33.8010981 28.0818916 62.5199957 13.1038358');
-}
-#header-chart:hover #Group-23-Copy-2 #Path-8-Copy {
-  d: path('M0.517342114 94.3734415 0.517342114 15.0269657 33.8010981 28.0478362 33.8010981 107.568906');
-}
-
-#header-chart:hover #Group-23-Copy-3 {
-  transform: translate(177.000000px, 99.000000px);
-}
-#header-chart:hover #Group-23-Copy-3 #Path-8 {
-  d: path('M28.4601887 0.59935871 0.517342114 15.4489285 33.8010981 28.4983606 62.5199957 13.5592224');
-}
-#header-chart:hover #Group-23-Copy-3 #Path-8-Copy-2 {
-  d: path('M62.5199957 111.197983 33.8010981 126.587743 33.8010981 28.5001531 62.5199957 13.5322731');
-}
-#header-chart:hover #Group-23-Copy-3 #Path-8-Copy {
-  d: path('M0.517342114 113.534002 0.517342114 15.4506281 33.8010981 28.5178559 33.8010981 126.568906');
-}
-
 /* paga-1-1 */
 @keyframes page-1-1 {
   0% {
@@ -1016,94 +963,6 @@ ul.page-5-ul li::before {
     transform: translate(53.076305px, 0.000000px);
   }
 }
-@keyframes page-1-4-1 {
-  0% {
-    transform: translate(294.536101px, 123.247104px);
-  }
-  50% {
-    transform: translate(294.536101px, 170.247104px);
-  }
-  100% {
-    transform: translate(294.536101px, 123.247104px);
-  }
-}
-@keyframes page-1-4-2 {
-  0% {
-    d: path("M0.815932125 5.3976834 11.4550166 11.7546686 11.4550166 111.083647 0.815932125 104.286553");
-  }
-  50% {
-    d: path("M0.815932125 5.38931596 11.4550166 11.6818859 11.4550166 64.0836466 0.815932125 57.2865533");
-  }
-  100% {
-    d: path("M0.815932125 5.3976834 11.4550166 11.7546686 11.4550166 111.083647 0.815932125 104.286553");
-  }
-}
-@keyframes page-1-4-3 {
-  0% {
-    d: path("M23.7696789 7.50766831 11.4550166 11.7546686 11.4550166 111.083647 23.7696789 106.396538");
-  }
-  50% {
-    d: path("M23.7696789 7.58311231 11.4550166 11.7385865 11.4550166 64.0836466 23.7696789 59.3965383");
-  }
-  100% {
-    d: path("M23.7696789 7.50766831 11.4550166 11.7546686 11.4550166 111.083647 23.7696789 106.396538");
-  }
-}
-@keyframes page-1-4-4 {
-  0% {
-    d: path("M0.815932125 5.3976834 11.4550166 11.7546686 23.7793679 7.51647637 13.1402834 0.719383145");
-  }
-  50% {
-    d: path("M0.815932125 5.3976834 11.4550166 11.7546686 23.7793679 7.51647637 13.1402834 0.719383145");
-  }
-  100% {
-    d: path("M0.815932125 5.3976834 11.4550166 11.7546686 23.7793679 7.51647637 13.1402834 0.719383145");
-  }
-}
-@keyframes page-1-4-5 {
-  0% {
-    transform: translate(321.557762px, 185.320463px);
-  }
-  50% {
-    transform: translate(321.557762px, 154.320463px);
-  }
-  100% {
-    transform: translate(321.557762px, 185.320463px);
-  }
-}
-@keyframes page-1-4-6 {
-  0% {
-    d: path("M0 4.4980695 9.79985196 11.6536979 9.79985196 66.0019809 0 58.4062445");
-  }
-  50% {
-    d: path("M0 4.4980695 9.79985196 11.6536979 9.79985196 97.0019809 0 89.4062445");
-  }
-  100% {
-    d: path("M0 4.4980695 9.79985196 11.6536979 9.79985196 66.0019809 0 58.4062445");
-  }
-}
-@keyframes page-1-4-7 {
-  0% {
-    d: path("M21.6645781 7.22956475 9.80459987 11.6628439 9.80459987 66.0111269 21.6645781 61.1377397");
-  }
-  50% {
-    d: path("M21.6645781 7.22956475 9.80459987 11.6628439 9.80459987 97.0111269 21.6645781 92.1377397");
-  }
-  100% {
-    d: path("M21.6645781 7.22956475 9.80459987 11.6628439 9.80459987 66.0111269 21.6645781 61.1377397");
-  }
-}
-@keyframes page-1-4-8 {
-  0% {
-    d: path("M0 4.67830025 9.86982134 11.7561234 21.7207198 7.22411854 12.3243513 0");
-  }
-  50% {
-    d: path("M0.0236732227 4.54682624 9.86982134 11.7561234 21.7207198 7.22411854 12.3243513 0");
-  }
-  100% {
-    d: path("M0 4.67830025 9.86982134 11.7561234 21.7207198 7.22411854 12.3243513 0");
-  }
-}
 svg {
   overflow: visible;
 }
@@ -1116,36 +975,13 @@ svg {
 #page-1-3:hover #page-1-3-Group-34 {
   animation: page-1-3 2s infinite;
 }
-#page-1-4:hover #page-1-4-Group-39 {
-  animation: page-1-4-1 2s infinite;
-}
-#page-1-4:hover #page-1-4-Group-39 #page-1-4-Rectangle-22-Copy-4 {
-  animation: page-1-4-2 2s infinite;
-}
-#page-1-4:hover #page-1-4-Group-39 #page-1-4-Rectangle-22-Copy-6 {
-  animation: page-1-4-3 2s infinite;
-}
-#page-1-4:hover #page-1-4-Group-39 #page-1-4-Rectangle-22-Copy-5 {
-  animation: page-1-4-4 2s infinite;
-}
-#page-1-4:hover #page-1-4-Group-39-Copy {
-  animation: page-1-4-5 2s infinite;
-}
-#page-1-4:hover #page-1-4-Group-39-Copy #page-1-4-Rectangle-22-Copy-4 {
-  animation: page-1-4-6 2s infinite;
-}
-#page-1-4:hover #page-1-4-Group-39-Copy #page-1-4-Rectangle-22-Copy-6 {
-  animation: page-1-4-7 2s infinite;
-}
-#page-1-4:hover #page-1-4-Group-39-Copy #page-1-4-Rectangle-22-Copy-5 {
-  animation: page-1-4-8 2s infinite;
-}
 
 
 /* 适配窄屏 */
 @media screen and (max-width: 1200px) {
   .page {
-    max-width: 1000px;
+    max-width: 960px;
+    padding: 0 20px;
   }
   #header-chart {
     left: 300px;
