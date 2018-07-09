@@ -255,7 +255,7 @@ ul.page-1-ul li::before {
   position: relative;
 }
 #page-3-flex-wrap label {
-  width: 160px;
+  width: 165px;
   color: #fff;
   font-size: 20px;
   height: 28px;
@@ -490,7 +490,7 @@ ul.page-1-ul li::before {
   right: 0;
   width: 36px;
   height: 36px;
-  background: url(../img/page-7-card-box-red-alarm.png) no-repeat top center;
+  background: url(../img/page-7-card-box-red-alarm.svg) no-repeat top center;
 }
 .page-7-card-box-title {
   font-size: 16px;
@@ -505,7 +505,7 @@ ul.page-1-ul li::before {
   right: 0;
   width: 18px;
   height: 18px;
-  background: url(../img/page-7-card-icon.png) no-repeat top center;
+  background: url(../img/page-7-card-icon.svg) no-repeat top center;
 }
 .page-7-card-box-desc {
   position: absolute;
