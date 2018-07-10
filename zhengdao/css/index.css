@@ -311,6 +311,7 @@ ul.page-1-ul li::before {
 
 /* page-7 */
 #page-7 {
+  overflow-y: hidden;
   background: url(../img/page-7-bg-1.jpg) no-repeat bottom center;
 }
 #page-7-title {
