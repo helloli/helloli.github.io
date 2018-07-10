@@ -317,6 +317,7 @@ ul.page-1-ul li::before {
   margin-top: 10px;
 }
 #page-7-1 {
+  overflow-y: hidden;
   position: relative;
   width: 960px;
   height: 545px;
