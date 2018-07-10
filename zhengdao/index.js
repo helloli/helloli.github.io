@@ -63,7 +63,7 @@ svgNode.prototype.end = function () {
 // 批量处理动画的开始和停止
 function svgAnimate(arr) {
   this.arr = arr.map(function(node) {
-    return new svgNode(...node);
+    return new svgNode(node[0], node[1], node[2], node[3], node[4]);
   });
 }
 svgAnimate.prototype.start = function () {
