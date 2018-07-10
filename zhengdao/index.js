@@ -122,15 +122,11 @@ $('#page-1-4').on('mouseenter', function () {
 // 轮播
 var currCard = 1;
 var cardInterval = null;
-function setCardInterval() {
-  cardInterval && clearInterval(cardInterval);
-  cardInterval = setInterval(function () {
-    $('#page-7-li-' + currCard).removeClass('active');
-    currCard === 4 ? currCard = 1 : currCard += 1;
-    $('#page-7-li-' + currCard).addClass('active');
-  }, 5000);
-}
-setCardInterval();
+cardInterval = setInterval(function () {
+  $('#page-7-li-' + currCard).removeClass('active');
+  currCard === 4 ? currCard = 1 : currCard += 1;
+  $('#page-7-li-' + currCard).addClass('active');
+}, 5000);
 $('#page-7-ul').on('click', 'li', function () {
   $('#page-7-li-' + currCard).removeClass('active');
   currCard = $(this).data('index');
